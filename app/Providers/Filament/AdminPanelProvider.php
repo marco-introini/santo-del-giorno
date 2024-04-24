@@ -3,6 +3,7 @@
 namespace App\Providers\Filament;
 
 use BetterFuturesStudio\FilamentLocalLogins\LocalLogins;
+use Filament\Forms\Components\FileUpload;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\DisableBladeIconComponents;
 use Filament\Http\Middleware\DispatchServingFilamentEvent;
@@ -59,7 +60,18 @@ class AdminPanelProvider extends PanelProvider
             ->plugins([
                 new LocalLogins(),
                 BreezyCore::make()
-                    ->myProfile(),
+                    ->myProfile(
+                        shouldRegisterUserMenu: true,
+                        shouldRegisterNavigation: true,
+                        hasAvatars: true,
+                        slug: 'my-profile',
+                        navigationGroup: 'Impostazioni'
+                    )
+                    ->enableTwoFactorAuthentication()
+                    ->enableSanctumTokens(
+                        permissions: ['view']
+                    )
+                    ->avatarUploadComponent(fn() => FileUpload::make('avatar')->disk('avatars')),
             ]);
     }
 }

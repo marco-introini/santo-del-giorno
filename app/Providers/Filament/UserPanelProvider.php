@@ -73,7 +73,7 @@ class UserPanelProvider extends PanelProvider
                     ->enableSanctumTokens(
                         permissions: ['view']
                     )
-                    ->avatarUploadComponent(fn() => FileUpload::make('avatar_url')->disk('avatars')),
+                    ->avatarUploadComponent(fn() => FileUpload::make('avatar')->disk('avatars')),
             ]);
     }
 }
