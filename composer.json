@@ -6,6 +6,7 @@
     "license": "MIT",
     "require": {
         "php": "^8.2",
+        "better-futures-studio/filament-local-logins": "^1.2",
         "filament/filament": "^3.2",
         "jeffgreco13/filament-breezy": "^2.3",
         "laravel/framework": "^11.0",
@@ -14,6 +15,7 @@
     },
     "require-dev": {
         "fakerphp/faker": "^1.23",
+        "larastan/larastan": "^2.9",
         "laravel/pint": "^1.13",
         "laravel/sail": "^1.26",
         "mockery/mockery": "^1.6",
