@@ -22,6 +22,7 @@
         "nunomaduro/collision": "^8.0",
         "pestphp/pest": "^2.34",
         "pestphp/pest-plugin-laravel": "^2.3",
+        "rector/rector": "^1.0",
         "spatie/laravel-ignition": "^2.4"
     },
     "autoload": {
@@ -52,7 +53,10 @@
             "@php artisan key:generate --ansi",
             "@php -r \"file_exists('database/database.sqlite') || touch('database/database.sqlite');\"",
             "@php artisan migrate --graceful --ansi"
-        ]
+        ],
+        "rector-fix": "rector",
+        "rector-preview": "rector --dry-run",
+        "rector-ci": "rector --dry-run --no-progress-bar"
     },
     "extra": {
         "laravel": {
