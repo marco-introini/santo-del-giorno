@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Filament\Models\Contracts\FilamentUser;
 use Filament\Panel;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
@@ -57,10 +56,10 @@ class User extends Authenticatable implements MustVerifyEmail, FilamentUser
             return false;
         }
 
-        if ($panel->id === 'admin') {
+        if ($panel->getId() === 'admin') {
             return $this->isAdmin();
         }
-        if ($panel->id === 'user') {
+        if ($panel->getId() === 'user') {
             return true;
         }
 
