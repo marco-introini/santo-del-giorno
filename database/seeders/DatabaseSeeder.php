@@ -22,7 +22,6 @@ class DatabaseSeeder extends Seeder
 
         User::factory()->create([
             'name' => 'My default User',
-            'last_name' => 'My default User',
             'email' => 'user@example.com',
             'email_verified_at' => now(),
             'is_admin' => false,
