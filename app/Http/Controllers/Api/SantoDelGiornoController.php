@@ -11,12 +11,12 @@ class SantoDelGiornoController extends Controller
 {
     public function index()
     {
-        return SantoResource::paginate(20);
+        return SantoResource::collection(Santo::paginate(10));
     }
 
-    public function show($id)
+    public function show(Santo $santo)
     {
-        return SantoResource::whereId($id);
+        return new SantoResource($santo);
     }
 
 }

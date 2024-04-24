@@ -11,7 +11,7 @@ class Santo extends Model
 
     protected $table = 'santi';
 
-    protected function casts()
+    protected function casts(): array
     {
         return [];
     }
