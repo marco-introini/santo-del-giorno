@@ -2,6 +2,7 @@
 
 namespace App\Providers\Filament;
 
+use BetterFuturesStudio\FilamentLocalLogins\LocalLogins;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\DisableBladeIconComponents;
 use Filament\Http\Middleware\DispatchServingFilamentEvent;
@@ -17,6 +18,7 @@ use Illuminate\Routing\Middleware\SubstituteBindings;
 use Illuminate\Session\Middleware\AuthenticateSession;
 use Illuminate\Session\Middleware\StartSession;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
+use Jeffgreco13\FilamentBreezy\BreezyCore;
 
 class UserPanelProvider extends PanelProvider
 {
@@ -25,6 +27,10 @@ class UserPanelProvider extends PanelProvider
         return $panel
             ->id('user')
             ->path('user')
+            ->login()
+            ->registration()
+            ->emailVerification()
+            ->passwordReset()
             ->colors([
                 'primary' => Color::Amber,
             ])
@@ -51,6 +57,11 @@ class UserPanelProvider extends PanelProvider
             ])
             ->authMiddleware([
                 Authenticate::class,
+            ])
+            ->plugins([
+                new LocalLogins(),
+                BreezyCore::make()
+                    ->myProfile(),
             ]);
     }
 }

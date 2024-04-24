@@ -14,7 +14,7 @@ class User extends Authenticatable implements MustVerifyEmail, FilamentUser
     use HasFactory, Notifiable;
 
     /**
-     * The attributes that are mass assignable.
+     * The attributes that are mass ASSIGNABLE.
      *
      * @var array<int, string>
      */
@@ -52,10 +52,6 @@ class User extends Authenticatable implements MustVerifyEmail, FilamentUser
 
     public function canAccessPanel(Panel $panel): bool
     {
-        if (!$this->hasVerifiedEmail()) {
-            return false;
-        }
-
         if ($panel->getId() === 'admin') {
             return $this->isAdmin();
         }
