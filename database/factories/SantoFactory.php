@@ -14,7 +14,8 @@ class SantoFactory extends Factory
     {
         return [
             'nome' => $this->faker->name(),
-            'data' => fake()->date('Y-m-d'),
+            'giorno' => fake()->numberBetween(1, 31),
+            'mese' => fake()->numberBetween(1, 12),
             'note' => $this->faker->sentences(2,true),
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),

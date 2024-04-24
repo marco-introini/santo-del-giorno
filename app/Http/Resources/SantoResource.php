@@ -13,7 +13,8 @@ class SantoResource extends JsonResource
         return [
             'id' => $this->id,
             'nome' => $this->nome,
-            'data' => $this->data,
+            'giorno' => $this->giorno,
+            'mese' => $this->mese,
             'note' => $this->note,
         ];
     }

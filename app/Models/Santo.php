@@ -13,8 +13,6 @@ class Santo extends Model
 
     protected function casts()
     {
-        return [
-            'data' => 'date',
-        ];
+        return [];
     }
 }

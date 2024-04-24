@@ -10,9 +10,13 @@ return new class extends Migration {
         Schema::create('santi', function (Blueprint $table) {
             $table->id();
             $table->string('nome');
-            $table->date('data');
+            $table->integer('giorno');
+            $table->integer('mese');
             $table->text('note')->nullable();
             $table->timestamps();
+
+            $table->index(['giorno', 'mese']);
+            $table->index('nome');
         });
     }
 
