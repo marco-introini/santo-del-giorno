@@ -13,11 +13,11 @@ class SantoFactory extends Factory
     public function definition(): array
     {
         return [
+            'nome' => $this->faker->name(),
+            'data' => fake()->date('Y-m-d'),
+            'note' => $this->faker->sentences(2,true),
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
-            'nome' => $this->faker->word(),
-            'data' => Carbon::now(),
-            'note' => $this->faker->word(),
         ];
     }
 }

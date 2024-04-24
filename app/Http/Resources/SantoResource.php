@@ -11,8 +11,6 @@ class SantoResource extends JsonResource
     public function toArray(Request $request): array
     {
         return [
-            'created_at' => $this->created_at,
-            'updated_at' => $this->updated_at,
             'id' => $this->id,
             'nome' => $this->nome,
             'data' => $this->data,
