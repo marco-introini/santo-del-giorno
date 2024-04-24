@@ -3,6 +3,7 @@
 namespace App\Providers\Filament;
 
 use BetterFuturesStudio\FilamentLocalLogins\LocalLogins;
+use Filament\Forms\Components\FileUpload;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\DisableBladeIconComponents;
 use Filament\Http\Middleware\DispatchServingFilamentEvent;
@@ -32,7 +33,7 @@ class UserPanelProvider extends PanelProvider
             ->emailVerification()
             ->passwordReset()
             ->colors([
-                'primary' => Color::Amber,
+                'primary' => Color::Violet,
             ])
             ->discoverResources(in: app_path('Filament/User/Resources'), for: 'App\\Filament\\User\\Resources')
             ->discoverPages(in: app_path('Filament/User/Pages'), for: 'App\\Filament\\User\\Pages')
@@ -61,7 +62,18 @@ class UserPanelProvider extends PanelProvider
             ->plugins([
                 new LocalLogins(),
                 BreezyCore::make()
-                    ->myProfile(),
+                    ->myProfile(
+                        shouldRegisterUserMenu: true,
+                        shouldRegisterNavigation: true,
+                        hasAvatars: true,
+                        slug: 'my-profile',
+                        navigationGroup: 'Impostazioni'
+                    )
+                    ->enableTwoFactorAuthentication()
+                    ->enableSanctumTokens(
+                        permissions: ['view']
+                    )
+                    ->avatarUploadComponent(fn() => FileUpload::make('avatar_url')->disk('avatars')),
             ]);
     }
 }
