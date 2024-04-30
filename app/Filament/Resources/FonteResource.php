@@ -20,6 +20,11 @@ class FonteResource extends Resource
 {
     protected static ?string $model = Fonte::class;
 
+    protected static ?string $slug = 'fonti';
+
+    protected static ?string $pluralLabel = 'Fonti';
+    protected static ?string $label = 'Fonte';
+
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
     public static function form(Form $form): Form

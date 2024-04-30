@@ -17,6 +17,11 @@ class SantoResource extends Resource
 {
     protected static ?string $model = Santo::class;
 
+    protected static ?string $slug = 'santi';
+
+    protected static ?string $pluralLabel = 'Santi';
+    protected static ?string $label = 'Santo';
+
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
     public static function form(Form $form): Form
