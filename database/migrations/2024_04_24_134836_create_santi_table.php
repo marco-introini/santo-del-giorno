@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Fonte;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -13,6 +14,9 @@ return new class extends Migration {
             $table->integer('giorno');
             $table->integer('mese');
             $table->text('note')->nullable();
+            $table->foreignIdFor(Fonte::class)
+                ->constrained()
+                ->onDelete('restrict');
             $table->timestamps();
 
             $table->index(['giorno', 'mese']);

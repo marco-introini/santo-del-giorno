@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Fonte;
 use App\Models\Santo;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -30,6 +31,7 @@ class DatabaseSeeder extends Seeder
 
         User::factory(10)->create();
 
+        Fonte::factory(10)->create();
         Santo::factory(200)->create();
     }
 }
