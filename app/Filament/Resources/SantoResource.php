@@ -6,6 +6,8 @@ use App\Filament\Resources\SantoResource\Pages;
 use App\Filament\Resources\SantoResource\RelationManagers;
 use App\Models\Santo;
 use Filament\Forms;
+use Filament\Forms\Components\Textarea;
+use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
@@ -22,13 +24,29 @@ class SantoResource extends Resource
     protected static ?string $pluralLabel = 'Santi';
     protected static ?string $label = 'Santo';
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-face-smile';
 
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
-                //
+                Forms\Components\TextInput::make('nome')
+                    ->required()
+                    ->maxLength(255),
+                Forms\Components\Select::make('fonte_id')
+                    ->relationship('fonte', 'nome'),
+                TextInput::make('mese')
+                    ->required()
+                    ->numeric()
+                    ->minValue(1)
+                    ->maxValue(12),
+                TextInput::make('giorno')
+                    ->required()
+                    ->numeric()
+                    ->minValue(1)
+                    ->maxValue(31),
+                Textarea::make('note')
+                    ->columnSpanFull(),
             ]);
     }
 
@@ -36,7 +54,15 @@ class SantoResource extends Resource
     {
         return $table
             ->columns([
-                //
+                Tables\Columns\TextColumn::make('nome')
+                    ->sortable()
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('mese')
+                    ->sortable()
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('giorno')
+                    ->sortable()
+                    ->searchable(),
             ])
             ->filters([
                 //
