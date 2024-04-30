@@ -9,6 +9,7 @@ return new class extends Migration {
     {
         Schema::create('fonti', function (Blueprint $table) {
             $table->id();
+            $table->string('nome');
             $table->string('url');
             $table->text('note');
             $table->timestamps();

@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Fonte;
 use App\Models\Santo;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Carbon;
@@ -17,6 +18,7 @@ class SantoFactory extends Factory
             'giorno' => fake()->numberBetween(1, 31),
             'mese' => fake()->numberBetween(1, 12),
             'note' => $this->faker->sentences(2,true),
+            'fonte_id' => Fonte::inRandomOrder()->first()->id ?? Fonte::factory()->create()->id,
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
         ];

@@ -14,9 +14,19 @@ class SantoDelGiornoController extends Controller
         return SantoResource::collection(Santo::paginate(10));
     }
 
-    public function show(Santo $santo)
+    public function show(Santo $santo): SantoResource
     {
         return new SantoResource($santo);
+    }
+
+    public function findByDate(int $mese, int $giorno)
+    {
+
+    }
+
+    public function findByName(string $nome)
+    {
+
     }
 
 }
