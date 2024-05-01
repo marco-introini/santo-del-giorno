@@ -13,7 +13,7 @@ trait ApiResponse
             'message' => $message,
             'code' => $code,
             'data' => $data,
-        ]);
+        ], $code);
     }
 
     public function ok(string $message, $data = [],  int $code = 200): JsonResponse
