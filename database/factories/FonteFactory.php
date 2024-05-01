@@ -15,7 +15,7 @@ class FonteFactory extends Factory
         return [
             'nome' => $this->faker->words(3,true),
             'url' => $this->faker->url(),
-            'note' => $this->faker->sentence(),
+            'note' => $this->faker->paragraph(),
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
         ];

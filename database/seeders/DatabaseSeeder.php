@@ -31,7 +31,9 @@ class DatabaseSeeder extends Seeder
 
         User::factory(10)->create();
 
-        Fonte::factory(10)->create();
-        Santo::factory(200)->create();
+        $fonti = Fonte::factory(10)->create();
+        Santo::factory(200)
+            ->recycle($fonti)
+            ->create();
     }
 }
