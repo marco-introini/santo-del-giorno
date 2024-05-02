@@ -14,7 +14,9 @@ return new class extends Migration {
             $table->integer('giorno');
             $table->integer('mese');
             $table->text('note')->nullable();
-            $table->foreignIdFor(Fonte::class);
+            $table->foreignIdFor(Fonte::class)
+                ->constrained('fonti')
+                ->onDelete('restrict');
             $table->timestamps();
 
             $table->index(['giorno', 'mese']);
