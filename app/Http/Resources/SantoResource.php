@@ -12,7 +12,7 @@ class SantoResource extends JsonResource
     public function toArray(Request $request): array
     {
         return [
-            'id' => $this->id,
+            'uuid' => $this->id,
             'nome' => $this->nome,
             'giorno' => $this->giorno,
             'mese' => $this->mese,

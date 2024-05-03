@@ -16,9 +16,9 @@ class SantoDelGiornoController extends Controller
         return SantoResource::collection(Santo::paginate(10));
     }
 
-    public function show(int $id)
+    public function show(string $uuid)
     {
-        $santo = Santo::find($id);
+        $santo = Santo::find($uuid);
         if (is_null($santo)) {
             return $this->error("Santo non trovato");
         }
