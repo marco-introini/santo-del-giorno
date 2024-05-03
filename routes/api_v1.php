@@ -5,7 +5,7 @@ use App\Http\Middleware\AlwaysAcceptJsonMiddleware;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/santo', [SantoDelGiornoController::class, 'index'])
-    ->middleware(AlwaysAcceptJsonMiddleware::class, 'auth:sanctum');
+    ->middleware(['always-json','auth:sanctum']);
 
 // TODO: se non lo trova NON torna json
 Route::get('/santo/{santo}', [SantoDelGiornoController::class, 'show'])
