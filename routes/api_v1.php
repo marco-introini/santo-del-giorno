@@ -8,7 +8,7 @@ Route::get('/santo', [SantoDelGiornoController::class, 'index'])
     ->middleware(['always-json','auth:sanctum']);
 
 // TODO: se non lo trova NON torna json
-Route::get('/santo/{santo}', [SantoDelGiornoController::class, 'show'])
+Route::get('/santo/{id}', [SantoDelGiornoController::class, 'show'])
     ->middleware(AlwaysAcceptJsonMiddleware::class);
 
 Route::get('/santo/nome/{nome}', [SantoDelGiornoController::class, 'findByName'])
