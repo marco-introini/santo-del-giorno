@@ -1,12 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\Api;
+namespace App\Http\Controllers\Api\V1;
 
 use App\Http\Controllers\Controller;
 use App\Http\Resources\SantoResource;
 use App\Models\Santo;
 use App\Traits\ApiResponse;
-use Illuminate\Http\Request;
 
 class SantoDelGiornoController extends Controller
 {
@@ -24,7 +23,8 @@ class SantoDelGiornoController extends Controller
 
     public function findByDate(int $mese, int $giorno)
     {
-
+        $santi = Santo::where('mese', $mese)->where('giorno', $giorno)->get();
+        return $this->ok("Santo Trovato", SantoResource::collection($santi));
     }
 
     public function findByName(string $nome)

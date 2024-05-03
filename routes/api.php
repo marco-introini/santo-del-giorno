@@ -10,4 +10,10 @@ Route::get('/user', function (Request $request) {
 })->middleware('auth:sanctum');
 
 Route::post('/login', [LoginController::class, 'login'])
-    ->middleware(AlwaysAcceptJsonMiddleware::class);
+    ->middleware(AlwaysAcceptJsonMiddleware::class)
+    ->name('login');
+
+Route::post('/logout', [LoginController::class, 'logout'])
+    ->middleware(AlwaysAcceptJsonMiddleware::class)
+    ->middleware('auth:sanctum')
+    ->name('logout');
