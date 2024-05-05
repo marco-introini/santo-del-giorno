@@ -12,11 +12,20 @@ class SantoResource extends JsonResource
     public function toArray(Request $request): array
     {
         return [
+            'type' => 'santo',
             'uuid' => $this->id,
-            'nome' => $this->nome,
-            'giorno' => $this->giorno,
-            'mese' => $this->mese,
-            'note' => $this->note,
+            'attributes' => [
+                'nome' => $this->nome,
+                'giorno' => $this->giorno,
+                'mese' => $this->mese,
+                'note' => $this->when(
+                    $request->routeIs('santo.show'),
+                    $this->note,
+                )
+            ],
+            'links' => [
+                'self' => route('santo.show', $this),
+            ]
         ];
     }
 }
