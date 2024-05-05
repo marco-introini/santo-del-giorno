@@ -6,4 +6,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('cerca-per-data', \App\Livewire\CercaSantoPerData::class);
+Route::view('cerca-per-data', 'cerca-per-data')
+    ->name('cerca-per-data');
+
+
