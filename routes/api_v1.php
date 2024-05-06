@@ -1,8 +1,8 @@
 <?php
 
+use App\Http\Controllers\Api\V1\FonteController;
 use App\Http\Controllers\Api\V1\SantoDelGiornoController;
 use App\Http\Middleware\AlwaysAcceptJsonMiddleware;
-use App\Http\Resources\FonteResource;
 use Illuminate\Support\Facades\Route;
 
 // SANTI
@@ -23,7 +23,7 @@ Route::get('/santo/data/{mese}/{giorno}', [SantoDelGiornoController::class, 'fin
     ->name('santo.findByDate');
 
 // FONTE
-Route::get('/fonte/{fonte}', [FonteResource::class, 'show'])
+Route::get('/fonte/{fonte}', [FonteController::class, 'show'])
     ->middleware(AlwaysAcceptJsonMiddleware::class)
     ->name('fonte.show');
 

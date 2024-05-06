@@ -3,6 +3,7 @@
 namespace App\Http\Resources;
 
 use App\Models\Fonte;
+use App\Models\Santo;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
@@ -18,9 +19,8 @@ class FonteResource extends JsonResource
                 'nome' => $this->nome,
                 'url' => $this->url,
                 'note' => $this->note,
-                'numeroSanti' => $this->santi_count,
+                'numeroSanti' => $this->santi()->count(),
             ],
-            //'santi' => SantoResource::collection($this->whenLoaded('santi')),
         ];
     }
 }

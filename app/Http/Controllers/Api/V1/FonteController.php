@@ -11,8 +11,8 @@ class FonteController extends ApiController
 {
     use ApiResponse;
 
-    public function show(Fonte $fonte)
+    public function show(Fonte $fonte): FonteResource
     {
-        return new FonteResource($fonte);
+        return new FonteResource($fonte->load('santi'));
     }
 }
