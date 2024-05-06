@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers\Api\V1;
 
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\ApiController;
 use App\Http\Resources\SantoResource;
 use App\Models\Santo;
 use App\Traits\ApiResponse;
 
-class SantoDelGiornoController extends Controller
+class SantoDelGiornoController extends ApiController
 {
     use ApiResponse;
 
@@ -18,10 +18,14 @@ class SantoDelGiornoController extends Controller
 
     public function show(string $uuid)
     {
-        $santo = Santo::find($uuid);
+        $santo = Santo::without('fonte')->find($uuid);
         if (is_null($santo)) {
             return $this->error("Santo non trovato");
         }
+        if ($this->include('fonte')) {
+            return $this->ok("Santo Trovato (richiesta Fonte)", new SantoResource($santo->load('fonte')));
+        }
+
         return $this->ok("Santo Trovato", new SantoResource($santo));
     }
 

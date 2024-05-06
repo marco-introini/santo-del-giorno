@@ -30,10 +30,11 @@ class SantoResource extends JsonResource
                         'id' => $this->fonte_id,
                     ],
                     'links' => [
-                        'self' => route('fonte.show', $this->fonte),
+                        'self' => route('fonte.show', $this->fonte_id),
                     ]
                 ]
             ],
+            'includes' => new FonteResource($this->whenLoaded('fonte')),
             'links' => [
                 'self' => route('santo.show', $this),
             ]
