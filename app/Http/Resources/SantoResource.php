@@ -23,6 +23,17 @@ class SantoResource extends JsonResource
                     $this->note,
                 )
             ],
+            'relationships' => [
+                'fonte' => [
+                    'data' => [
+                        'type' => 'fonte',
+                        'id' => $this->fonte_id,
+                    ],
+                    'links' => [
+                        'self' => route('fonte.show', $this->fonte),
+                    ]
+                ]
+            ],
             'links' => [
                 'self' => route('santo.show', $this),
             ]
