@@ -3,7 +3,7 @@
 ])
 
     <!doctype html>
-<html lang="en">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
@@ -12,7 +12,7 @@
     @vite('resources/css/app.css')
     <title>{{$title}}</title>
 </head>
-<body>
+<body class="font-sans antialiased dark:bg-black dark:text-white/50 bg-sky-50">
 
 {{$slot}}
 
