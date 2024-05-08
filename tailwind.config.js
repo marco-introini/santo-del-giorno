@@ -10,6 +10,10 @@ export default {
             colors: {
                 'azzurro': '#DBEEEF'
             },
+            fontFamily: {
+                'montserrat': ['Montserrat','sans-serif'],
+                'nunito': ['nunito', 'roboto', 'sans-serif'],
+            }
         },
     },
     plugins: [],

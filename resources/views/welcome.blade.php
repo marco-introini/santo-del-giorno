@@ -11,7 +11,7 @@
 
                     <nav class="-mx-3 flex flex-1 justify-end">
                         @auth
-<x-link />
+<x-link href="{{url('user')}}"/>
                         @else
                             <a
                                 href="{{ url('user/login') }}"
@@ -33,7 +33,7 @@
                 <main class="mt-6 flex flex-col">
                     <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:gap-8">
                         <div class="">
-                            <img src="/images/santo-1.png"
+                            <img src="/images/logo.webp"
                                  alt="Santo del giorno"
                                  class="h-full w-fit flex-1 rounded-[10px] object-top object-cover drop-shadow-[0px_4px_34px_rgba(0,0,0,0.25)] dark:block"
                             />
