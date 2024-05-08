@@ -1,25 +1,5 @@
 <x-template>
-    <div class="">
-        <div
-            class="relative min-h-screen flex flex-col items-center justify-center selection:bg-[#FF2D20] selection:text-white">
-            <div class="relative w-full max-w-2xl px-6 lg:max-w-7xl">
-                <header class="grid grid-cols-2 items-center gap-2 py-10 lg:grid-cols-3">
-                    <div class="flex lg:justify-center lg:col-start-2">
 
-                    </div>
-
-
-                    <nav class="-mx-3 flex flex-1 justify-end">
-                        @auth
-                            <x-link href="{{url('user')}}">Area Riservata</x-link>
-                        @else
-                            <x-link href="{{url('user/login')}}" class="mr-3">Effettua Log In</x-link>
-                            <x-link href="{{url('user/register')}}">Registrazione Utente</x-link>
-                        @endauth
-                    </nav>
-                </header>
-
-                <main class="mt-6 flex flex-col">
                     <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:gap-8">
                         <div class="">
                             <img src="/images/logo.webp"
@@ -41,22 +21,16 @@
                     </div>
 
                     <div class="mt-12">
-                        <div class="mx-auto font-extrabold text-3xl">
-                            Documentazione
-                        </div>
+                        <article class="prose dark:prose-invert max-w-none">
+
+@php
+        $commonmark = new \League\CommonMark\CommonMarkConverter();
+        $file = base_path().'/documentazione.md';
+        $contents = file_get_contents($file);
+
+        echo $commonmark->convert($contents);
+@endphp
+                        </article>
                     </div>
 
-
-                </main>
-
-                <footer class="py-16 text-center text-sm text-black dark:text-white/70">
-                    <div>&copy; Marco Introini, 2024 - Open Source Software<br></div>
-                    <div class="mt-3">
-                        <x-link href="https://github.com/marco-introini/santo-del-giorno" class="mt-3">Codice Sorgente
-                        </x-link>
-                    </div>
-                </footer>
-            </div>
-        </div>
-    </div>
 </x-template>

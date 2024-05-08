@@ -11,11 +11,13 @@ export default {
                 'azzurro': '#DBEEEF'
             },
             fontFamily: {
-                'montserrat': ['Montserrat','sans-serif'],
+                'montserrat': ['Montserrat', 'sans-serif'],
                 'nunito': ['nunito', 'roboto', 'sans-serif'],
             }
         },
     },
-    plugins: [],
+    plugins: [
+        require('@tailwindcss/typography'),
+    ],
 }
 
