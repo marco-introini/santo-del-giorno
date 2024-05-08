@@ -1,5 +1,5 @@
 <x-template>
-    <div class="text-black/50 dark:bg-black dark:text-white/50">
+    <div class="">
         <div
             class="relative min-h-screen flex flex-col items-center justify-center selection:bg-[#FF2D20] selection:text-white">
             <div class="relative w-full max-w-2xl px-6 lg:max-w-7xl">
@@ -11,21 +11,10 @@
 
                     <nav class="-mx-3 flex flex-1 justify-end">
                         @auth
-<x-link href="{{url('user')}}"/>
+                            <x-link href="{{url('user')}}">Area Riservata</x-link>
                         @else
-                            <a
-                                href="{{ url('user/login') }}"
-                                class="rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white"
-                            >
-                                Effettua Log In
-                            </a>
-
-                            <a
-                                href="{{ url('user/register') }}"
-                                class="rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white"
-                            >
-                                Registrazione utente
-                            </a>
+                            <x-link href="{{url('user/login')}}" class="mr-3">Effettua Log In</x-link>
+                            <x-link href="{{url('user/register')}}">Registrazione Utente</x-link>
                         @endauth
                     </nav>
                 </header>
@@ -40,6 +29,14 @@
                         </div>
                         <div class="place-content-center mx-auto">
                             <div class="font-extrabold text-5xl">Santo del Giorno</div>
+                            <div class="mt-4">
+                                Un progetto di software libero per avere API semplici e complete per ottenere il santo del giorno.
+                            </div>
+                            <div class="mt-2">
+                                Le chiamate alle API possono essere integrate in <strong>qualunque progetto (anche
+                                    commerciale)</strong> in modo <strong>completamente gratuito</strong>.
+                                La registrazione è necessaria per consentire il monitoraggio degli accessi e la gestione della sicurezza
+                            </div>
                         </div>
                     </div>
 
@@ -53,11 +50,11 @@
                 </main>
 
                 <footer class="py-16 text-center text-sm text-black dark:text-white/70">
-                    &copy; Marco Introini, 2024 - Open Source Software<br>
-                    <div class="font-black mt-4">Il codice sorgente è
-                        <a class="underline hover:text-azzurro text-amber-600"
-                            href="https://github.com/marco-introini/santo-del-giorno">
-                            visibile qui</a></div>
+                    <div>&copy; Marco Introini, 2024 - Open Source Software<br></div>
+                    <div class="mt-3">
+                        <x-link href="https://github.com/marco-introini/santo-del-giorno" class="mt-3">Codice Sorgente
+                        </x-link>
+                    </div>
                 </footer>
             </div>
         </div>
