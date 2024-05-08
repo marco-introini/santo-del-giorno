@@ -7,7 +7,17 @@
         <input
             class="px-3 py-1 border-violet-900 border border-solid rounded-xl"
             name="search"
-            wire:model=""/>
+            wire:model.live="nome"/>
+    </div>
+
+    <div class="mt-6">
+
+        <x-tabella-santi :santi="$santi"/>
+
+    </div>
+
+    <div>
+        {{$santi->links()}}
     </div>
 
 </div>
