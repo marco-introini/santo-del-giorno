@@ -7,7 +7,7 @@
         <input
             class="px-3 py-1 border-violet-900 border border-solid rounded-xl"
             name="search"
-            wire:model.live="nome"/>
+            wire:keyup="cercaPerNome" wire:model="nome"/>
     </div>
 
     <div class="mt-6">

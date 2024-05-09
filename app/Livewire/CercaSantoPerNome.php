@@ -18,4 +18,11 @@ class CercaSantoPerNome extends Component
             'santi' => Santo::where('nome', 'like', '%'.$this->nome.'%')->paginate(20)
             ]);
     }
+
+    public function cercaPerNome()
+    {
+        $this->resetPage();
+        $this->render();
+    }
+
 }
