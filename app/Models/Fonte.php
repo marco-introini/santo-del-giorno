@@ -12,6 +12,8 @@ class Fonte extends Model
 
     protected $table = 'fonti';
 
+    protected $guarded = [];
+
     public function santi(): HasMany
     {
         return $this->hasMany(Santo::class);
