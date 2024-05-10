@@ -19,7 +19,7 @@ class ImportaFileCarthopediaCommand extends Command
         $this->info('Caricamento da '.$file);
 
         try {
-            $file = fopen("percorso/al/tuo/file.txt", "r");
+            $file = fopen($file, "r");
 
             while (($line = fgets($file)) !== false) {
                 //TODO
