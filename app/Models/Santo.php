@@ -14,6 +14,8 @@ class Santo extends Model
 
     protected $table = 'santi';
 
+    protected $guarded = [];
+
     protected function casts(): array
     {
         return [];
