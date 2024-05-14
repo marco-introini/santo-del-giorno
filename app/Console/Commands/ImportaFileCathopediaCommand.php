@@ -2,7 +2,6 @@
 
 namespace App\Console\Commands;
 
-use App\Http\Controllers\Api\V1\FonteController;
 use App\Models\Fonte;
 use App\Models\Santo;
 use Carbon\Carbon;
@@ -22,7 +21,7 @@ class ImportaFileCathopediaCommand extends Command
 
         $this->info('Caricamento da '.$file);
 
-        $fonte = Fonte::createOrFirst([
+        $fonte = Fonte::firstOrCreate([
             'nome' => 'Cathopedia',
             'url' => 'https://it.cathopedia.org/wiki/Cathopedia:Pagina_principale',
             'note' => 'Wikipedia Cattolica'
@@ -31,10 +30,10 @@ class ImportaFileCathopediaCommand extends Command
         try {
             $file = fopen($file, "r");
 
+            $giornoAttuale = 0;
+            $meseAttuale = 0;
             while (($line = fgets($file)) !== false) {
                 $line = rtrim($line, "\r\n");
-                $giornoAttuale = 0;
-                $meseAttuale = 0;
                 if (ctype_digit(substr($line, 0, 1))) {
                     $dataTime = self::convertiDataItalianoInDateTime($line);
                     if ($dataTime) {
@@ -45,7 +44,18 @@ class ImportaFileCathopediaCommand extends Command
                     }
                 } else {
 
-                    Santo::create();
+                    $parti = str($line)
+                        ->remove(';')
+                        ->explode(',');
+                    $nome = $parti[0];
+                    $descrizione = $parti->slice(1)->join(", ");
+                    Santo::create([
+                        'nome' => $nome,
+                        'note' => $descrizione,
+                        'fonte_id' => $fonte->id,
+                        'giorno' => $giornoAttuale,
+                        'mese' => $meseAttuale,
+                    ]);
 
                 }
             }
