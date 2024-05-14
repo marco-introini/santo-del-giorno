@@ -12,7 +12,7 @@ certbot --nginx
 
 chown -R www-data:www-data /var/www/santodelgiorno/
 
-echo "* * * * * www-data cd /var/www/santodelgiorno && php artisan schedule:run >> /dev/null 2>&1" >> /etc/crontab
+echo "* * * * * marco cd /var/www/santodelgiorno && php artisan schedule:run >> /dev/null 2>&1" >> /etc/crontab
 
 cd /var/www/santodelgiorno || exit
 php artisan storage:link
