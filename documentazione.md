@@ -21,8 +21,6 @@ curl --location 'https://santodelgiorno.mintdev.me/api/login' \
 --form 'password="password"'
 ```
 
-<img src="/storage/immagini/screen1.png">
-
 ### Elenco Santi
 
 Elenco paginato tutti i santi inseriti
