@@ -1,5 +1,6 @@
 ### GET request to example server
 GET http://santo-del-giorno.test/api/santo
 Content-Type: application/json
+Aut
 
 ###
