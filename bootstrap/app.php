@@ -20,10 +20,7 @@ return Application::configure(basePath: dirname(__DIR__))
         }
     )
     ->withMiddleware(function (Middleware $middleware) {
-        $middleware->alias([
-            'always-json' => AlwaysAcceptJsonMiddleware::class,
-            'treblle' => TreblleMiddleware::class,
-        ]);
+        $middleware->alias([]);
     })
     ->withExceptions(function (Exceptions $exceptions) {
         $exceptions->reportable(function (Throwable $e) {
