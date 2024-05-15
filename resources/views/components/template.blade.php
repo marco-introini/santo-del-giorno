@@ -17,7 +17,15 @@
         href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&family=Roboto&display=swap"
         rel="stylesheet">
 
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-KFXFL9922R"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
 
+        gtag('config', 'G-KFXFL9922R');
+    </script>
 </head>
 <body
     class="antialiased bg-violet-50 font-montserrat text-gray-800 dark:bg-black dark:text-white/50 flex flex-col
