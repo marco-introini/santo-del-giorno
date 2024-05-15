@@ -1,9 +1,11 @@
 <?php
 
+use App\Http\Middleware\AlwaysAcceptJsonMiddleware;
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
 use Illuminate\Support\Facades\Route;
+use Treblle\Middlewares\TreblleMiddleware;
 
 return Application::configure(basePath: dirname(__DIR__))
     ->withRouting(
@@ -19,8 +21,8 @@ return Application::configure(basePath: dirname(__DIR__))
     )
     ->withMiddleware(function (Middleware $middleware) {
         $middleware->alias([
-            'always-json' => \App\Http\Middleware\AlwaysAcceptJsonMiddleware::class,
-            'treblle' => \Treblle\Middlewares\TreblleMiddleware::class,
+            'always-json' => AlwaysAcceptJsonMiddleware::class,
+            'treblle' => TreblleMiddleware::class,
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {
