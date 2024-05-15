@@ -6,12 +6,15 @@
     "license": "MIT",
     "require": {
         "php": "^8.2",
+        "ext-zip": "*",
         "better-futures-studio/filament-local-logins": "^1.2",
         "filament/filament": "^3.2",
         "jeffgreco13/filament-breezy": "^2.3",
         "laravel/framework": "^11.0",
         "laravel/sanctum": "^4.0",
         "laravel/tinker": "^2.9",
+        "league/flysystem-aws-s3-v3": "^3.0",
+        "spatie/laravel-backup": "^8.8",
         "treblle/treblle-laravel": "^4.5"
     },
     "require-dev": {
