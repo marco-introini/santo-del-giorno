@@ -1,6 +1,12 @@
 <?php
 
 use function Pest\Laravel\get;
+use function Pest\Laravel\withoutVite;
+
+beforeEach(function (){
+   withoutVite();
+});
+
 
 it('returns a successful response', function () {
     $response = get('/');
