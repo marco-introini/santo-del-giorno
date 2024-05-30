@@ -47,6 +47,15 @@ class SantoResource extends Resource
                     ->maxValue(31),
                 Textarea::make('note')
                     ->columnSpanFull(),
+                Forms\Components\Section::make('Onomastico')
+                    ->schema([
+                        Forms\Components\Toggle::make('onomastico')
+                            ->label('Onomastico Primario')
+                            ->default(false),
+                        Forms\Components\Toggle::make('onomastico_secondario')
+                            ->default(false),
+                    ])
+                    ->columns(2)
             ]);
     }
 
@@ -63,6 +72,8 @@ class SantoResource extends Resource
                 Tables\Columns\TextColumn::make('giorno')
                     ->sortable()
                     ->searchable(),
+                Tables\Columns\IconColumn::make('onomastico')
+                    ->boolean()
             ])
             ->filters([
                 //
