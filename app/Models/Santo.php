@@ -16,9 +16,17 @@ class Santo extends Model
 
     protected $guarded = [];
 
+    /**
+     * @return array[
+     *  onomastico:
+     * ]
+     */
     protected function casts(): array
     {
-        return [];
+        return [
+            'onomastico' => 'boolean',
+            'onomastico_secondario' => 'boolean',
+        ];
     }
 
     public function fonte(): BelongsTo
