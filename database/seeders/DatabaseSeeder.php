@@ -4,8 +4,10 @@ namespace Database\Seeders;
 
 use App\Models\Fonte;
 use App\Models\Santo;
+use App\Models\Segnalazione;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use Database\Factories\SegnalazioneFactory;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -36,5 +38,7 @@ class DatabaseSeeder extends Seeder
         Santo::factory(200)
             ->recycle($fonti)
             ->create();
+
+        Segnalazione::factory(10)->create();
     }
 }
