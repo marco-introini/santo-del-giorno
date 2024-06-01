@@ -16,7 +16,6 @@ test('la ricerca torna il santo di oggi', function () {
     ]);
 
     Livewire::test(CercaSantoPerData::class)
-        ->set('nome',$santo->nome)
         ->assertStatus(200)
         ->assertSee($santo->nome)
         ->assertSee($santo->giorno)
