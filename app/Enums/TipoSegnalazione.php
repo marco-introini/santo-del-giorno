@@ -5,5 +5,6 @@ namespace App\Enums;
 enum TipoSegnalazione: string
 {
     case DATA_ERRATA = 'DATA_ERRATA';
-    case NOME_ERRATA = 'NOME_ERRATO';
+    case NOME_ERRATO = 'NOME_ERRATO';
+    case ONOMASTICO_ERRATO = 'ONOMASTICO_ERRATO';
 }

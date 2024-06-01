@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Enums\TipoSegnalazione;
 use App\Models\Santo;
 use App\Models\Segnalazione;
 use App\Models\User;
@@ -17,7 +18,7 @@ class SegnalazioneFactory extends Factory
         return [
             'user_id' => User::inRandomOrder()->first(),
             'santo_id' => Santo::inRandomOrder()->first(),
-            'tipo_segnalazione' => $this->faker->word(),
+            'tipo_segnalazione' => fake()->randomElement(TipoSegnalazione::cases()),
             'testo_segnalazione' => $this->faker->realText(),
             'updated_at' => Carbon::now(),
             'created_at' => Carbon::now(),
