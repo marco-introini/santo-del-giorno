@@ -12,7 +12,7 @@ return new class extends Migration {
         Schema::create('segnalazioni', function (Blueprint $table) {
             $table->id();
             $table->foreignIdFor(User::class);
-            $table->string(Santo::class);
+            $table->foreignIdFor(Santo::class);
             $table->string('tipo_segnalazione');
             $table->string('testo_segnalazione');
             $table->timestamps();
