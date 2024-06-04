@@ -11,8 +11,12 @@ return new class extends Migration {
     {
         Schema::create('segnalazioni', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(User::class);
-            $table->foreignIdFor(Santo::class);
+            $table->foreignIdFor(User::class)
+                ->constrained()
+                ->cascadeOnDelete();
+            $table->foreignIdFor(Santo::class)
+                ->constrained('santi')
+                ->cascadeOnDelete();
             $table->string('tipo_segnalazione');
             $table->string('testo_segnalazione');
             $table->boolean('evasa')
