@@ -20,6 +20,7 @@ class SegnalazioneFactory extends Factory
             'santo_id' => Santo::inRandomOrder()->first(),
             'tipo_segnalazione' => fake()->randomElement(TipoSegnalazione::cases()),
             'testo_segnalazione' => $this->faker->realText(),
+            'evasa' => fake()->boolean(20),
             'updated_at' => Carbon::now(),
             'created_at' => Carbon::now(),
         ];
