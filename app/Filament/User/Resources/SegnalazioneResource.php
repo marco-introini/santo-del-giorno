@@ -11,13 +11,17 @@ use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class SegnalazioneResource extends Resource
 {
     protected static ?string $model = Segnalazione::class;
+    protected static ?string $label = "Segnalazione";
+    protected static ?string $pluralLabel = "Segnalazioni";
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+
+    protected static ?string $navigationIcon = 'heroicon-o-bell-alert';
 
     public static function form(Form $form): Form
     {
@@ -31,18 +35,24 @@ class SegnalazioneResource extends Resource
     {
         return $table
             ->columns([
-                //
+                Tables\Columns\IconColumn::make('evasa')
+                    ->boolean(),
+                Tables\Columns\TextColumn::make('created_at')
+                    ->label('Data Inserimento')
+                    ->searchable()
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('testo_segnalazione')
+                    ->limit(50)
+                    ->searchable(),
+
             ])
             ->filters([
-                //
+                Tables\Filters\TernaryFilter::make('evasa'),
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
             ])
             ->bulkActions([
-                Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
-                ]),
             ]);
     }
 
@@ -60,5 +70,18 @@ class SegnalazioneResource extends Resource
             'create' => Pages\CreateSegnalazione::route('/create'),
             'edit' => Pages\EditSegnalazione::route('/{record}/edit'),
         ];
+    }
+
+    /** @param  Segnalazione  $record */
+    public static function canDelete(Model $record): bool
+    {
+        // posso cancellarla solo se non è già evasa
+        return !$record->evasa;
+    }
+
+    public static function canEdit(Model $record): bool
+    {
+        // posso modificarla solo se non è già evasa
+        return !$record->evasa;
     }
 }
