@@ -1,16 +1,13 @@
 <?php
 
-namespace App\Filament\Resources;
+namespace App\Filament\Admin\Resources;
 
-use App\Filament\Resources\SegnalazioniResource\Pages;
 use App\Models\Segnalazione;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class SegnalazioniResource extends Resource
 {
@@ -74,9 +71,9 @@ class SegnalazioniResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListSegnalazioni::route('/'),
-            'create' => Pages\CreateSegnalazione::route('/create'),
-            'edit' => Pages\EditSegnalazione::route('/{record}/edit'),
+            'index' => \App\Filament\Admin\Resources\SegnalazioniResource\Pages\ListSegnalazioni::route('/'),
+            'create' => \App\Filament\Admin\Resources\SegnalazioniResource\Pages\CreateSegnalazione::route('/create'),
+            'edit' => \App\Filament\Admin\Resources\SegnalazioniResource\Pages\EditSegnalazione::route('/{record}/edit'),
         ];
     }
 }

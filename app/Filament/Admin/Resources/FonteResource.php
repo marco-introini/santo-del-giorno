@@ -1,11 +1,8 @@
 <?php
 
-namespace App\Filament\Resources;
+namespace App\Filament\Admin\Resources;
 
-use App\Filament\Resources\FonteResource\Pages;
-use App\Filament\Resources\FonteResource\RelationManagers;
 use App\Models\Fonte;
-use Filament\Forms;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
@@ -13,8 +10,6 @@ use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class FonteResource extends Resource
 {
@@ -66,7 +61,7 @@ class FonteResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ManageFonti::route('/'),
+            'index' => \App\Filament\Admin\Resources\FonteResource\Pages\ManageFonti::route('/'),
         ];
     }
 }

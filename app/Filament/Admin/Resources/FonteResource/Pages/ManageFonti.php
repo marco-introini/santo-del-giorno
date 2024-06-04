@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Filament\Resources\FonteResource\Pages;
+namespace App\Filament\Admin\Resources\FonteResource\Pages;
 
-use App\Filament\Resources\FonteResource;
+use App\Filament\Admin\Resources\FonteResource;
 use Filament\Actions;
 use Filament\Resources\Pages\ManageRecords;
 

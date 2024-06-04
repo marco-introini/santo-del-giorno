@@ -1,9 +1,8 @@
 <?php
 
-namespace App\Filament\Resources;
+namespace App\Filament\Admin\Resources;
 
-use App\Filament\Resources\UserResource\Pages;
-use App\Filament\Resources\UserResource\RelationManagers;
+
 use App\Models\User;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -59,9 +58,9 @@ class UserResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => SantoResource\Pages\ListSanti::route('/'),
-            'create' => SantoResource\Pages\CreateSanto::route('/create'),
-            'edit' => SantoResource\Pages\EditSanto::route('/{record}/edit'),
+            'index' => \App\Filament\Admin\Resources\SantoResource\Pages\ListSanti::route('/'),
+            'create' => \App\Filament\Admin\Resources\SantoResource\Pages\CreateSanto::route('/create'),
+            'edit' => \App\Filament\Admin\Resources\SantoResource\Pages\EditSanto::route('/{record}/edit'),
         ];
     }
 

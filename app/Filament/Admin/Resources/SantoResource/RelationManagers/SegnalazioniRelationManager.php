@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Filament\Resources\SantoResource\RelationManagers;
+namespace App\Filament\Admin\Resources\SantoResource\RelationManagers;
 
 use App\Models\Segnalazione;
 use Filament\Forms;

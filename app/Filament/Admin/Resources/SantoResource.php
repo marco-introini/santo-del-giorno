@@ -1,9 +1,7 @@
 <?php
 
-namespace App\Filament\Resources;
+namespace App\Filament\Admin\Resources;
 
-use App\Filament\Resources\SantoResource\Pages;
-use App\Filament\Resources\SantoResource\RelationManagers;
 use App\Models\Santo;
 use Filament\Forms;
 use Filament\Forms\Components\Textarea;
@@ -11,10 +9,7 @@ use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
-use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class SantoResource extends Resource
 {
@@ -98,16 +93,16 @@ class SantoResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListSanti::route('/'),
-            'create' => Pages\CreateSanto::route('/create'),
-            'edit' => Pages\EditSanto::route('/{record}/edit'),
+            'index' => \App\Filament\Admin\Resources\SantoResource\Pages\ListSanti::route('/'),
+            'create' => \App\Filament\Admin\Resources\SantoResource\Pages\CreateSanto::route('/create'),
+            'edit' => \App\Filament\Admin\Resources\SantoResource\Pages\EditSanto::route('/{record}/edit'),
         ];
     }
 
     public static function getRelations(): array
     {
         return [
-            RelationManagers\SegnalazioniRelationManager::class,
+            \App\Filament\Admin\Resources\SantoResource\RelationManagers\SegnalazioniRelationManager::class,
         ];
     }
 }
