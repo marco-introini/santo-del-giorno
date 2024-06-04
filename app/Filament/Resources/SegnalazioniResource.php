@@ -54,7 +54,8 @@ class SegnalazioniResource extends Resource
             ])
             ->defaultSort('created_at', 'DESC')
             ->filters([
-                //
+                Tables\Filters\TernaryFilter::make('evasa')
+                    ->default(false)
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
