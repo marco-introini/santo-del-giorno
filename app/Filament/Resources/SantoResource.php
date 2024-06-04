@@ -92,7 +92,16 @@ class SantoResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ManageSanti::route('/'),
+            'index' => Pages\ListSanti::route('/'),
+            'create' => Pages\CreateSanto::route('/create'),
+            'edit' => Pages\EditSanto::route('/{record}/edit'),
+        ];
+    }
+
+    public static function getRelations(): array
+    {
+        return [
+            RelationManagers\SegnalazioniRelationManager::class,
         ];
     }
 }

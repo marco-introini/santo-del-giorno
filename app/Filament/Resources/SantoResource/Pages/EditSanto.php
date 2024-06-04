@@ -4,16 +4,16 @@ namespace App\Filament\Resources\SantoResource\Pages;
 
 use App\Filament\Resources\SantoResource;
 use Filament\Actions;
-use Filament\Resources\Pages\ManageRecords;
+use Filament\Resources\Pages\EditRecord;
 
-class ManageSanti extends ManageRecords
+class EditSanto extends EditRecord
 {
-    protected static string $resource = SantoResource::class;
+    protected static string $resource =  SantoResource::class;
 
     protected function getHeaderActions(): array
     {
         return [
-            Actions\CreateAction::make(),
+            Actions\DeleteAction::make(),
         ];
     }
 }
