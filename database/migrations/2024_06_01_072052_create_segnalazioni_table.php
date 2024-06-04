@@ -15,6 +15,8 @@ return new class extends Migration {
             $table->foreignIdFor(Santo::class);
             $table->string('tipo_segnalazione');
             $table->string('testo_segnalazione');
+            $table->boolean('evasa')
+                ->default(false);
             $table->timestamps();
         });
     }

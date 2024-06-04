@@ -18,6 +18,8 @@ class SantoFactory extends Factory
             'giorno' => fake()->numberBetween(1, 31),
             'mese' => fake()->numberBetween(1, 12),
             'note' => $this->faker->sentences(2,true),
+            'onomastico' => fake()->boolean(10),
+            'onomastico_secondario' => fake()->boolean(30),
             'fonte_id' => Fonte::factory(),
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),

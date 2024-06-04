@@ -39,6 +39,6 @@ class DatabaseSeeder extends Seeder
             ->recycle($fonti)
             ->create();
 
-        Segnalazione::factory(10)->create();
+        Segnalazione::factory(100)->create();
     }
 }

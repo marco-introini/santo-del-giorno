@@ -17,16 +17,12 @@ class Santo extends Model
 
     protected $guarded = [];
 
-    /**
-     * @return array[
-     *  onomastico:
-     * ]
-     */
     protected function casts(): array
     {
         return [
             'onomastico' => 'boolean',
             'onomastico_secondario' => 'boolean',
+            'evasa' => 'boolean',
         ];
     }
 

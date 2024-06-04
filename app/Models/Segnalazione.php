@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use AnourValar\EloquentSerialize\Tests\Models\User;
 use App\Enums\TipoSegnalazione;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
