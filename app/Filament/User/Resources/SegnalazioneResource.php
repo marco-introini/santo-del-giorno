@@ -69,6 +69,7 @@ class SegnalazioneResource extends Resource
             'index' => Pages\ListSegnalaziones::route('/'),
             'create' => Pages\CreateSegnalazione::route('/create'),
             'edit' => Pages\EditSegnalazione::route('/{record}/edit'),
+            'view'  => Pages\ViewSegnalazione::route('/{record}/view'),
         ];
     }
 
