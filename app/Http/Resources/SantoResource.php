@@ -18,6 +18,8 @@ class SantoResource extends JsonResource
                 'nome' => $this->nome,
                 'giorno' => $this->giorno,
                 'mese' => $this->mese,
+                'onomastico' => $this->onomastico,
+                'onomasticoSecondario' => $this->onomastico_secondario,
                 'note' => $this->when(
                     $request->routeIs('santo.show'),
                     $this->note,

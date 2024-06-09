@@ -1,6 +1,17 @@
-### GET request to example server
-GET http://santo-del-giorno.test/api/santo
+POST {{endpoint}}/api/login
 Content-Type: application/json
-Aut
 
+{
+    "email": "{{username}}",
+    "password": "{{password}}"
+}
+
+> {%
+    client.global.set("token", jsonPath(response.body,"data.token"));
+%}
+
+###
+GET {{endpoint}}/api/v1/santo
+Content-Type: application/json
+Authorization: Bearer {{token}}
 ###

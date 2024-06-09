@@ -80,6 +80,7 @@ class SegnalazioneResource extends Resource
         return !$record->evasa;
     }
 
+    /** @param  Segnalazione  $record */
     public static function canEdit(Model $record): bool
     {
         // posso modificarla solo se non è già evasa

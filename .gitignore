@@ -39,3 +39,4 @@ yarn-error.log
 /public/js/filament/widgets/components/chart.js
 /__Immagini per Sito/
 /__file_santi/
+/tests/Http/http-client.private.env.json
