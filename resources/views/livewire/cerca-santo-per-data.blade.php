@@ -24,6 +24,23 @@
         </select>
     </div>
 
+    <div class="mt-4">
+        <x-titolo class="text-xl">Onomastici</x-titolo>
+        <x-titolo class="text-lg">Primario</x-titolo>
+        <ul>
+        @foreach($onomasticiPrimari as $santo)
+            <li>{{$santo->nome}}</li>
+        @endforeach
+        </ul>
+        <x-titolo class="text-lg">Secondari</x-titolo>
+        <ul>
+            @foreach($onomasticiSecondari as $santo)
+                <li>{{$santo->nome}}</li>
+            @endforeach
+        </ul>
+    </div>
+
+
     <div class="mt-6">
 
         <x-tabella-santi :santi="$santi"/>
