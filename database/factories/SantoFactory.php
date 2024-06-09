@@ -14,10 +14,10 @@ class SantoFactory extends Factory
     public function definition(): array
     {
         return [
-            'nome' => $this->faker->name(),
+            'nome' => fake()->name(),
             'giorno' => fake()->numberBetween(1, 31),
             'mese' => fake()->numberBetween(1, 12),
-            'note' => $this->faker->sentences(2,true),
+            'note' => fake()->sentences(2,true),
             'onomastico' => fake()->boolean(10),
             'onomastico_secondario' => fake()->boolean(30),
             'fonte_id' => Fonte::factory(),

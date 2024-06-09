@@ -13,9 +13,9 @@ class FonteFactory extends Factory
     public function definition(): array
     {
         return [
-            'nome' => $this->faker->words(3,true),
-            'url' => $this->faker->url(),
-            'note' => $this->faker->paragraph(),
+            'nome' => fake()->words(3,true),
+            'url' => fake()->url(),
+            'note' => fake()->paragraph(),
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
         ];
