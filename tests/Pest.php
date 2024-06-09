@@ -16,6 +16,12 @@ uses(
     Illuminate\Foundation\Testing\LazilyRefreshDatabase::class,
 )->in('Feature');
 
+uses(
+    Tests\TestCase::class,
+    Illuminate\Foundation\Testing\LazilyRefreshDatabase::class,
+)->in('Unit');
+
+
 /*
 |--------------------------------------------------------------------------
 | Expectations
