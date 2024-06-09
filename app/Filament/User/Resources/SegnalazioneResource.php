@@ -20,6 +20,8 @@ class SegnalazioneResource extends Resource
     protected static ?string $label = "Segnalazione";
     protected static ?string $pluralLabel = "Segnalazioni";
 
+    protected static ?string $slug = "segnalazioni";
+
 
     protected static ?string $navigationIcon = 'heroicon-o-bell-alert';
 
@@ -27,7 +29,11 @@ class SegnalazioneResource extends Resource
     {
         return $form
             ->schema([
-                //
+                Forms\Components\Select::make('santo_id')
+                    ->relationship('santo', 'nome'),
+                Forms\Components\Textarea::make('testo_segnalazione')
+                    ->columnSpanFull()
+                    ->rows(10)
             ]);
     }
 
@@ -66,7 +72,7 @@ class SegnalazioneResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListSegnalaziones::route('/'),
+            'index' => Pages\ListSegnalazioni::route('/'),
             'create' => Pages\CreateSegnalazione::route('/create'),
             'edit' => Pages\EditSegnalazione::route('/{record}/edit'),
             'view'  => Pages\ViewSegnalazione::route('/{record}/view'),

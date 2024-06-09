@@ -6,7 +6,7 @@ use App\Filament\User\Resources\SegnalazioneResource;
 use Filament\Actions;
 use Filament\Resources\Pages\ListRecords;
 
-class ListSegnalaziones extends ListRecords
+class ListSegnalazioni extends ListRecords
 {
     protected static string $resource = SegnalazioneResource::class;
 
