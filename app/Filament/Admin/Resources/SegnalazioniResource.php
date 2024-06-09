@@ -2,6 +2,7 @@
 
 namespace App\Filament\Admin\Resources;
 
+use App\Enums\TipoSegnalazione;
 use App\Models\Segnalazione;
 use Filament\Forms;
 use Filament\Forms\Form;
@@ -27,6 +28,9 @@ class SegnalazioniResource extends Resource
                     ->disabled(),
                 Forms\Components\Select::make('santo_id')
                     ->relationship('santo', 'nome'),
+                Forms\Components\Select::make('tipo_segnalazione')
+                    ->options(TipoSegnalazione::class)
+                    ->disabled(),
                 Forms\Components\Textarea::make('testo_segnalazione')
                     ->columnSpanFull()
                     ->rows(10)

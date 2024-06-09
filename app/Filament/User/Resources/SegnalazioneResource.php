@@ -2,6 +2,7 @@
 
 namespace App\Filament\User\Resources;
 
+use App\Enums\TipoSegnalazione;
 use App\Filament\User\Resources\SegnalazioneResource\Pages;
 use App\Filament\User\Resources\SegnalazioneResource\RelationManagers;
 use App\Models\Segnalazione;
@@ -30,10 +31,17 @@ class SegnalazioneResource extends Resource
         return $form
             ->schema([
                 Forms\Components\Select::make('santo_id')
-                    ->relationship('santo', 'nome'),
+                    ->relationship('santo', 'nome')
+                    ->searchable()
+                    ->preload()
+                    ->required(),
+                Forms\Components\Select::make('tipo_segnalazione')
+                    ->options(TipoSegnalazione::class)
+                    ->required(),
                 Forms\Components\Textarea::make('testo_segnalazione')
                     ->columnSpanFull()
                     ->rows(10)
+                    ->required(),
             ]);
     }
 
