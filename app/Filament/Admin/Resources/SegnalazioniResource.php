@@ -80,4 +80,5 @@ class SegnalazioniResource extends Resource
             'edit' => \App\Filament\Admin\Resources\SegnalazioniResource\Pages\EditSegnalazione::route('/{record}/edit'),
         ];
     }
+
 }

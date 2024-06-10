@@ -4,7 +4,6 @@ namespace App\Filament\User\Resources;
 
 use App\Enums\TipoSegnalazione;
 use App\Filament\User\Resources\SegnalazioneResource\Pages;
-use App\Filament\User\Resources\SegnalazioneResource\RelationManagers;
 use App\Models\Segnalazione;
 use Filament\Forms;
 use Filament\Forms\Form;
@@ -13,7 +12,7 @@ use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Illuminate\Support\Facades\Auth;
 
 class SegnalazioneResource extends Resource
 {
@@ -60,6 +59,7 @@ class SegnalazioneResource extends Resource
                     ->searchable(),
 
             ])
+            ->defaultSort('created_at','DESC')
             ->filters([
                 Tables\Filters\TernaryFilter::make('evasa'),
             ])
@@ -67,7 +67,8 @@ class SegnalazioneResource extends Resource
                 Tables\Actions\EditAction::make(),
             ])
             ->bulkActions([
-            ]);
+            ])
+            ->modifyQueryUsing(fn (Builder $query) => $query->where('user_id','=', Auth::id()));
     }
 
     public static function getRelations(): array
