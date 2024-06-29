@@ -4,6 +4,9 @@ namespace App\Filament\Admin\Resources;
 
 
 use App\Models\User;
+use Filament\Forms\Components\Placeholder;
+use Filament\Forms\Components\Section;
+use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
@@ -22,7 +25,24 @@ class UserResource extends Resource
     {
         return $form
             ->schema([
-                //
+                TextInput::make('name')
+                    ->required(),
+                TextInput::make('email')
+                    ->required()
+                    ->email(),
+
+                Section::make('Informazioni di Sicurezza')
+                    ->schema([
+                        Placeholder::make('created_at')
+                            ->content(fn (User $record): string => $record->created_at->format('d/m/Y H:i'))
+                            ->label('Data Iscrizione'),
+                        Placeholder::make('email_verified_at')
+                            ->content(fn (User $record): string => $record->email_verified_at->format('d/m/Y H:i'))
+                            ->label('Data Verifica Email'),
+                        Placeholder::make('updated_at')
+                            ->content(fn (User $record): string => $record->updated_at->format('d/m/Y H:i'))
+                            ->label('Data Ultima Modifica'),
+                    ])->columns(),
             ]);
     }
 
@@ -48,19 +68,13 @@ class UserResource extends Resource
             ]);
     }
 
-    public static function getRelations(): array
-    {
-        return [
-            //
-        ];
-    }
 
     public static function getPages(): array
     {
         return [
-            'index' => \App\Filament\Admin\Resources\SantoResource\Pages\ListSanti::route('/'),
-            'create' => \App\Filament\Admin\Resources\SantoResource\Pages\CreateSanto::route('/create'),
-            'edit' => \App\Filament\Admin\Resources\SantoResource\Pages\EditSanto::route('/{record}/edit'),
+            'index' => \App\Filament\Admin\Resources\UserResource\Pages\ListUsers::route('/'),
+            'create' => \App\Filament\Admin\Resources\UserResource\Pages\CreateUser::route('/create'),
+            'edit' => \App\Filament\Admin\Resources\UserResource\Pages\EditUser::route('/{record}/edit'),
         ];
     }
 
