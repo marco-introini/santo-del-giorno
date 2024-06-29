@@ -31,6 +31,14 @@ Route::get('/santo/nome/{nome}', [SantoDelGiornoController::class, 'findByName']
     ])
     ->name('santo.findByName');
 
+Route::get('/santo/onomastico/{nome}', [SantoDelGiornoController::class, 'findOnomastico'])
+    ->middleware([
+        AlwaysAcceptJsonMiddleware::class,
+        'auth:sanctum',
+        TreblleMiddleware::class
+    ])
+    ->name('santo.findOnomastico');
+
 Route::get('/santo/data/{mese}/{giorno}', [SantoDelGiornoController::class, 'findByDate'])
     ->middleware([
         AlwaysAcceptJsonMiddleware::class,

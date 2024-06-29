@@ -6,6 +6,7 @@ use App\Http\Controllers\ApiController;
 use App\Http\Resources\SantoResource;
 use App\Models\Santo;
 use App\Traits\ApiResponse;
+use Illuminate\Database\Query\Builder;
 
 class SantoDelGiornoController extends ApiController
 {
@@ -40,6 +41,15 @@ class SantoDelGiornoController extends ApiController
         $santi = Santo::where('nome', 'LIKE', '%'.$nome.'%')->get();
         return $this->ok("Santi contenente '$nome'", SantoResource::collection($santi));
 
+    }
+
+    public function findOnomastico(string $nome)
+    {
+        $santi = Santo::where('nome', 'LIKE', '%'.$nome.'%')
+            ->where(function (Builder $builder){
+                $builder->where('onomastico',true)->orWhere('onomastico_secondario', true);
+            })->get();
+        return $this->ok("Onomastico di '$nome'", SantoResource::collection($santi));
     }
 
 }
