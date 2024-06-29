@@ -67,3 +67,12 @@ Accept: application/json
 Authorization: Bearer <token>
 ```
 La ricerca avviene in modo case-insensitive e in LIKE
+
+#### Ricerca onomastico
+
+```
+GET https://santodelgiorno.mintdev.me/api/v1/santo/onomastico/{nome}
+Accept: application/json
+Authorization: Bearer <token>
+```
+La ricerca avviene in modo case-insensitive e in LIKE. Torna gli onomastici primari e secondari
