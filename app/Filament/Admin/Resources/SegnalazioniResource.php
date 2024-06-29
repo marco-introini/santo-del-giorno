@@ -6,6 +6,7 @@ use App\Enums\TipoSegnalazione;
 use App\Models\Segnalazione;
 use Filament\Forms;
 use Filament\Forms\Form;
+use Filament\Resources\Components\Tab;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
@@ -43,6 +44,10 @@ class SegnalazioniResource extends Resource
             ->columns([
                 Tables\Columns\ToggleColumn::make('evasa')
                     ->sortable(),
+                Tables\Columns\TextColumn::make('user.name')
+                    ->label('Segnalatore')
+                    ->searchable()
+                    ->sortable(),
                 Tables\Columns\TextColumn::make('created_at')
                     ->label('Data')
                     ->sortable()
@@ -56,7 +61,9 @@ class SegnalazioniResource extends Resource
             ->defaultSort('created_at', 'DESC')
             ->filters([
                 Tables\Filters\TernaryFilter::make('evasa')
-                    ->default(false)
+                    ->default(false),
+                Tables\Filters\SelectFilter::make('user')
+                    ->relationship('user', 'name')
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
