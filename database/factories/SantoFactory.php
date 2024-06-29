@@ -25,4 +25,12 @@ class SantoFactory extends Factory
             'updated_at' => Carbon::now(),
         ];
     }
+
+    public function onomastico(bool $primario): static
+    {
+        return $this->state(fn (array $attributes) => [
+            'onomastico' => $primario,
+            'onomastico_secondario' => !$primario,
+        ]);
+    }
 }

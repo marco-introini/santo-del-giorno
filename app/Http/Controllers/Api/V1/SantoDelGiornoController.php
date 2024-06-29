@@ -6,7 +6,7 @@ use App\Http\Controllers\ApiController;
 use App\Http\Resources\SantoResource;
 use App\Models\Santo;
 use App\Traits\ApiResponse;
-use Illuminate\Database\Query\Builder;
+use Illuminate\Database\Eloquent\Builder;
 
 class SantoDelGiornoController extends ApiController
 {

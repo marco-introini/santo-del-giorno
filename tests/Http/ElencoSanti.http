@@ -15,3 +15,9 @@ GET {{endpoint}}/api/v1/santo
 Content-Type: application/json
 Authorization: Bearer {{token}}
 ###
+
+###
+GET {{endpoint}}/api/v1/santo/onomastico/Gianmaria
+Content-Type: application/json
+Authorization: Bearer {{token}}
+###
