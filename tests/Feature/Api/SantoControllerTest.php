@@ -37,8 +37,8 @@ test('viene tornata la lista dei santi', function () {
     }
 });
 
-test('un onomastico viene tornato correttamente', function () {
-    $santo = Santo::factory()->onomastico(primario: true)->create();
+test('un onomastico viene tornato correttamente', function (bool $primario) {
+    $santo = Santo::factory()->onomastico(primario: $primario)->create();
 
     $response = get(route('santo.findOnomastico', ['nome' => $santo->nome]));
 
@@ -46,5 +46,8 @@ test('un onomastico viene tornato correttamente', function () {
     expect($response->json('data.0.type'))->toBe('santo')
         ->and($response->json('data.0.attributes.nome'))->toBe($santo->nome)
         ->and($response->json('data.0.attributes.mese'))->toBe($santo->mese)
-        ->and($response->json('data.0.giorno'))->toBe($santo->giorno);
-});
+        ->and($response->json('data.0.attributes.giorno'))->toBe($santo->giorno);
+})->with([
+    'primario' => true,
+    'secondario' => false,
+]);
