@@ -3,9 +3,12 @@
 namespace App\Observers;
 
 use App\Exceptions\OperazioneNonAmmessaException;
+use App\Mail\SegnalazioneCreatedMail;
 use App\Models\Segnalazione;
+use App\Models\User;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 
 class SegnalazioneObserver
 {
@@ -25,5 +28,13 @@ class SegnalazioneObserver
 
     public function updating(Segnalazione $segnalazione): void
     {
+    }
+
+    public function created(Segnalazione $segnalazione): void
+    {
+        $adminUsers = User::where('is_admin', true)->get();
+        foreach ($adminUsers as $user) {
+            Mail::to($user->email)->send(new SegnalazioneCreatedMail($segnalazione));
+        }
     }
 }
