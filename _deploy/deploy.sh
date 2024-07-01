@@ -6,6 +6,7 @@ cd /var/www/santodelgiorno || exit
 
 php artisan down
 
+git reset --hard origin/main
 git pull
 composer install --no-interaction --optimize-autoloader --no-dev
 npm install
