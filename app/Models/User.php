@@ -37,9 +37,13 @@ class User extends Authenticatable implements MustVerifyEmail, FilamentUser, Has
     ];
 
     /**
-     * Get the attributes that should be cast.
-     *
-     * @return array<string, string>
+     * @return array{
+     *     email_verified_at: 'datetime',
+     *     is_admin: 'boolean',
+     *     password: 'hashed',
+     *     created_at: 'datetime',
+     *     updated_at: 'datetime'
+     * }
      */
     protected function casts(): array
     {
@@ -47,6 +51,8 @@ class User extends Authenticatable implements MustVerifyEmail, FilamentUser, Has
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
             'is_admin' => 'boolean',
+            'created_at' => 'datetime',
+            'updated_at' => 'datetime',
         ];
     }
 

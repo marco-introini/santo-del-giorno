@@ -6,7 +6,6 @@ use App\Exceptions\OperazioneNonAmmessaException;
 use App\Mail\SegnalazioneCreatedMail;
 use App\Models\Segnalazione;
 use App\Models\User;
-use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 
