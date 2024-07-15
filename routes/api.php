@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\LoginController;
-use App\Http\Middleware\AlwaysAcceptJsonMiddleware;
+use App\Http\Middleware\RequiresJsonMiddleware;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Treblle\Middlewares\TreblleMiddleware;
@@ -12,14 +12,14 @@ Route::get('/user', function (Request $request) {
 
 Route::post('/login', [LoginController::class, 'login'])
     ->middleware([
-        AlwaysAcceptJsonMiddleware::class,
+        RequiresJsonMiddleware::class,
         TreblleMiddleware::class
     ])
     ->name('login');
 
 Route::post('/logout', [LoginController::class, 'logout'])
     ->middleware([
-        AlwaysAcceptJsonMiddleware::class,
+        RequiresJsonMiddleware::class,
         TreblleMiddleware::class,
         'auth:sanctum'
     ])

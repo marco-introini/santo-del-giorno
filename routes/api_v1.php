@@ -2,14 +2,14 @@
 
 use App\Http\Controllers\Api\V1\FonteController;
 use App\Http\Controllers\Api\V1\SantoDelGiornoController;
-use App\Http\Middleware\AlwaysAcceptJsonMiddleware;
+use App\Http\Middleware\RequiresJsonMiddleware;
 use Illuminate\Support\Facades\Route;
 use Treblle\Middlewares\TreblleMiddleware;
 
 // SANTI
 Route::get('/santo', [SantoDelGiornoController::class, 'index'])
     ->middleware([
-        AlwaysAcceptJsonMiddleware::class,
+        RequiresJsonMiddleware::class,
         'auth:sanctum',
         TreblleMiddleware::class
     ])
@@ -17,7 +17,7 @@ Route::get('/santo', [SantoDelGiornoController::class, 'index'])
 
 Route::get('/santo/{id}', [SantoDelGiornoController::class, 'show'])
     ->middleware([
-        AlwaysAcceptJsonMiddleware::class,
+        RequiresJsonMiddleware::class,
         'auth:sanctum',
         TreblleMiddleware::class
     ])
@@ -25,7 +25,7 @@ Route::get('/santo/{id}', [SantoDelGiornoController::class, 'show'])
 
 Route::get('/santo/nome/{nome}', [SantoDelGiornoController::class, 'findByName'])
     ->middleware([
-        AlwaysAcceptJsonMiddleware::class,
+        RequiresJsonMiddleware::class,
         'auth:sanctum',
         TreblleMiddleware::class
     ])
@@ -33,7 +33,7 @@ Route::get('/santo/nome/{nome}', [SantoDelGiornoController::class, 'findByName']
 
 Route::get('/santo/onomastico/{nome}', [SantoDelGiornoController::class, 'findOnomastico'])
     ->middleware([
-        AlwaysAcceptJsonMiddleware::class,
+        RequiresJsonMiddleware::class,
         'auth:sanctum',
         TreblleMiddleware::class
     ])
@@ -41,7 +41,7 @@ Route::get('/santo/onomastico/{nome}', [SantoDelGiornoController::class, 'findOn
 
 Route::get('/santo/data/{mese}/{giorno}', [SantoDelGiornoController::class, 'findByDate'])
     ->middleware([
-        AlwaysAcceptJsonMiddleware::class,
+        RequiresJsonMiddleware::class,
         'auth:sanctum',
         TreblleMiddleware::class
     ])
@@ -50,7 +50,7 @@ Route::get('/santo/data/{mese}/{giorno}', [SantoDelGiornoController::class, 'fin
 // FONTE
 Route::get('/fonte/{fonte}', [FonteController::class, 'show'])
     ->middleware([
-        AlwaysAcceptJsonMiddleware::class,
+        RequiresJsonMiddleware::class,
         'auth:sanctum',
         TreblleMiddleware::class
     ])
