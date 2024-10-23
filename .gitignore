@@ -40,3 +40,4 @@ yarn-error.log
 /__Immagini per Sito/
 /__file_santi/
 /tests/Http/http-client.private.env.json
+.DS_Store
