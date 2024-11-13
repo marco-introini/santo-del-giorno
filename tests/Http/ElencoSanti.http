@@ -1,5 +1,6 @@
 POST {{endpoint}}/api/login
 Content-Type: application/json
+Accept: application/json
 
 {
     "email": "{{username}}",

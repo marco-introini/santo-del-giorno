@@ -14,7 +14,7 @@ beforeEach(function () {
 test('a source returns', function (){
     $fonte = Fonte::factory()->create();
 
-    $response = get(route('fonte.show', $fonte));
+    $response = get(route('fonte.show', $fonte), ['Accept' => 'application/vnd.api+json']);
 
     $response->assertStatus(200);
     expect($response->json('data.type'))->toBe('fonte')
