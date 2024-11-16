@@ -24,12 +24,9 @@ Route::middleware([
         ->name('santo.findOnomastico');
 
     Route::get('/data/{mese}/{giorno}', [SantoDelGiornoController::class, 'findByDate'])
-        ->where(['mese' => 'int', 'giorno' => 'int'])
         ->name('santo.findByDate');
 
-    Route::get('/data/{mese}/{giorno}', function () {
-        return response()->json(['message' => 'Errore: è necessario passare due interi come giorno e mese'], 404);
-    });
+
 });
 
 

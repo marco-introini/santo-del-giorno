@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api\V1;
 
 use App\Http\Controllers\ApiController;
+use App\Http\Requests\FindByDateRequest;
 use App\Http\Resources\SantoResource;
 use App\Models\Santo;
 use App\Traits\ApiResponse;
@@ -30,8 +31,11 @@ class SantoDelGiornoController extends ApiController
         return $this->ok("Santo Trovato", new SantoResource($santo));
     }
 
-    public function findByDate(int $mese, int $giorno)
+    public function findByDate(FindByDateRequest $request)
     {
+        $mese = $request->route('mese'); // Recupera il parametro dalla rotta
+        $giorno = $request->route('giorno'); // Recupera il parametro dalla rotta
+
         $santi = Santo::where('mese', $mese)->where('giorno', $giorno)->get();
         return $this->ok("Santi del $giorno/$mese", SantoResource::collection($santi));
     }

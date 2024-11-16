@@ -41,5 +41,5 @@ test('viene gestito errore se data nun è numerico', function () {
         'giorno' => $santo->giorno,
     ]), ['accept' => 'application/vnd.api+json']);
 
-    $response->assertStatus(404);
+    $response->assertStatus(422);
 });
