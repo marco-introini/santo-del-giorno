@@ -2,7 +2,6 @@
 
 use App\Http\Controllers\Api\V1\FonteController;
 use App\Http\Controllers\Api\V1\SantoDelGiornoController;
-use App\Http\Middleware\JsonNotFoundMiddleware;
 use App\Http\Middleware\RequiresJsonMiddleware;
 use Illuminate\Support\Facades\Route;
 use Treblle\Middlewares\TreblleMiddleware;
@@ -11,7 +10,6 @@ Route::middleware([
     RequiresJsonMiddleware::class,
     'auth:sanctum',
     TreblleMiddleware::class,
-    JsonNotFoundMiddleware::class
 ])->prefix('santo')->group(function () {
     Route::get('/', [SantoDelGiornoController::class, 'index'])
         ->name('santo.index');
@@ -26,9 +24,13 @@ Route::middleware([
         ->name('santo.findOnomastico');
 
     Route::get('/data/{mese}/{giorno}', [SantoDelGiornoController::class, 'findByDate'])
+        ->where(['mese' => 'int', 'giorno' => 'int'])
         ->name('santo.findByDate');
-});
 
+    Route::get('/data/{mese}/{giorno}', function () {
+        return response()->json(['message' => 'Errore: è necessario passare due interi come giorno e mese'], 404);
+    });
+});
 
 
 // FONTE
