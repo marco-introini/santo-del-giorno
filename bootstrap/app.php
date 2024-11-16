@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Middleware\JsonNotFoundMiddleware;
 use App\Http\Middleware\RequiresJsonMiddleware;
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
