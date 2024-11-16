@@ -19,7 +19,7 @@ Route::middleware([
     Route::get('/{id}', [SantoDelGiornoController::class, 'show'])
         ->name('santo.show');
 
-    Route::get('/{nome}', [SantoDelGiornoController::class, 'findByName'])
+    Route::get('/nome/{nome}', [SantoDelGiornoController::class, 'findByName'])
         ->name('santo.findByName');
 
     Route::get('/onomastico/{nome}', [SantoDelGiornoController::class, 'findOnomastico'])
@@ -28,6 +28,8 @@ Route::middleware([
     Route::get('/data/{mese}/{giorno}', [SantoDelGiornoController::class, 'findByDate'])
         ->name('santo.findByDate');
 });
+
+
 
 // FONTE
 Route::get('/fonte/{fonte}', [FonteController::class, 'show'])
