@@ -8,16 +8,16 @@
     "packages": [
         {
             "name": "anourvalar/eloquent-serialize",
-            "version": "1.2.25",
+            "version": "1.2.26",
             "source": {
                 "type": "git",
                 "url": "https://github.com/AnourValar/eloquent-serialize.git",
-                "reference": "6d7a868ae4218b9d7796334ff9a17e1539bad48a"
+                "reference": "756c1232ff0d02321fd90f4fe3c221d6a7b8d697"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/AnourValar/eloquent-serialize/zipball/6d7a868ae4218b9d7796334ff9a17e1539bad48a",
-                "reference": "6d7a868ae4218b9d7796334ff9a17e1539bad48a",
+                "url": "https://api.github.com/repos/AnourValar/eloquent-serialize/zipball/756c1232ff0d02321fd90f4fe3c221d6a7b8d697",
+                "reference": "756c1232ff0d02321fd90f4fe3c221d6a7b8d697",
                 "shasum": ""
             },
             "require": {
@@ -68,9 +68,9 @@
             ],
             "support": {
                 "issues": "https://github.com/AnourValar/eloquent-serialize/issues",
-                "source": "https://github.com/AnourValar/eloquent-serialize/tree/1.2.25"
+                "source": "https://github.com/AnourValar/eloquent-serialize/tree/1.2.26"
             },
-            "time": "2024-09-16T12:59:37+00:00"
+            "time": "2024-11-16T12:29:47+00:00"
         },
         {
             "name": "aws/aws-crt-php",
@@ -2430,16 +2430,16 @@
         },
         {
             "name": "honeybadger-io/honeybadger-php",
-            "version": "v2.21.0",
+            "version": "v2.22.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/honeybadger-io/honeybadger-php.git",
-                "reference": "3d0b2674d236e8f958044b91c59fcef672256ec2"
+                "reference": "3f84e54f0739600f8ad7c95fb7684e3b760a527f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/honeybadger-io/honeybadger-php/zipball/3d0b2674d236e8f958044b91c59fcef672256ec2",
-                "reference": "3d0b2674d236e8f958044b91c59fcef672256ec2",
+                "url": "https://api.github.com/repos/honeybadger-io/honeybadger-php/zipball/3f84e54f0739600f8ad7c95fb7684e3b760a527f",
+                "reference": "3f84e54f0739600f8ad7c95fb7684e3b760a527f",
                 "shasum": ""
             },
             "require": {
@@ -2490,9 +2490,9 @@
             ],
             "support": {
                 "issues": "https://github.com/honeybadger-io/honeybadger-php/issues",
-                "source": "https://github.com/honeybadger-io/honeybadger-php/tree/v2.21.0"
+                "source": "https://github.com/honeybadger-io/honeybadger-php/tree/v2.22.0"
             },
-            "time": "2024-11-01T17:28:12+00:00"
+            "time": "2024-11-16T16:03:38+00:00"
         },
         {
             "name": "jeffgreco13/filament-breezy",
@@ -10561,16 +10561,16 @@
         },
         {
             "name": "phpstan/phpstan",
-            "version": "1.12.10",
+            "version": "1.12.11",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpstan/phpstan.git",
-                "reference": "fc463b5d0fe906dcf19689be692c65c50406a071"
+                "reference": "0d1fc20a962a91be578bcfe7cf939e6e1a2ff733"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/fc463b5d0fe906dcf19689be692c65c50406a071",
-                "reference": "fc463b5d0fe906dcf19689be692c65c50406a071",
+                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/0d1fc20a962a91be578bcfe7cf939e6e1a2ff733",
+                "reference": "0d1fc20a962a91be578bcfe7cf939e6e1a2ff733",
                 "shasum": ""
             },
             "require": {
@@ -10615,7 +10615,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2024-11-11T15:37:09+00:00"
+            "time": "2024-11-17T14:08:01+00:00"
         },
         {
             "name": "phpunit/php-code-coverage",
