@@ -9,6 +9,7 @@ use Treblle\Middlewares\TreblleMiddleware;
 Route::middleware([
     RequiresJsonMiddleware::class,
     'auth:sanctum',
+    'throttle:chiamate_api',
     TreblleMiddleware::class,
 ])->prefix('santo')->group(function () {
     Route::get('/', [SantoDelGiornoController::class, 'index'])
