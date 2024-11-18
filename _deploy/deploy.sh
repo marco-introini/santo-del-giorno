@@ -21,4 +21,6 @@ php artisan config:cache
 php artisan route:cache
 php artisan filament:upgrade
 
+chmod -R 777 storage/
+
 php artisan up
