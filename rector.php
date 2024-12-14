@@ -3,21 +3,23 @@
 declare(strict_types=1);
 
 use Rector\Config\RectorConfig;
-use Rector\Set\ValueObject\SetList;
+use RectorLaravel\Rector\ClassMethod\AddGenericReturnTypeToRelationsRector;
+use RectorLaravel\Set\LaravelLevelSetList;
 
-return static function (RectorConfig $rectorConfig): void {
-    $rectorConfig->paths([
+return RectorConfig::configure()
+    ->withPaths([
         __DIR__.'/app',
-        __DIR__.'/database',
+        __DIR__.'/config',
+        __DIR__.'/routes',
         __DIR__.'/tests',
+    ])
+    // uncomment to reach your current PHP version
+    ->withPhpSets()
+    ->withTypeCoverageLevel(0)
+    ->withRules([
+        AddGenericReturnTypeToRelationsRector::class,
+    ])
+    ->withSets([
+        LaravelLevelSetList::UP_TO_LARAVEL_110,
     ]);
 
-    $rectorConfig->sets([
-        SetList::DEAD_CODE,
-        SetList::EARLY_RETURN,
-        SetList::TYPE_DECLARATION,
-        //SetList::CODE_QUALITY,
-        //SetList::CODING_STYLE,
-        //LevelSetList::UP_TO_PHP_83
-    ]);
-};
