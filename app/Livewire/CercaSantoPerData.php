@@ -22,8 +22,14 @@ class CercaSantoPerData extends Component
 
     public function render()
     {
-        $this->onomasticiPrimari = Santo::where('giorno',$this->giorno)->where('mese',$this->mese)->where('onomastico', true)->get();
-        $this->onomasticiSecondari = Santo::where('giorno',$this->giorno)->where('mese',$this->mese)->where('onomastico_secondario', true)->get();
+        $this->onomasticiPrimari = Santo::where('giorno',$this->giorno)
+            ->where('mese',$this->mese)
+            ->where('onomastico', true)
+            ->get();
+        $this->onomasticiSecondari = Santo::where('giorno',$this->giorno)
+            ->where('mese',$this->mese)
+            ->where('onomastico_secondario', true)
+            ->get();
 
         return view('livewire.cerca-santo-per-data',[
             'santi' => Santo::where('giorno',$this->giorno)->where('mese',$this->mese)->get(),
