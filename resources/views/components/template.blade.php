@@ -13,24 +13,16 @@
     <title>{{$title}}</title>
     <link rel="icon" type="image/x-icon" href="/images/logo_icon.png">
 
-    <link
-        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&family=Roboto&display=swap"
-        rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.bunny.net">
+    <link href="https://fonts.bunny.net/css?family=inter:400,500,600&display=swap" rel="stylesheet"/>
 
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-KFXFL9922R"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
+    <x-analytics/>
 
-        gtag('config', 'G-KFXFL9922R');
-    </script>
+    @fluxStyles
 </head>
 <body
     class="antialiased bg-violet-50 font-montserrat text-gray-800 dark:bg-black dark:text-white/50 flex flex-col
-    h-screen container mx-auto
-    px-2">
+    h-screen container mx-auto px-2">
 
 <x-navbar/>
 <main class="mt-6 flex flex-col flex-grow">
@@ -40,13 +32,15 @@
 </main>
 
 <footer class="py-16 text-center text-sm text-black dark:text-white/70">
-    <div>&copy; Marco Introini, 2024 - Open Source Software<br></div>
+    <div>&copy;
+        <x-link href="https://marcointroini.it">Marco Introini</x-link>
+        , 2025 - Open Source Software<br></div>
     <div class="mt-3">
         <x-link href="https://github.com/marco-introini/santo-del-giorno" class="mt-3">Codice Sorgente
         </x-link>
     </div>
 </footer>
 
-
+@fluxScripts
 </body>
 </html>

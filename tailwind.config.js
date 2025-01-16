@@ -1,9 +1,13 @@
 /** @type {import('tailwindcss').Config} */
 export default {
+    darkMode: 'selector',
+
     content: [
         "./resources/**/*.blade.php",
         "./resources/**/*.js",
         "./resources/**/*.vue",
+        "./vendor/livewire/flux-pro/stubs/**/*.blade.php",
+        "./vendor/livewire/flux/stubs/**/*.blade.php",
     ],
     theme: {
         extend: {
@@ -11,8 +15,7 @@ export default {
                 'azzurro': '#DBEEEF'
             },
             fontFamily: {
-                'montserrat': ['Montserrat', 'sans-serif'],
-                'nunito': ['nunito', 'roboto', 'sans-serif'],
+                sans: ['Inter', 'sans-serif'],
             }
         },
     },

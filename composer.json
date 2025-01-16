@@ -16,6 +16,8 @@
         "laravel/sanctum": "^4.0",
         "laravel/tinker": "^2.9",
         "league/flysystem-aws-s3-v3": "^3.0",
+        "livewire/flux": "^1.1",
+        "livewire/flux-pro": "^1.1",
         "spatie/laravel-backup": "^9.2",
         "treblle/treblle-laravel": "^4.5"
     },
@@ -80,5 +82,11 @@
         }
     },
     "minimum-stability": "stable",
-    "prefer-stable": true
+    "prefer-stable": true,
+    "repositories": {
+        "flux-pro": {
+            "type": "composer",
+            "url": "https://composer.fluxui.dev"
+        }
+    }
 }
