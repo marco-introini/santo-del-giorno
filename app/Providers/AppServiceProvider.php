@@ -27,14 +27,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        Gate::define('viewPulse', function (User $user) {
-            return $user->isAdmin();
-        });
+        Gate::define('viewPulse', fn(User $user) => $user->isAdmin());
 
-        RateLimiter::for('chiamate_api', function (Request $request){
-           return $request->user()
-               ? Limit::perMinute(10)->by($request->ip())
-               : Limit::perMinute(5)->by($request->ip());
-        });
+        RateLimiter::for('chiamate_api', fn(Request $request) => $request->user()
+            ? Limit::perMinute(10)->by($request->ip())
+            : Limit::perMinute(5)->by($request->ip()));
     }
 }

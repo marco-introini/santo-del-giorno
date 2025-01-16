@@ -18,18 +18,26 @@ class Segnalazione extends Model
 
     protected $guarded = [];
 
-    protected $casts = [
-        'tipo_segnalazione' => TipoSegnalazione::class,
-    ];
-
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo<\App\Models\User, $this>
+     */
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
     }
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo<\App\Models\Santo, $this>
+     */
     public function santo(): BelongsTo
     {
         return $this->belongsTo(Santo::class);
+    }
+    protected function casts(): array
+    {
+        return [
+            'tipo_segnalazione' => TipoSegnalazione::class,
+        ];
     }
 
 }

@@ -14,6 +14,9 @@ class Fonte extends Model
 
     protected $guarded = [];
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany<\App\Models\Santo, $this>
+     */
     public function santi(): HasMany
     {
         return $this->hasMany(Santo::class);

@@ -6,14 +6,14 @@ use App\Models\User;
 use function Pest\Laravel\actingAs;
 use function Pest\Laravel\get;
 
-beforeEach(function () {
+beforeEach(function (): void {
     Fonte::factory()->create();
     $user = User::factory()->create();
     actingAs($user);
 });
 
 
-test('un santo viene tornato correttamente', function () {
+test('un santo viene tornato correttamente', function (): void {
     $santo = Santo::factory()->create();
 
     $response = get(route('santo.show', $santo->id), ['accept' => 'application/vnd.api+json']);
@@ -25,7 +25,7 @@ test('un santo viene tornato correttamente', function () {
         ->and($response->json('data.attributes.giorno'))->toBe($santo->giorno);
 });
 
-test('viene tornata la lista dei santi', function () {
+test('viene tornata la lista dei santi', function (): void {
     Santo::factory(10)->create();
 
     $response = get(route('santo.index'), ['accept' => 'application/vnd.api+json']);
@@ -37,7 +37,7 @@ test('viene tornata la lista dei santi', function () {
     }
 });
 
-test('un onomastico viene tornato correttamente', function (bool $primario) {
+test('un onomastico viene tornato correttamente', function (bool $primario): void {
     $santo = Santo::factory()->onomastico(primario: $primario)->create();
 
     $response = get(route('santo.findOnomastico', ['nome' => $santo->nome]), ['accept' => 'application/vnd.api+json']);

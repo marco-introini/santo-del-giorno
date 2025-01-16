@@ -78,6 +78,9 @@ class User extends Authenticatable implements MustVerifyEmail, FilamentUser, Has
         return $this->avatar ? Storage::disk('avatars')->url($this->avatar) : null ;
     }
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany<\App\Models\Segnalazione, $this>
+     */
     public function segnalazioni(): HasMany
     {
         return $this->hasMany(Segnalazione::class, 'user_id');

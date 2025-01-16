@@ -26,11 +26,17 @@ class Santo extends Model
         ];
     }
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo<\App\Models\Fonte, $this>
+     */
     public function fonte(): BelongsTo
     {
         return $this->belongsTo(Fonte::class);
     }
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany<\App\Models\Segnalazione, $this>
+     */
     public function segnalazioni(): HasMany
     {
         return $this->hasMany(Segnalazione::class);

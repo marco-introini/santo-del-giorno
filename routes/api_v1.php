@@ -11,7 +11,7 @@ Route::middleware([
     'auth:sanctum',
     'throttle:chiamate_api',
     TreblleMiddleware::class,
-])->prefix('santo')->group(function () {
+])->prefix('santo')->group(function (): void {
     Route::get('/', [SantoDelGiornoController::class, 'index'])
         ->name('santo.index');
 

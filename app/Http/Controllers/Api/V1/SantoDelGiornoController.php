@@ -50,7 +50,7 @@ class SantoDelGiornoController extends ApiController
     public function findOnomastico(string $nome)
     {
         $santi = Santo::where('nome', 'LIKE', '%'.$nome.'%')
-            ->where(function (Builder $builder){
+            ->where(function (Builder $builder): void{
                 $builder->where('onomastico',true)->orWhere('onomastico_secondario', true);
             })->get();
         return $this->ok("Onomastico di '$nome'", SantoResource::collection($santi));

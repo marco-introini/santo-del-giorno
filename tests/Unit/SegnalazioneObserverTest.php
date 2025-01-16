@@ -7,7 +7,7 @@ use App\Models\Segnalazione;
 use App\Models\User;
 use function Pest\Laravel\actingAs;
 
-test('una segnalazione viene associata correttamente a utente loggato', function () {
+test('una segnalazione viene associata correttamente a utente loggato', function (): void {
     $santo = Santo::factory()->create();
     $user = User::factory()->create();
     $otherUser = User::factory()->create();
@@ -23,7 +23,7 @@ test('una segnalazione viene associata correttamente a utente loggato', function
     expect($segnalazione->user_id)->toBe($user->id);
 });
 
-test('una segnalazione non può essere inserita senza essere loggati', function () {
+test('una segnalazione non può essere inserita senza essere loggati', function (): void {
     $santo = Santo::factory()->create();
     $user = User::factory()->create();
 
@@ -34,7 +34,7 @@ test('una segnalazione non può essere inserita senza essere loggati', function 
     ]);
 })->expectException(OperazioneNonAmmessaException::class);
 
-test('una segnalazione viene associata correttamente ad altro utente se fatta da admin', function () {
+test('una segnalazione viene associata correttamente ad altro utente se fatta da admin', function (): void {
     $santo = Santo::factory()->create();
     $normalUser = User::factory()->create();
     $user = User::factory()->admin()->create();

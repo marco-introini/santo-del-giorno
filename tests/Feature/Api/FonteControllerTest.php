@@ -5,13 +5,13 @@ use App\Models\User;
 use function Pest\Laravel\actingAs;
 use function Pest\Laravel\get;
 
-beforeEach(function () {
+beforeEach(function (): void {
    $user = User::factory()->create();
    actingAs($user);
 });
 
 
-test('a source returns', function (){
+test('a source returns', function (): void{
     $fonte = Fonte::factory()->create();
 
     $response = get(route('fonte.show', $fonte), ['Accept' => 'application/vnd.api+json']);

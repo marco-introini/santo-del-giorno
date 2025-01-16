@@ -4,12 +4,12 @@ use App\Livewire\CercaSantoPerData;
 use App\Models\Santo;
 use Livewire\Livewire;
 
-it('renders successfully', function () {
+it('renders successfully', function (): void {
     Livewire::test(CercaSantoPerData::class)
         ->assertStatus(200);
 });
 
-test('la ricerca torna il santo di oggi', function () {
+test('la ricerca torna il santo di oggi', function (): void {
     $santo = Santo::factory()->create([
         'mese' => now()->month,
         'giorno' => now()->day,
@@ -22,7 +22,7 @@ test('la ricerca torna il santo di oggi', function () {
         ->assertSee($santo->mese);
 });
 
-test('la ricerca torna il santo di un giorno scelto', function () {
+test('la ricerca torna il santo di un giorno scelto', function (): void {
     $santo = Santo::factory()->create([
         'mese' => now()->month,
         'giorno' => now()->day,
@@ -37,7 +37,7 @@ test('la ricerca torna il santo di un giorno scelto', function () {
         ->assertSet('mese',$santo->mese);
 });
 
-test('la ricerca torna NON il santo di un altro giorno', function () {
+test('la ricerca torna NON il santo di un altro giorno', function (): void {
     $santo = Santo::factory()->create([
         'mese' => 10,
         'giorno' => 20,

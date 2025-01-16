@@ -4,7 +4,7 @@ use App\Livewire\CercaSantoPerNome;
 use App\Models\Santo;
 use Livewire\Livewire;
 
-test('mostra un santo', function () {
+test('mostra un santo', function (): void {
     $santo = Santo::factory()->create();
 
     Livewire::test(CercaSantoPerNome::class)
@@ -14,7 +14,7 @@ test('mostra un santo', function () {
         ->assertSee($santo->mese);
 });
 
-test('la ricerca torna il santo', function () {
+test('la ricerca torna il santo', function (): void {
     $santo = Santo::factory()->create();
 
     Livewire::test(CercaSantoPerNome::class)
@@ -25,7 +25,7 @@ test('la ricerca torna il santo', function () {
         ->assertSee($santo->mese);
 });
 
-test('la ricerca NON torna il santo se la query è diversa', function () {
+test('la ricerca NON torna il santo se la query è diversa', function (): void {
     $santo = Santo::factory()->create();
 
     Livewire::test(CercaSantoPerNome::class)
@@ -34,7 +34,7 @@ test('la ricerca NON torna il santo se la query è diversa', function () {
         ->assertDontSee($santo->nome);
 });
 
-test('la ricerca torna il santo con onomastico primario', function () {
+test('la ricerca torna il santo con onomastico primario', function (): void {
     $santo = Santo::factory()->create([
         'onomastico' => true,
         'onomastico_secondario' => false,
@@ -48,7 +48,7 @@ test('la ricerca torna il santo con onomastico primario', function () {
         ->assertSee($santo->mese);
 });
 
-test('la ricerca torna il santo con onomastico secondario', function () {
+test('la ricerca torna il santo con onomastico secondario', function (): void {
     $santo = Santo::factory()->create([
         'onomastico' => true,
         'onomastico_secondario' => true,
@@ -62,7 +62,7 @@ test('la ricerca torna il santo con onomastico secondario', function () {
         ->assertSee($santo->mese);
 });
 
-test('la ricerca non torna il santo senza onomastico se imposto solo onomastico', function () {
+test('la ricerca non torna il santo senza onomastico se imposto solo onomastico', function (): void {
     $santo = Santo::factory()->create([
         'onomastico' => false,
         'onomastico_secondario' => false,

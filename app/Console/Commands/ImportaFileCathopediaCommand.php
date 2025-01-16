@@ -83,7 +83,7 @@ class ImportaFileCathopediaCommand extends Command
             "dicembre" => "December",
         ];
 
-        $partiData = explode(' ', $dataItaliano);
+        $partiData = explode(' ', (string) $dataItaliano);
 
         if (count($partiData) == 2) {
             if (array_key_exists($partiData[1], $mesiItalianoInglese)) {

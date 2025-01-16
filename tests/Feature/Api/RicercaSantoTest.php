@@ -6,13 +6,13 @@ use App\Models\User;
 use function Pest\Laravel\actingAs;
 use function Pest\Laravel\get;
 
-beforeEach(function () {
+beforeEach(function (): void {
     Fonte::factory()->create();
     $user = User::factory()->create();
     actingAs($user);
 });
 
-test('un santo viene ricercato correttamente per nome', function () {
+test('un santo viene ricercato correttamente per nome', function (): void {
     $santo = Santo::factory()->create();
 
     $response = get(route('santo.findByName', ['nome' => $santo->nome]), ['accept' => 'application/vnd.api+json']);
@@ -21,7 +21,7 @@ test('un santo viene ricercato correttamente per nome', function () {
     $response->assertJsonFragment(['nome' => $santo->nome]);
 });
 
-test('un santo viene ricercato correttamente per data', function () {
+test('un santo viene ricercato correttamente per data', function (): void {
     $santo = Santo::factory()->create();
 
     $response = get(route('santo.findByDate', [
@@ -33,7 +33,7 @@ test('un santo viene ricercato correttamente per data', function () {
     $response->assertJsonFragment(['nome' => $santo->nome]);
 });
 
-test('viene gestito errore se data nun è numerico', function () {
+test('viene gestito errore se data nun è numerico', function (): void {
     $santo = Santo::factory()->create();
 
     $response = get(route('santo.findByDate', [
