@@ -16,7 +16,7 @@
         "laravel/sanctum": "^4.0",
         "laravel/tinker": "^2.9",
         "league/flysystem-aws-s3-v3": "^3.0",
-        "spatie/laravel-backup": "^8.8",
+        "spatie/laravel-backup": "^9.2",
         "treblle/treblle-laravel": "^4.5"
     },
     "require-dev": {
