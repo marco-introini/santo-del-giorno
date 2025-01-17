@@ -1,6 +1,5 @@
 <div>
 
-
     <flux:heading size="xl">Cerca per Data</flux:heading>
     <div class="mt-4 flex flex-col md:flex-row gap-8">
         <div class="flex flex-row items-center max-w-fit gap-4">
