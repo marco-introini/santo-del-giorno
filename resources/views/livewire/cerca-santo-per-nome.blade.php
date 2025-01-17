@@ -2,8 +2,6 @@
 
     <flux:heading size="xl">Cerca per Nome</flux:heading>
 
-
-
     <div class="flex flex-col md:flex-row items-center gap-8 mt-8">
         <flux:input class="md:w-1/2" wire:model="nome" wire:keyup="cercaPerNome"  placeholder="Cerca per nome" />
 

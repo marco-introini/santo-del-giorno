@@ -21,7 +21,7 @@
     @fluxStyles
 </head>
 <body
-    class="antialiased bg-violet-50 font-montserrat text-gray-800 dark:bg-black dark:text-white/50 flex flex-col
+    class="antialiased bg-violet-50 font-montserrat text-gray-800 flex flex-col
     h-screen container mx-auto px-2">
 
 <x-navbar/>
