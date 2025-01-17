@@ -15,22 +15,6 @@
                 @endfor
             </flux:select>
         </div>
-        <div class="w-full flex flex-col gap-2">
-            <flux:heading size="lg">Onomastici</flux:heading>
-            <flux:separator />
-            <flux:heading>Primari</flux:heading>
-            <ul>
-                @foreach($onomasticiPrimari as $santo)
-                    <li>{{$santo->nome}}</li>
-                @endforeach
-            </ul>
-            <flux:heading class="mt-2">Secondari</flux:heading>
-            <ul>
-                @foreach($onomasticiSecondari as $santo)
-                    <li>{{$santo->nome}}</li>
-                @endforeach
-            </ul>
-        </div>
     </div>
 
 
