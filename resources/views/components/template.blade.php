@@ -22,10 +22,11 @@
 </head>
 <body
     class="antialiased bg-violet-50 font-montserrat text-gray-800 flex flex-col
-    h-screen container mx-auto px-2">
+    h-screen container mx-auto">
 
 <x-navbar/>
-<main class="mt-6 flex flex-col flex-grow">
+
+<main class="flex flex-col flex-grow container">
 
     {{$slot}}
 
