@@ -1,13 +1,19 @@
 <header class="py-10 mx-auto w-full container relative">
-    <nav class="flex justify-end w-full fixed top-0 z-10 container my-3">
-        <x-link href="{{route('home')}}" class="mr-3" :active="request()->is('/')">Home</x-link>
-        <x-link href="{{route('cerca-per-data')}}" class="mr-3" :active="request()->is('cerca-per-data')">Cerca per Data</x-link>
-        <x-link href="{{route('cerca-per-nome')}}" class="mr-3" :active="request()->is('cerca-per-nome')">Cerca per Nome</x-link>
-        @auth
-            <x-link href="{{url('user')}}">Area Riservata</x-link>
-        @else
-            <x-link href="{{url('user/login')}}" class="mr-3">Effettua Log In</x-link>
-            <x-link href="{{url('user/register')}}">Registrazione Utente</x-link>
-        @endauth
+    <nav class="flex w-full fixed top-0 z-10 container my-3">
+        <flux:header class="container bg-violet-100 border-b border-violet-200">
+            <flux:sidebar.toggle class="lg:hidden" icon="bars-2" inset="left"/>
+
+            <flux:navbar class="-mb-px max-lg:hidden w-full">
+                <flux:navbar.item icon="home" href="{{route('home')}}" :current="request()->is('/')">Home</flux:navbar.item>
+                <flux:navbar.item icon="calendar-days" href="{{route('cerca-per-data')}}" :current="request()->is('cerca-per-data')">Cerca per Data</flux:navbar.item>
+                <flux:navbar.item icon="users" href="{{route('cerca-per-nome')}}" :current="request()->is('cerca-per-nome')">Cerca per Nome</flux:navbar.item>
+
+                <flux:spacer />
+
+                <flux:navbar.item href="{{url('user')}}">Area Riservata</flux:navbar.item>
+                <flux:navbar.item href="{{url('user/register')}}">Registrazione</flux:navbar.item>
+            </flux:navbar>
+        </flux:header>
     </nav>
 </header>
+

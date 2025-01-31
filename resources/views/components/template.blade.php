@@ -33,11 +33,9 @@
 
 <footer class="py-16 text-center text-sm text-black dark:text-white/70">
     <div>&copy;
-        <x-link href="https://marcointroini.it">Marco Introini</x-link>
-        , 2025 - Open Source Software<br></div>
+        <x-link href="https://marcointroini.it">Marco Introini</x-link>, 2025 - Open Source Software<br></div>
     <div class="mt-3">
-        <x-link href="https://github.com/marco-introini/santo-del-giorno" class="mt-3">Codice Sorgente
-        </x-link>
+        <x-link href="https://github.com/marco-introini/santo-del-giorno">Codice Sorgente</x-link>
     </div>
 </footer>
 
