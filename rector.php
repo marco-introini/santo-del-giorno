@@ -20,14 +20,14 @@ return RectorConfig::configure()
     ])
     // uncomment to reach your current PHP version
     ->withPhpSets()
-    ->withTypeCoverageLevel(0)
+    ->withTypeCoverageLevel(4)
     ->withRules([
         AddGenericReturnTypeToRelationsRector::class,
         ReplaceFakerInstanceWithHelperRector::class,
         AnonymousMigrationsRector::class,
         AddExtendsAnnotationToModelFactoriesRector::class,
         ModelCastsPropertyToCastsMethodRector::class,
-        MigrateToSimplifiedAttributeRector::class,  // trasforma gli attributo nella nuova sintassi Laravel 9
+        MigrateToSimplifiedAttributeRector::class,
     ])
     ->withSets([
         LaravelLevelSetList::UP_TO_LARAVEL_110,
