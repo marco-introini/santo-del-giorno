@@ -10,6 +10,7 @@
         "better-futures-studio/filament-local-logins": "^1.2",
         "filament/filament": "^3.2",
         "honeybadger-io/honeybadger-laravel": "^4.0",
+        "inspector-apm/inspector-laravel": "^4.10",
         "jeffgreco13/filament-breezy": "*",
         "laravel/framework": "^11.0",
         "laravel/pulse": "^1.1",
