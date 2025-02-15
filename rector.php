@@ -3,7 +3,12 @@
 declare(strict_types=1);
 
 use Rector\Config\RectorConfig;
+use RectorLaravel\Rector\Class_\AddExtendsAnnotationToModelFactoriesRector;
+use RectorLaravel\Rector\Class_\AnonymousMigrationsRector;
+use RectorLaravel\Rector\Class_\ModelCastsPropertyToCastsMethodRector;
 use RectorLaravel\Rector\ClassMethod\AddGenericReturnTypeToRelationsRector;
+use RectorLaravel\Rector\ClassMethod\MigrateToSimplifiedAttributeRector;
+use RectorLaravel\Rector\PropertyFetch\ReplaceFakerInstanceWithHelperRector;
 use RectorLaravel\Set\LaravelLevelSetList;
 
 return RectorConfig::configure()
@@ -18,6 +23,11 @@ return RectorConfig::configure()
     ->withTypeCoverageLevel(0)
     ->withRules([
         AddGenericReturnTypeToRelationsRector::class,
+        ReplaceFakerInstanceWithHelperRector::class,
+        AnonymousMigrationsRector::class,
+        AddExtendsAnnotationToModelFactoriesRector::class,
+        ModelCastsPropertyToCastsMethodRector::class,
+        MigrateToSimplifiedAttributeRector::class,  // trasforma gli attributo nella nuova sintassi Laravel 9
     ])
     ->withSets([
         LaravelLevelSetList::UP_TO_LARAVEL_110,
