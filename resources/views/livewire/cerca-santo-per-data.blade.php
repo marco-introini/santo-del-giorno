@@ -5,12 +5,12 @@
         <div class="flex flex-row items-center max-w-fit gap-4">
             <flux:select variant="listbox" class="mr-3" wire:model.live="mese" label="Mese">
                 @for($i=1;$i<=12;$i++)
-                    <flux:option>{{$i}}</flux:option>
+                    <flux:select.option>{{$i}}</flux:select.option>
                 @endfor
             </flux:select>
             <flux:select variant="listbox" class="mr-3" wire:model.live="giorno" label="Giorno">
                 @for($i=1;$i<=31;$i++)
-                    <flux:option>{{$i}}</flux:option>
+                    <flux:select.option>{{$i}}</flux:select.option>
                 @endfor
             </flux:select>
         </div>

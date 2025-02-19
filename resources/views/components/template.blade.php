@@ -18,7 +18,6 @@
 
     <x-analytics/>
 
-    @fluxStyles
 </head>
 <body
     class="antialiased bg-violet-50 font-montserrat text-gray-800 flex flex-col
@@ -26,7 +25,7 @@
 
 <x-navbar/>
 
-<main class="flex flex-col flex-grow container">
+<main class="flex flex-col grow container">
 
     {{$slot}}
 

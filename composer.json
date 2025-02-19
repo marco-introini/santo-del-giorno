@@ -17,8 +17,8 @@
         "laravel/sanctum": "^4.0",
         "laravel/tinker": "^2.9",
         "league/flysystem-aws-s3-v3": "^3.0",
-        "livewire/flux": "^1.1",
-        "livewire/flux-pro": "^1.1",
+        "livewire/flux": "^2.0",
+        "livewire/flux-pro": "^2.0",
         "spatie/laravel-backup": "^9.2"
     },
     "require-dev": {
