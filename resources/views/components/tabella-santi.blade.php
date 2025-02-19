@@ -6,35 +6,35 @@
 
 
 <flux:table>
-    <flux:columns>
-        <flux:column>Santo</flux:column>
-        <flux:column>Giorno</flux:column>
-        <flux:column>Mese</flux:column>
-        <flux:column>Onomastico</flux:column>
-        <flux:column>Note</flux:column>
-    </flux:columns>
+    <flux:table.columns>
+        <flux:table.column>Santo</flux:table.column>
+        <flux:table.column>Giorno</flux:table.column>
+        <flux:table.column>Mese</flux:table.column>
+        <flux:table.column>Onomastico</flux:table.column>
+        <flux:table.column>Note</flux:table.column>
+    </flux:table.columns>
 
-    <flux:rows>
+    <flux:table.rows>
         @foreach ($santi as $santo)
-            <flux:row :key="$santo->id">
-                <flux:cell class="flex items-center gap-3">
+            <flux:table.row :key="$santo->id">
+                <flux:table.cell class="flex items-center gap-3">
                     {{ $santo->nome }}
-                </flux:cell>
+                </flux:table.cell>
 
-                <flux:cell class="whitespace-nowrap">{{ $santo->giorno }}</flux:cell>
-                <flux:cell class="whitespace-nowrap">{{ $santo->mese }}</flux:cell>
+                <flux:table.cell class="whitespace-nowrap">{{ $santo->giorno }}</flux:table.cell>
+                <flux:table.cell class="whitespace-nowrap">{{ $santo->mese }}</flux:table.cell>
 
-                <flux:cell variant="strong">
+                <flux:table.cell variant="strong">
                     @if($santo->onomastico)
                         <flux:badge color="emerald">Onomastico</flux:badge>
                     @endif
                     @if($santo->onomastico_secondario)
                         <flux:badge color="yellow">Onomastico Secondario</flux:badge>
                     @endif
-                </flux:cell>
-                <flux:cell variant="strong">{{ $santo->note }}</flux:cell>
+                </flux:table.cell>
+                <flux:table.cell variant="strong">{{ $santo->note }}</flux:table.cell>
 
-            </flux:row>
+            </flux:table.row>
         @endforeach
-    </flux:rows>
+    </flux:table.rows>
 </flux:table>
