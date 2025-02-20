@@ -21,3 +21,5 @@
     border-color: var(--color-gray-200, currentColor);
   }
 }
+
+@custom-variant dark (&:where(.dark, .dark *));
