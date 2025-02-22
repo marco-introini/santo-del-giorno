@@ -4,6 +4,7 @@ namespace App\Filament\Admin\Resources;
 
 
 use App\Models\User;
+use Faker\Provider\Text;
 use Filament\Forms\Components\Placeholder;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Components\TextInput;
@@ -30,6 +31,8 @@ class UserResource extends Resource
                 TextInput::make('email')
                     ->required()
                     ->email(),
+                TextInput::make('api_calls')
+                    ->disabled(),
 
                 Section::make('Informazioni di Sicurezza')
                     ->schema([
