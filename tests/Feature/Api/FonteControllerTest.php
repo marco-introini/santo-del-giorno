@@ -11,7 +11,7 @@ beforeEach(function (): void {
 });
 
 
-test('a source returns', function (): void{
+test('vengono tornate le fonti', function (): void{
     $fonte = Fonte::factory()->create();
 
     $response = get(route('fonte.show', $fonte), ['Accept' => 'application/vnd.api+json']);
@@ -20,4 +20,12 @@ test('a source returns', function (): void{
     expect($response->json('data.type'))->toBe('fonte')
         ->and($response->json('data.attributes.nome'))->toBe($fonte->nome)
         ->and($response->json('data.attributes.url'))->toBe($fonte->url);
+});
+
+test('la chiamata a fonti incrementa il contatore delle chiamate', function (): void{
+    $fonte = Fonte::factory()->create();
+
+    get(route('fonte.show', $fonte), ['Accept' => 'application/vnd.api+json']);
+
+    expect(User::first()->api_calls)->toBe(1);
 });

@@ -2,11 +2,13 @@
 
 use App\Http\Controllers\Api\V1\FonteController;
 use App\Http\Controllers\Api\V1\SantoDelGiornoController;
+use App\Http\Middleware\AddApiCountMiddleware;
 use App\Http\Middleware\RequiresJsonMiddleware;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware([
     RequiresJsonMiddleware::class,
+    AddApiCountMiddleware::class,
     'auth:sanctum',
     'throttle:chiamate_api',
 ])->prefix('santo')->group(function (): void {
@@ -24,8 +26,6 @@ Route::middleware([
 
     Route::get('/data/{mese}/{giorno}', [SantoDelGiornoController::class, 'findByDate'])
         ->name('santo.findByDate');
-
-
 });
 
 
@@ -33,6 +33,7 @@ Route::middleware([
 Route::get('/fonte/{fonte}', [FonteController::class, 'show'])
     ->middleware([
         RequiresJsonMiddleware::class,
+        AddApiCountMiddleware::class,
         'auth:sanctum',
     ])
     ->name('fonte.show');

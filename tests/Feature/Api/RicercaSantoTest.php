@@ -8,8 +8,8 @@ use function Pest\Laravel\get;
 
 beforeEach(function (): void {
     Fonte::factory()->create();
-    $user = User::factory()->create();
-    actingAs($user);
+    $this->user = User::factory()->create();
+    actingAs($this->user);
 });
 
 test('un santo viene ricercato correttamente per nome', function (): void {
@@ -42,4 +42,13 @@ test('viene gestito errore se data nun è numerico', function (): void {
     ]), ['accept' => 'application/vnd.api+json']);
 
     $response->assertStatus(422);
+});
+
+test('una chiamata ad api santo incrementa il conto delle chiamate', function (): void {
+    $santo = Santo::factory()->create();
+
+    get(route('santo.findByName', ['nome' => $santo->nome]), ['accept' => 'application/vnd.api+json']);
+
+    $this->user->refresh();
+    expect($this->user->api_calls)->toBe(1);
 });
