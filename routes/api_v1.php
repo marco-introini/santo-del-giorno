@@ -4,7 +4,6 @@ use App\Http\Controllers\Api\V1\FonteController;
 use App\Http\Controllers\Api\V1\SantoDelGiornoController;
 use App\Http\Middleware\RequiresJsonMiddleware;
 use Illuminate\Support\Facades\Route;
-use Treblle\Laravel\Middlewares\TreblleMiddleware;
 
 Route::middleware([
     RequiresJsonMiddleware::class,

@@ -27,7 +27,7 @@ class Santo extends Model
     }
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo<\App\Models\Fonte, $this>
+     * @return BelongsTo<Fonte, $this>
      */
     public function fonte(): BelongsTo
     {
@@ -35,7 +35,7 @@ class Santo extends Model
     }
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany<\App\Models\Segnalazione, $this>
+     * @return HasMany<Segnalazione, $this>
      */
     public function segnalazioni(): HasMany
     {

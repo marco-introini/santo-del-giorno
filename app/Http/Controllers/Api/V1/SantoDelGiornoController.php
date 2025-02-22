@@ -36,7 +36,7 @@ class SantoDelGiornoController extends ApiController
         $mese = $request->route('mese'); // Recupera il parametro dalla rotta
         $giorno = $request->route('giorno'); // Recupera il parametro dalla rotta
 
-        $santi = Santo::where('mese', $mese)->where('giorno', $giorno)->get();
+        $santi = Santo::query()->where('mese', $mese)->where('giorno', $giorno)->get();
         return $this->ok("Santi del $giorno/$mese", SantoResource::collection($santi));
     }
 
