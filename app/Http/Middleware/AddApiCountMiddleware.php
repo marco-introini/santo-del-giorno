@@ -10,7 +10,7 @@ class AddApiCountMiddleware
     public function handle(Request $request, Closure $next)
     {
         $user = auth()->user();
-        $user->increment('api_count');
+        $user->api_calls++;
         $user->save();
 
         return $next($request);
