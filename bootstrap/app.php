@@ -24,9 +24,4 @@ return Application::configure(basePath: dirname(__DIR__))
             ->appendToGroup('api', WebRequestMonitoring::class);
     })
     ->withExceptions(function (Exceptions $exceptions) {
-        $exceptions->reportable(function (Throwable $e) {
-            if (app()->bound('honeybadger')) {
-                app('honeybadger')->notify($e, app('request'));
-            }
-        });
     })->create();
