@@ -18,7 +18,7 @@
         "league/flysystem-aws-s3-v3": "^3.0",
         "livewire/flux": "^2.0",
         "livewire/flux-pro": "^2.0",
-        "spatie/laravel-backup": "^9.2"
+        "spatie/laravel-backup": "^9.3"
     },
     "require-dev": {
         "driftingly/rector-laravel": "^2",
