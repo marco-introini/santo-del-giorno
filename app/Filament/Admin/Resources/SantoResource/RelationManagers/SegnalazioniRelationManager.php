@@ -14,6 +14,7 @@ class SegnalazioniRelationManager extends RelationManager
     protected static string $relationship = 'segnalazioni';
     protected static ?string $title = 'Vedi segnalazione';
 
+    #[\Override]
     public function form(Form $form): Form
     {
         return $form

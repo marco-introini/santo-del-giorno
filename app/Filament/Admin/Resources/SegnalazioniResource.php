@@ -19,6 +19,7 @@ class SegnalazioniResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-bell-alert';
 
+    #[\Override]
     public static function form(Form $form): Form
     {
         return $form
@@ -37,6 +38,7 @@ class SegnalazioniResource extends Resource
             ]);
     }
 
+    #[\Override]
     public static function table(Table $table): Table
     {
         return $table
@@ -71,6 +73,7 @@ class SegnalazioniResource extends Resource
             ]);
     }
 
+    #[\Override]
     public static function getRelations(): array
     {
         return [
@@ -78,6 +81,7 @@ class SegnalazioniResource extends Resource
         ];
     }
 
+    #[\Override]
     public static function getPages(): array
     {
         return [

@@ -22,6 +22,7 @@ class SantoResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-face-smile';
 
+    #[\Override]
     public static function form(Form $form): Form
     {
         return $form
@@ -55,6 +56,7 @@ class SantoResource extends Resource
             ]);
     }
 
+    #[\Override]
     public static function table(Table $table): Table
     {
         return $table
@@ -90,6 +92,7 @@ class SantoResource extends Resource
             ]);
     }
 
+    #[\Override]
     public static function getPages(): array
     {
         return [
@@ -99,6 +102,7 @@ class SantoResource extends Resource
         ];
     }
 
+    #[\Override]
     public static function getRelations(): array
     {
         return [

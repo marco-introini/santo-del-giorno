@@ -22,6 +22,7 @@ class FonteResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-globe-alt';
 
+    #[\Override]
     public static function form(Form $form): Form
     {
         return $form
@@ -38,6 +39,7 @@ class FonteResource extends Resource
             ]);
     }
 
+    #[\Override]
     public static function table(Table $table): Table
     {
         return $table
@@ -58,6 +60,7 @@ class FonteResource extends Resource
             ]);
     }
 
+    #[\Override]
     public static function getPages(): array
     {
         return [

@@ -10,6 +10,7 @@ use Illuminate\Http\Resources\Json\JsonResource;
 /** @mixin Fonte */
 class FonteResource extends JsonResource
 {
+    #[\Override]
     public function toArray(Request $request): array
     {
         return [

@@ -25,6 +25,7 @@ class SegnalazioneResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-bell-alert';
 
+    #[\Override]
     public static function form(Form $form): Form
     {
         return $form
@@ -44,6 +45,7 @@ class SegnalazioneResource extends Resource
             ]);
     }
 
+    #[\Override]
     public static function table(Table $table): Table
     {
         return $table
@@ -71,6 +73,7 @@ class SegnalazioneResource extends Resource
             ->modifyQueryUsing(fn (Builder $query) => $query->where('user_id','=', Auth::id()));
     }
 
+    #[\Override]
     public static function getRelations(): array
     {
         return [
@@ -78,6 +81,7 @@ class SegnalazioneResource extends Resource
         ];
     }
 
+    #[\Override]
     public static function getPages(): array
     {
         return [
@@ -89,6 +93,7 @@ class SegnalazioneResource extends Resource
     }
 
     /** @param  Segnalazione  $record */
+    #[\Override]
     public static function canDelete(Model $record): bool
     {
         // posso cancellarla solo se non è già evasa
@@ -96,6 +101,7 @@ class SegnalazioneResource extends Resource
     }
 
     /** @param  Segnalazione  $record */
+    #[\Override]
     public static function canEdit(Model $record): bool
     {
         // posso modificarla solo se non è già evasa

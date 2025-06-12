@@ -20,6 +20,7 @@ class FindByDateRequest extends FormRequest
         ];
     }
 
+    #[\Override]
     public function messages(): array
     {
         return [
@@ -32,6 +33,7 @@ class FindByDateRequest extends FormRequest
         ];
     }
 
+    #[\Override]
     public function validationData(): ?array
     {
         return array_merge($this->request->all(), $this->route()->parameters());
