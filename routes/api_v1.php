@@ -5,10 +5,12 @@ use App\Http\Controllers\Api\V1\SantoDelGiornoController;
 use App\Http\Middleware\AddApiCountMiddleware;
 use App\Http\Middleware\RequiresJsonMiddleware;
 use Illuminate\Support\Facades\Route;
+use Treblle\Laravel\Middlewares\TreblleMiddleware;
 
 Route::middleware([
     RequiresJsonMiddleware::class,
     AddApiCountMiddleware::class,
+    TreblleMiddleware::class,
     'auth:sanctum',
     'throttle:chiamate_api',
 ])->prefix('santo')->group(function (): void {
@@ -34,6 +36,7 @@ Route::get('/fonte/{fonte}', [FonteController::class, 'show'])
     ->middleware([
         RequiresJsonMiddleware::class,
         AddApiCountMiddleware::class,
+        TreblleMiddleware::class,
         'auth:sanctum',
     ])
     ->name('fonte.show');
