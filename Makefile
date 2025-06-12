@@ -1,6 +1,6 @@
 check:
 	composer rector-preview
-	phpstan
+	vendor/bin/phpstan
 
 recreate:
 	rm -f storage/public/avatars/*
