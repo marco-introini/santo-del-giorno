@@ -15,7 +15,9 @@ class SantoDelGiornoController extends ApiController
 
     public function index()
     {
-        return SantoResource::collection(Santo::paginate(10));
+        return SantoResource::collection(Santo::paginate(10))
+            ->response()
+            ->header('treblle-user-id', auth()->user()->email ?? 'guest');
     }
 
     public function show(string $uuid)
