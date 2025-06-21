@@ -38,6 +38,7 @@ Route::get('/fonte/{fonte}', [FonteController::class, 'show'])
         AddApiCountMiddleware::class,
         TreblleMiddleware::class,
         'auth:sanctum',
+        'throttle:chiamate_api',
     ])
     ->name('fonte.show');
 
