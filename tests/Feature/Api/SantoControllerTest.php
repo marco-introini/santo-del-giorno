@@ -16,7 +16,7 @@ beforeEach(function (): void {
 test('un santo viene tornato correttamente', function (): void {
     $santo = Santo::factory()->create();
 
-    $response = get(route('santo.show', $santo->id), ['accept' => 'application/vnd.api+json']);
+    $response = get(route('santo.show', $santo->id));
 
     $response->assertStatus(200);
     expect($response->json('data.type'))->toBe('santo')
@@ -28,7 +28,7 @@ test('un santo viene tornato correttamente', function (): void {
 test('viene tornata la lista dei santi', function (): void {
     Santo::factory(10)->create();
 
-    $response = get(route('santo.index'), ['accept' => 'application/vnd.api+json']);
+    $response = get(route('santo.index'));
 
     $response->assertStatus(200);
     $response->assertJsonCount(10, 'data');
@@ -40,7 +40,7 @@ test('viene tornata la lista dei santi', function (): void {
 test('un onomastico viene tornato correttamente', function (bool $primario): void {
     $santo = Santo::factory()->onomastico(primario: $primario)->create();
 
-    $response = get(route('santo.findOnomastico', ['nome' => $santo->nome]), ['accept' => 'application/vnd.api+json']);
+    $response = get(route('santo.findOnomastico', ['nome' => $santo->nome]));
 
     $response->assertStatus(200);
     expect($response->json('data.0.type'))->toBe('santo')

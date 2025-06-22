@@ -15,7 +15,7 @@ beforeEach(function (): void {
 test('un santo viene ricercato correttamente per nome', function (): void {
     $santo = Santo::factory()->create();
 
-    $response = get(route('santo.findByName', ['nome' => $santo->nome]), ['accept' => 'application/vnd.api+json']);
+    $response = get(route('santo.findByName', ['nome' => $santo->nome]));
 
     $response->assertStatus(200);
     $response->assertJsonFragment(['nome' => $santo->nome]);
@@ -47,7 +47,7 @@ test('viene gestito errore se data nun è numerico', function (): void {
 test('una chiamata ad api santo incrementa il conto delle chiamate', function (): void {
     $santo = Santo::factory()->create();
 
-    get(route('santo.findByName', ['nome' => $santo->nome]), ['accept' => 'application/vnd.api+json']);
+    get(route('santo.findByName', ['nome' => $santo->nome]));
 
     $this->user->refresh();
     expect($this->user->api_calls)->toBe(1);

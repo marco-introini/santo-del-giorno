@@ -6,13 +6,12 @@ use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpKernel\Exception\NotAcceptableHttpException;
 
-class RequiresJsonMiddleware
+class AlwaysAcceptJsonMiddleware
 {
     public function handle(Request $request, Closure $next)
     {
-        if (!$request->wantsJson()) {
-            throw new NotAcceptableHttpException('Please request with HTTP Header Accept: application/json');
-        }
+        $request->headers->set('Accept', 'application/json');
+
         return $next($request);
     }
 }
