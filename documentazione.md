@@ -12,7 +12,7 @@ Molto più interessante è la possibilità di richiamare il servizio via API.
 Per fare questo è necessario registrarsi e confermare la propria mail.
 **La registrazione è assolutamente gratuita e l'indirizzo email non verrà MAI ceduto a nessuno.**
 
-Tutte le chiamate alle API devono essere autenticate usando un Beaer token ottenuto nella propria area personale, alla
+Tutte le chiamate alle API devono essere autenticate usando un Bearer token ottenuto nella propria area personale, alla
 voce **Profilo**, oppure chiamando l'API login
 
 ```bash
@@ -38,7 +38,7 @@ GET https://santodelgiorno.mintdev.me/api/v1/santo/<uuid>
 Accept: application/json
 Authorization: Bearer <token>
 ```
-Per avere il dettaglio della fonte:
+Per avere anche il dettaglio della fonte:
 
 ```
 GET https://santodelgiorno.mintdev.me/api/v1/santo/<uuid>?include=fonte
