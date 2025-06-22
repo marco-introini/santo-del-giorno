@@ -43,6 +43,8 @@ class SegnalazioniResource extends Resource
     {
         return $table
             ->columns([
+                Tables\Columns\IconColumn::make('tipo_segnalazione')
+                    ->label('Tipo'),
                 Tables\Columns\ToggleColumn::make('evasa')
                     ->sortable(),
                 Tables\Columns\TextColumn::make('user.name')
@@ -55,8 +57,7 @@ class SegnalazioniResource extends Resource
                     ->searchable()
                     ->date('d/m/Y H:i'),
                 Tables\Columns\TextColumn::make('testo_segnalazione')
-                    ->limit(100)
-                    ->wrap()
+                    ->limit(50)
                     ->searchable(),
             ])
             ->defaultSort('created_at', 'DESC')
