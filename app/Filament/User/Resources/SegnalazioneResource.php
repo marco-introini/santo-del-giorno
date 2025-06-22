@@ -50,6 +50,8 @@ class SegnalazioneResource extends Resource
     {
         return $table
             ->columns([
+                Tables\Columns\IconColumn::make('tipo_segnalazione')
+                    ->label('Tipo'),
                 Tables\Columns\IconColumn::make('evasa')
                     ->boolean(),
                 Tables\Columns\TextColumn::make('created_at')
@@ -59,7 +61,6 @@ class SegnalazioneResource extends Resource
                 Tables\Columns\TextColumn::make('testo_segnalazione')
                     ->limit(50)
                     ->searchable(),
-
             ])
             ->defaultSort('created_at','DESC')
             ->filters([
