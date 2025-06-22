@@ -67,19 +67,19 @@ class PersonalAccessTokenResource extends Resource
 
                 Tables\Columns\TextColumn::make('last_used_at')
                     ->label('Ultimo Utilizzo')
-                    ->dateTime('d-m-Y h:m:s')
+                    ->dateTime('d/m/Y H:i:s')
                     ->sortable()
                     ->toggleable(),
 
                 Tables\Columns\TextColumn::make('expires_at')
                     ->label('Data limite')
-                    ->dateTime('d-m-Y h:m:s')
+                    ->dateTime('d/m/Y H:i:s')
                     ->sortable()
                     ->toggleable(),
 
                 Tables\Columns\TextColumn::make('created_at')
                     ->label('Data Creazione')
-                    ->dateTime('d-m-Y h:m:s')
+                    ->dateTime('d/m/Y H:i:s')
                     ->sortable()
                     ->toggleable(),
             ])

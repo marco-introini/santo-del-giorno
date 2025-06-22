@@ -33,6 +33,11 @@ class UserResource extends Resource
                     ->required()
                     ->email(),
                 TextInput::make('api_calls')
+                    ->label('Chiamate API')
+                    ->disabled(),
+                TextInput::make('last_api_call')
+                    ->label('Ultima chiamata API')
+                    ->formatStateUsing(fn (User $user) => $user->last_api_call ? $user->last_api_call->format('d/m/Y H:i') : null)
                     ->disabled(),
 
                 Section::make('Informazioni di Sicurezza')
@@ -59,6 +64,11 @@ class UserResource extends Resource
                 Tables\Columns\TextColumn::make('email'),
                 Tables\Columns\TextColumn::make('email_verified_at')
                     ->label('Verifica email'),
+                Tables\Columns\TextColumn::make('api_calls')
+                    ->label('Chiamate API'),
+                Tables\Columns\TextColumn::make('last_api_call')
+                    ->label('Ultima chiamata API')
+                    ->date('d/m/Y H:i:s'),
             ])
             ->filters([
                 //
