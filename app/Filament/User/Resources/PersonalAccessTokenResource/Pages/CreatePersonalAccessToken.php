@@ -42,7 +42,7 @@ class CreatePersonalAccessToken extends CreateRecord
 
         if ($plainTextToken) {
             Notification::make()
-                ->title('API Token Created')
+                ->title('Creazione API Token riuscita')
                 ->body(new HtmlString(
                     'Token creato. Copialo immediatamente in quanto non sarà possibile vederlo nuovamente:<br><br>' .
                     '<div class="p-4 bg-gray-100 rounded font-mono text-sm break-all">' . $plainTextToken . '</div>'
@@ -56,9 +56,17 @@ class CreatePersonalAccessToken extends CreateRecord
                         ->button()
                         ->color('primary')
                         ->extraAttributes([
-                            'x-data' => '{}',
-                            'x-on:click' => 'navigator.clipboard.writeText("'.$plainTextToken.'"); $dispatch("notify", { message: "Token copied to clipboard!" })',
-                        ]),
+                            'x-data' => '{
+        copyToClipboard() {
+        alert('.$plainTextToken.');
+            navigator.clipboard.writeText('.json_encode($plainTextToken).');
+            $dispatch("notify", { message: "Token copied to clipboard!" });
+        }
+    }',
+                            'x-on:click' => 'copyToClipboard()'
+                        ])
+
+
                 ])
                 ->send();
         }

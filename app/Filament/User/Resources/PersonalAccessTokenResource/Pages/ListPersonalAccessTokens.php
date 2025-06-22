@@ -14,7 +14,7 @@ class ListPersonalAccessTokens extends ListRecords
     {
         return [
             Actions\CreateAction::make()
-                ->label('Create API Token'),
+                ->label('Crea Nuovo Token'),
         ];
     }
 }

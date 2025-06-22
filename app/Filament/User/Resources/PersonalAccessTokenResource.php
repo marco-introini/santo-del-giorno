@@ -42,7 +42,7 @@ class PersonalAccessTokenResource extends Resource
                     ->helperText('Usa un nome descrittivo per una più facile identificazione.'),
 
                 Forms\Components\DateTimePicker::make('expires_at')
-                    ->label('Data di validità')
+                    ->label('Fine validità')
                     ->nullable()
                     ->helperText('Lascia vuoto il campo per impostare un token senza scadenza (non consigliato)'),
 
