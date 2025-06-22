@@ -3,7 +3,6 @@
 namespace App\Providers\Filament;
 
 use BetterFuturesStudio\FilamentLocalLogins\LocalLogins;
-use Filament\Forms\Components\FileUpload;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\DisableBladeIconComponents;
 use Filament\Http\Middleware\DispatchServingFilamentEvent;
@@ -19,7 +18,6 @@ use Illuminate\Routing\Middleware\SubstituteBindings;
 use Illuminate\Session\Middleware\AuthenticateSession;
 use Illuminate\Session\Middleware\StartSession;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
-use Jeffgreco13\FilamentBreezy\BreezyCore;
 
 class AdminPanelProvider extends PanelProvider
 {
@@ -30,9 +28,10 @@ class AdminPanelProvider extends PanelProvider
             ->id('admin')
             ->path('admin')
             ->login()
+            ->profile()
             ->darkMode(false)
             ->colors([
-                'primary' => Color::Violet,
+                'primary' => Color::Red,
             ])
             ->discoverResources(in: app_path('Filament/Admin/Resources'), for: 'App\\Filament\\Admin\\Resources')
             ->discoverPages(in: app_path('Filament/Admin/Pages'), for: 'App\\Filament\\Admin\\Pages')
@@ -60,19 +59,6 @@ class AdminPanelProvider extends PanelProvider
             ])
             ->plugins([
                 new LocalLogins(),
-                BreezyCore::make()
-                    ->myProfile(
-                        shouldRegisterUserMenu: true,
-                        shouldRegisterNavigation: true,
-                        hasAvatars: true,
-                        slug: 'my-profile',
-                        navigationGroup: 'Impostazioni'
-                    )
-                    ->enableTwoFactorAuthentication()
-                    ->enableSanctumTokens(
-                        permissions: ['view']
-                    )
-                    ->avatarUploadComponent(fn() => FileUpload::make('avatar')->disk('avatars')),
             ]);
     }
 }
