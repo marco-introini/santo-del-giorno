@@ -49,25 +49,6 @@ class CreatePersonalAccessToken extends CreateRecord
                 ))
                 ->success()
                 ->persistent()
-                ->actions([
-                    Action::make('copy')
-                        ->label('Copy to Clipboard')
-                        ->icon('heroicon-o-clipboard')
-                        ->button()
-                        ->color('primary')
-                        ->extraAttributes([
-                            'x-data' => '{
-        copyToClipboard() {
-        alert('.$plainTextToken.');
-            navigator.clipboard.writeText('.json_encode($plainTextToken).');
-            $dispatch("notify", { message: "Token copied to clipboard!" });
-        }
-    }',
-                            'x-on:click' => 'copyToClipboard()'
-                        ])
-
-
-                ])
                 ->send();
         }
     }
