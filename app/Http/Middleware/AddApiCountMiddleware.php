@@ -11,6 +11,7 @@ class AddApiCountMiddleware
     {
         $user = auth()->user();
         $user->api_calls++;
+        $user->last_api_call = now();
         $user->save();
 
         return $next($request);

@@ -32,7 +32,8 @@ class User extends Authenticatable implements MustVerifyEmail, FilamentUser, Has
      *     is_admin: 'boolean',
      *     password: 'hashed',
      *     created_at: 'datetime',
-     *     updated_at: 'datetime'
+     *     updated_at: 'datetime',
+     *     last_api_call: 'datetime'
      * }
      */
     protected function casts(): array
@@ -43,6 +44,7 @@ class User extends Authenticatable implements MustVerifyEmail, FilamentUser, Has
             'is_admin' => 'boolean',
             'created_at' => 'datetime',
             'updated_at' => 'datetime',
+            'last_api_call' => 'datetime',
         ];
     }
 
