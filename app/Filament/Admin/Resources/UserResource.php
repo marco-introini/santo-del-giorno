@@ -38,19 +38,20 @@ class UserResource extends Resource
                     ->disabled(),
                 TextInput::make('last_api_call')
                     ->label('Ultima chiamata API')
-                    ->formatStateUsing(fn (User $user) => $user->last_api_call ? $user->last_api_call->format('d/m/Y H:i') : null)
+                    ->formatStateUsing(fn(User $user
+                    ) => $user->last_api_call ? $user->last_api_call->format('d/m/Y H:i') : null)
                     ->disabled(),
 
                 Section::make('Informazioni di Sicurezza')
                     ->schema([
                         Placeholder::make('created_at')
-                            ->content(fn (User $record): string => $record->created_at->format('d/m/Y H:i'))
+                            ->content(fn(User $record): string => $record->created_at->format('d/m/Y H:i'))
                             ->label('Data Iscrizione'),
                         Placeholder::make('email_verified_at')
-                            ->content(fn (User $record): string => $record->email_verified_at->format('d/m/Y H:i'))
+                            ->content(fn(User $record): string => $record->email_verified_at->format('d/m/Y H:i'))
                             ->label('Data Verifica Email'),
                         Placeholder::make('updated_at')
-                            ->content(fn (User $record): string => $record->updated_at->format('d/m/Y H:i'))
+                            ->content(fn(User $record): string => $record->updated_at->format('d/m/Y H:i'))
                             ->label('Data Ultima Modifica'),
                     ])->columns(),
             ]);
@@ -61,13 +62,19 @@ class UserResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('name'),
-                Tables\Columns\TextColumn::make('email'),
+                Tables\Columns\TextColumn::make('name')
+                    ->searchable()
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('email')
+                    ->searchable()
+                    ->sortable(),
                 Tables\Columns\TextColumn::make('email_verified_at')
                     ->label('Verifica email'),
                 Tables\Columns\TextColumn::make('api_calls')
+                    ->sortable()
                     ->label('Chiamate API'),
                 Tables\Columns\TextColumn::make('last_api_call')
+                    ->sortable()
                     ->label('Ultima chiamata API')
                     ->date('d/m/Y H:i:s'),
                 TextColumn::make('tokens_count')
