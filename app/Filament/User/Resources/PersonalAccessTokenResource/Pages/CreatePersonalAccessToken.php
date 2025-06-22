@@ -3,6 +3,7 @@
 namespace App\Filament\User\Resources\PersonalAccessTokenResource\Pages;
 
 use App\Filament\User\Resources\PersonalAccessTokenResource;
+use Carbon\Carbon;
 use Filament\Notifications\Actions\Action;
 use Filament\Notifications\Notification;
 use Filament\Resources\Pages\CreateRecord;
@@ -20,11 +21,12 @@ class CreatePersonalAccessToken extends CreateRecord
 
     protected function handleRecordCreation(array $data): Model
     {
-        // Don't use the default creation method since we need to use createToken
+        $expiresAt = isset($data['expires_at']) ? Carbon::parse($data['expires_at']) : null;
+
         $plainTextToken = auth()->user()->createToken(
             $data['name'],
             $data['abilities'] ?? ['*'],
-            $data['expires_at'] ?? null
+            $expiresAt,
         )->plainTextToken;
 
         // Store the plain text token in the session for display
