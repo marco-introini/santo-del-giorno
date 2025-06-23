@@ -21,7 +21,7 @@
 </head>
 <body
     class="antialiased bg-violet-50 font-montserrat text-gray-800 flex flex-col
-    h-screen container mx-auto">
+    h-screen container mx-auto px-2">
 
 <x-navbar/>
 
