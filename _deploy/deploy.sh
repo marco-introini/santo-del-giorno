@@ -22,3 +22,4 @@ php artisan filament:upgrade
 chmod -R 777 storage/
 
 php artisan up
+php artisan generate:site-map
