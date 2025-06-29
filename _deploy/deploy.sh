@@ -24,3 +24,4 @@ chmod -R 777 storage/
 php artisan up
 
 php artisan
+php artisan generate:site-map
