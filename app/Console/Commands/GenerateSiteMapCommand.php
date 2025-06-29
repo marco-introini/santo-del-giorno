@@ -13,8 +13,8 @@ class GenerateSiteMapCommand extends Command
 
     public function handle(): void
     {
-        $path = public_path('sitemap.xml');
-        SitemapGenerator::create(config('app.url'))
-            ->writeToFile($path);
+        SitemapGenerator::create('https://santodelgiorno.mintdev.me')
+            ->getSitemap()
+            ->writeToDisk('public', 'sitemap.xml');
     }
 }
