@@ -15,6 +15,6 @@ class GenerateSiteMapCommand extends Command
     {
         SitemapGenerator::create('https://santodelgiorno.mintdev.me')
             ->getSitemap()
-            ->writeToDisk('public', 'sitemap.xml');
+            ->writeToFile(public_path('sitemap.xml'));
     }
 }
