@@ -9,7 +9,7 @@ class GenerateSiteMapCommand extends Command
 {
     protected $signature = 'generate:site-map';
 
-    protected $description = 'Command description';
+    protected $description = 'Genera la sitemap del sito';
 
     public function handle(): void
     {
