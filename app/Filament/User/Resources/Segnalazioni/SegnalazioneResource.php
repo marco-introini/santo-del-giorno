@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Filament\User\Resources\Segnalaziones;
+namespace App\Filament\User\Resources\Segnalazioni;
 
 use Override;
 use Filament\Schemas\Schema;
@@ -10,10 +10,10 @@ use Filament\Tables\Columns\IconColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Filters\TernaryFilter;
 use Filament\Actions\EditAction;
-use App\Filament\User\Resources\Segnalaziones\Pages\ListSegnalazioni;
-use App\Filament\User\Resources\Segnalaziones\Pages\CreateSegnalazione;
-use App\Filament\User\Resources\Segnalaziones\Pages\EditSegnalazione;
-use App\Filament\User\Resources\Segnalaziones\Pages\ViewSegnalazione;
+use App\Filament\User\Resources\Segnalazioni\Pages\ListSegnalazioni;
+use App\Filament\User\Resources\Segnalazioni\Pages\CreateSegnalazione;
+use App\Filament\User\Resources\Segnalazioni\Pages\EditSegnalazione;
+use App\Filament\User\Resources\Segnalazioni\Pages\ViewSegnalazione;
 use App\Enums\TipoSegnalazione;
 use App\Filament\User\Resources\SegnalazioneResource\Pages;
 use App\Models\Segnalazione;
