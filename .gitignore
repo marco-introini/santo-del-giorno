@@ -25,3 +25,4 @@ yarn-error.log
 .DS_Store
 /public/sitemap.xml
 /public/fonts/filament/
+/.junie
