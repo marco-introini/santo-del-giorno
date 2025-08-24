@@ -24,3 +24,4 @@ yarn-error.log
 /tests/Http/http-client.private.env.json
 .DS_Store
 /public/sitemap.xml
+/public/fonts/filament/
