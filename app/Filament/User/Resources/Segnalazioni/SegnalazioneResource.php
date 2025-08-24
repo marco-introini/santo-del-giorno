@@ -2,6 +2,7 @@
 
 namespace App\Filament\User\Resources\Segnalazioni;
 
+use Filament\Actions\ViewAction;
 use Override;
 use Filament\Schemas\Schema;
 use Filament\Forms\Components\Select;
@@ -78,7 +79,8 @@ class SegnalazioneResource extends Resource
                 TernaryFilter::make('evasa'),
             ])
             ->recordActions([
-                EditAction::make(),
+                EditAction::make()->visible(fn (Segnalazione $record) => !$record->evasa),
+                ViewAction::make()->visible(fn (Segnalazione $record) => $record->evasa),
             ])
             ->toolbarActions([
             ])
