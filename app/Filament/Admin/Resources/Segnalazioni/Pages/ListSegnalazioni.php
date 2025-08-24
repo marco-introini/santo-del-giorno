@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Filament\Admin\Resources\Segnalazionis\Pages;
+namespace App\Filament\Admin\Resources\Segnalazioni\Pages;
 
 use Filament\Actions\CreateAction;
-use App\Filament\Admin\Resources\Segnalazionis\SegnalazioniResource;
+use App\Filament\Admin\Resources\Segnalazioni\SegnalazioniResource;
 use Filament\Actions;
 use Filament\Resources\Pages\ListRecords;
 

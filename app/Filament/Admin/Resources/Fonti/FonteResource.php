@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Filament\Admin\Resources\Fontes;
+namespace App\Filament\Admin\Resources\Fonti;
 
 use Override;
 use Filament\Schemas\Schema;
@@ -8,7 +8,7 @@ use Filament\Actions\EditAction;
 use Filament\Actions\DeleteAction;
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteBulkAction;
-use App\Filament\Admin\Resources\Fontes\Pages\ManageFonti;
+use App\Filament\Admin\Resources\Fonti\Pages\ManageFonti;
 use App\Models\Fonte;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;

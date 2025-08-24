@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Filament\Admin\Resources\Segnalazionis;
+namespace App\Filament\Admin\Resources\Segnalazioni;
 
 use Override;
 use Filament\Schemas\Schema;
@@ -12,9 +12,9 @@ use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Filters\TernaryFilter;
 use Filament\Tables\Filters\SelectFilter;
 use Filament\Actions\EditAction;
-use App\Filament\Admin\Resources\Segnalazionis\Pages\ListSegnalazioni;
-use App\Filament\Admin\Resources\Segnalazionis\Pages\CreateSegnalazione;
-use App\Filament\Admin\Resources\Segnalazionis\Pages\EditSegnalazione;
+use App\Filament\Admin\Resources\Segnalazioni\Pages\ListSegnalazioni;
+use App\Filament\Admin\Resources\Segnalazioni\Pages\CreateSegnalazione;
+use App\Filament\Admin\Resources\Segnalazioni\Pages\EditSegnalazione;
 use App\Enums\TipoSegnalazione;
 use App\Models\Segnalazione;
 use Filament\Forms;

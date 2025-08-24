@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Filament\Admin\Resources\Segnalazionis\Pages;
+namespace App\Filament\Admin\Resources\Segnalazioni\Pages;
 
-use App\Filament\Admin\Resources\Segnalazionis\SegnalazioniResource;
+use App\Filament\Admin\Resources\Segnalazioni\SegnalazioniResource;
 use Filament\Resources\Pages\CreateRecord;
 
 class CreateSegnalazione extends CreateRecord

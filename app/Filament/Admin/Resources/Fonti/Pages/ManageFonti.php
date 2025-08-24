@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Filament\Admin\Resources\Fontes\Pages;
+namespace App\Filament\Admin\Resources\Fonti\Pages;
 
 use Filament\Actions\CreateAction;
-use App\Filament\Admin\Resources\Fontes\FonteResource;
+use App\Filament\Admin\Resources\Fonti\FonteResource;
 use Filament\Actions;
 use Filament\Resources\Pages\ManageRecords;
 

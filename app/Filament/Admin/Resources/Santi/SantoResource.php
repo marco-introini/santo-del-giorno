@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Filament\Admin\Resources\Santos;
+namespace App\Filament\Admin\Resources\Santi;
 
 use Override;
 use Filament\Schemas\Schema;
@@ -13,10 +13,10 @@ use Filament\Actions\EditAction;
 use Filament\Actions\DeleteAction;
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteBulkAction;
-use App\Filament\Admin\Resources\Santos\Pages\ListSanti;
-use App\Filament\Admin\Resources\Santos\Pages\CreateSanto;
-use App\Filament\Admin\Resources\Santos\Pages\EditSanto;
-use App\Filament\Admin\Resources\Santos\RelationManagers\SegnalazioniRelationManager;
+use App\Filament\Admin\Resources\Santi\Pages\ListSanti;
+use App\Filament\Admin\Resources\Santi\Pages\CreateSanto;
+use App\Filament\Admin\Resources\Santi\Pages\EditSanto;
+use App\Filament\Admin\Resources\Santi\RelationManagers\SegnalazioniRelationManager;
 use App\Models\Santo;
 use Filament\Forms;
 use Filament\Forms\Components\Textarea;

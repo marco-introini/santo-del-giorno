@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Filament\Admin\Resources\Santos\Pages;
+namespace App\Filament\Admin\Resources\Santi\Pages;
 
-use App\Filament\Admin\Resources\Santos\SantoResource;
+use App\Filament\Admin\Resources\Santi\SantoResource;
 use Filament\Resources\Pages\CreateRecord;
 
 class CreateSanto extends CreateRecord

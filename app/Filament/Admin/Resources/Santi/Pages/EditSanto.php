@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Filament\Admin\Resources\Santos\Pages;
+namespace App\Filament\Admin\Resources\Santi\Pages;
 
 use Filament\Actions\DeleteAction;
-use App\Filament\Admin\Resources\Santos\SantoResource;
+use App\Filament\Admin\Resources\Santi\SantoResource;
 use Filament\Actions;
 use Filament\Resources\Pages\EditRecord;
 

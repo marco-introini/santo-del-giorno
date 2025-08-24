@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Filament\Admin\Resources\Santos\RelationManagers;
+namespace App\Filament\Admin\Resources\Santi\RelationManagers;
 
 use Override;
 use Filament\Schemas\Schema;
