@@ -7,7 +7,6 @@
     "require": {
         "php": "^8.4",
         "ext-zip": "*",
-        "better-futures-studio/filament-local-logins": "^1.2",
         "filament/filament": "^3.3",
         "inspector-apm/inspector-laravel": "^4.11",
         "jeffgreco13/filament-breezy": "*",
@@ -25,6 +24,7 @@
     "require-dev": {
         "driftingly/rector-laravel": "^2",
         "fakerphp/faker": "^1.23",
+        "filament/upgrade": "^4.0",
         "larastan/larastan": "^3.0",
         "laravel/pint": "^1.13",
         "laravel/sail": "^1.26",
