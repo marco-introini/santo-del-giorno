@@ -2,9 +2,21 @@
 
 namespace App\Filament\User\Resources;
 
+use Filament\Schemas\Schema;
+use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\DateTimePicker;
+use Filament\Forms\Components\CheckboxList;
+use Filament\Tables\Columns\TextColumn;
+use Filament\Actions\ViewAction;
+use Filament\Actions\DeleteAction;
+use Filament\Actions\BulkActionGroup;
+use Filament\Actions\DeleteBulkAction;
+use Override;
+use App\Filament\User\Resources\PersonalAccessTokenResource\Pages\ListPersonalAccessTokens;
+use App\Filament\User\Resources\PersonalAccessTokenResource\Pages\CreatePersonalAccessToken;
+use App\Filament\User\Resources\PersonalAccessTokenResource\Pages\ViewPersonalAccessToken;
 use App\Filament\User\Resources\PersonalAccessTokenResource\Pages;
 use Filament\Forms;
-use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
@@ -15,7 +27,7 @@ class PersonalAccessTokenResource extends Resource
 {
     protected static ?string $model = PersonalAccessToken::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-key';
+    protected static string | \BackedEnum | null $navigationIcon = 'heroicon-o-key';
 
     protected static ?string $navigationLabel = 'API Tokens';
 
@@ -30,23 +42,23 @@ class PersonalAccessTokenResource extends Resource
             ->where('tokenable_type', 'App\\Models\\User');
     }
 
-    public static function form(Form $form): Form
+    public static function form(Schema $schema): Schema
     {
-        return $form
-            ->schema([
-                Forms\Components\TextInput::make('name')
+        return $schema
+            ->components([
+                TextInput::make('name')
                     ->required()
                     ->maxLength(255)
                     ->label('Nome Token')
                     ->placeholder('My API Token')
                     ->helperText('Usa un nome descrittivo per una più facile identificazione.'),
 
-                Forms\Components\DateTimePicker::make('expires_at')
+                DateTimePicker::make('expires_at')
                     ->label('Fine validità')
                     ->nullable()
                     ->helperText('Lascia vuoto il campo per impostare un token senza scadenza (non consigliato)'),
 
-                Forms\Components\CheckboxList::make('abilities')
+                CheckboxList::make('abilities')
                     ->options([
                         'view' => 'Vista Santi',
                     ])
@@ -60,24 +72,24 @@ class PersonalAccessTokenResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('name')
+                TextColumn::make('name')
                     ->label('Nome')
                     ->searchable()
                     ->sortable(),
 
-                Tables\Columns\TextColumn::make('last_used_at')
+                TextColumn::make('last_used_at')
                     ->label('Ultimo Utilizzo')
                     ->dateTime('d/m/Y H:i:s')
                     ->sortable()
                     ->toggleable(),
 
-                Tables\Columns\TextColumn::make('expires_at')
+                TextColumn::make('expires_at')
                     ->label('Data limite')
                     ->dateTime('d/m/Y H:i:s')
                     ->sortable()
                     ->toggleable(),
 
-                Tables\Columns\TextColumn::make('created_at')
+                TextColumn::make('created_at')
                     ->label('Data Creazione')
                     ->dateTime('d/m/Y H:i:s')
                     ->sortable()
@@ -86,16 +98,16 @@ class PersonalAccessTokenResource extends Resource
             ->filters([
                 //
             ])
-            ->actions([
-                Tables\Actions\ViewAction::make(),
-                Tables\Actions\DeleteAction::make()
+            ->recordActions([
+                ViewAction::make(),
+                DeleteAction::make()
                     ->label('Revoca')
                     ->modalHeading('Revoca API Token')
                     ->modalDescription('Sei sicuro di voler revocare questo Token? Le chiamate che lo usano smetteranno di funzionare'),
             ])
-            ->bulkActions([
-                Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make()
+            ->toolbarActions([
+                BulkActionGroup::make([
+                    DeleteBulkAction::make()
                         ->label('Revoca Selezionati')
                         ->modalHeading('Revoca API Token selezionati')
                         ->modalDescription('Sei sicuro di voler revocare i Token selezionati? Le chiamate che li usano smetteranno di funzionare'),
@@ -110,13 +122,13 @@ class PersonalAccessTokenResource extends Resource
         ];
     }
 
-    #[\Override]
+    #[Override]
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListPersonalAccessTokens::route('/'),
-            'create' => Pages\CreatePersonalAccessToken::route('/create'),
-            'view' => Pages\ViewPersonalAccessToken::route('/{record}/view'),
+            'index' => ListPersonalAccessTokens::route('/'),
+            'create' => CreatePersonalAccessToken::route('/create'),
+            'view' => ViewPersonalAccessToken::route('/{record}/view'),
         ];
     }
 }

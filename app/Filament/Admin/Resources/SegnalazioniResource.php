@@ -2,10 +2,22 @@
 
 namespace App\Filament\Admin\Resources;
 
+use Override;
+use Filament\Schemas\Schema;
+use Filament\Forms\Components\Select;
+use Filament\Forms\Components\Textarea;
+use Filament\Tables\Columns\IconColumn;
+use Filament\Tables\Columns\ToggleColumn;
+use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Filters\TernaryFilter;
+use Filament\Tables\Filters\SelectFilter;
+use Filament\Actions\EditAction;
+use App\Filament\Admin\Resources\SegnalazioniResource\Pages\ListSegnalazioni;
+use App\Filament\Admin\Resources\SegnalazioniResource\Pages\CreateSegnalazione;
+use App\Filament\Admin\Resources\SegnalazioniResource\Pages\EditSegnalazione;
 use App\Enums\TipoSegnalazione;
 use App\Models\Segnalazione;
 use Filament\Forms;
-use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
@@ -17,64 +29,64 @@ class SegnalazioniResource extends Resource
     protected static ?string $pluralLabel = "Segnalazioni";
     protected static ?string $label = "Segnalazione";
 
-    protected static ?string $navigationIcon = 'heroicon-o-bell-alert';
+    protected static string | \BackedEnum | null $navigationIcon = 'heroicon-o-bell-alert';
 
-    #[\Override]
-    public static function form(Form $form): Form
+    #[Override]
+    public static function form(Schema $schema): Schema
     {
-        return $form
-            ->schema([
-                Forms\Components\Select::make('user_id')
+        return $schema
+            ->components([
+                Select::make('user_id')
                     ->relationship('user', 'name')
                     ->disabled(),
-                Forms\Components\Select::make('santo_id')
+                Select::make('santo_id')
                     ->relationship('santo', 'nome'),
-                Forms\Components\Select::make('tipo_segnalazione')
+                Select::make('tipo_segnalazione')
                     ->options(TipoSegnalazione::class)
                     ->disabled(),
-                Forms\Components\Textarea::make('testo_segnalazione')
+                Textarea::make('testo_segnalazione')
                     ->columnSpanFull()
                     ->rows(10)
             ]);
     }
 
-    #[\Override]
+    #[Override]
     public static function table(Table $table): Table
     {
         return $table
             ->columns([
-                Tables\Columns\IconColumn::make('tipo_segnalazione')
+                IconColumn::make('tipo_segnalazione')
                     ->label('Tipo'),
-                Tables\Columns\ToggleColumn::make('evasa')
+                ToggleColumn::make('evasa')
                     ->sortable(),
-                Tables\Columns\TextColumn::make('user.name')
+                TextColumn::make('user.name')
                     ->label('Segnalatore')
                     ->searchable()
                     ->sortable(),
-                Tables\Columns\TextColumn::make('created_at')
+                TextColumn::make('created_at')
                     ->label('Data')
                     ->sortable()
                     ->searchable()
                     ->date('d/m/Y H:i'),
-                Tables\Columns\TextColumn::make('testo_segnalazione')
+                TextColumn::make('testo_segnalazione')
                     ->limit(50)
                     ->searchable(),
             ])
             ->defaultSort('created_at', 'DESC')
             ->filters([
-                Tables\Filters\TernaryFilter::make('evasa')
+                TernaryFilter::make('evasa')
                     ->default(false),
-                Tables\Filters\SelectFilter::make('user')
+                SelectFilter::make('user')
                     ->relationship('user', 'name')
             ])
-            ->actions([
-                Tables\Actions\EditAction::make(),
+            ->recordActions([
+                EditAction::make(),
             ])
-            ->bulkActions([
+            ->toolbarActions([
             ]);
     }
 
-    #[\Override]
+    #[Override]
     public static function getRelations(): array
     {
         return [
@@ -82,13 +94,13 @@ class SegnalazioniResource extends Resource
         ];
     }
 
-    #[\Override]
+    #[Override]
     public static function getPages(): array
     {
         return [
-            'index' => \App\Filament\Admin\Resources\SegnalazioniResource\Pages\ListSegnalazioni::route('/'),
-            'create' => \App\Filament\Admin\Resources\SegnalazioniResource\Pages\CreateSegnalazione::route('/create'),
-            'edit' => \App\Filament\Admin\Resources\SegnalazioniResource\Pages\EditSegnalazione::route('/{record}/edit'),
+            'index' => ListSegnalazioni::route('/'),
+            'create' => CreateSegnalazione::route('/create'),
+            'edit' => EditSegnalazione::route('/{record}/edit'),
         ];
     }
 

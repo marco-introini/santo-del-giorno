@@ -71,7 +71,7 @@ class User extends Authenticatable implements MustVerifyEmail, FilamentUser, Has
     }
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany<\App\Models\Segnalazione, $this>
+     * @return HasMany<Segnalazione, $this>
      */
     public function segnalazioni(): HasMany
     {

@@ -2,11 +2,22 @@
 
 namespace App\Filament\User\Resources;
 
+use Override;
+use Filament\Schemas\Schema;
+use Filament\Forms\Components\Select;
+use Filament\Forms\Components\Textarea;
+use Filament\Tables\Columns\IconColumn;
+use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Filters\TernaryFilter;
+use Filament\Actions\EditAction;
+use App\Filament\User\Resources\SegnalazioneResource\Pages\ListSegnalazioni;
+use App\Filament\User\Resources\SegnalazioneResource\Pages\CreateSegnalazione;
+use App\Filament\User\Resources\SegnalazioneResource\Pages\EditSegnalazione;
+use App\Filament\User\Resources\SegnalazioneResource\Pages\ViewSegnalazione;
 use App\Enums\TipoSegnalazione;
 use App\Filament\User\Resources\SegnalazioneResource\Pages;
 use App\Models\Segnalazione;
 use Filament\Forms;
-use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
@@ -23,58 +34,58 @@ class SegnalazioneResource extends Resource
     protected static ?string $slug = "segnalazioni";
 
 
-    protected static ?string $navigationIcon = 'heroicon-o-bell-alert';
+    protected static string | \BackedEnum | null $navigationIcon = 'heroicon-o-bell-alert';
 
-    #[\Override]
-    public static function form(Form $form): Form
+    #[Override]
+    public static function form(Schema $schema): Schema
     {
-        return $form
-            ->schema([
-                Forms\Components\Select::make('santo_id')
+        return $schema
+            ->components([
+                Select::make('santo_id')
                     ->relationship('santo', 'nome')
                     ->searchable()
                     ->preload()
                     ->required(),
-                Forms\Components\Select::make('tipo_segnalazione')
+                Select::make('tipo_segnalazione')
                     ->options(TipoSegnalazione::class)
                     ->required(),
-                Forms\Components\Textarea::make('testo_segnalazione')
+                Textarea::make('testo_segnalazione')
                     ->columnSpanFull()
                     ->rows(10)
                     ->required(),
             ]);
     }
 
-    #[\Override]
+    #[Override]
     public static function table(Table $table): Table
     {
         return $table
             ->columns([
-                Tables\Columns\IconColumn::make('tipo_segnalazione')
+                IconColumn::make('tipo_segnalazione')
                     ->label('Tipo'),
-                Tables\Columns\IconColumn::make('evasa')
+                IconColumn::make('evasa')
                     ->boolean(),
-                Tables\Columns\TextColumn::make('created_at')
+                TextColumn::make('created_at')
                     ->label('Data Inserimento')
                     ->searchable()
                     ->sortable(),
-                Tables\Columns\TextColumn::make('testo_segnalazione')
+                TextColumn::make('testo_segnalazione')
                     ->limit(50)
                     ->searchable(),
             ])
             ->defaultSort('created_at','DESC')
             ->filters([
-                Tables\Filters\TernaryFilter::make('evasa'),
+                TernaryFilter::make('evasa'),
             ])
-            ->actions([
-                Tables\Actions\EditAction::make(),
+            ->recordActions([
+                EditAction::make(),
             ])
-            ->bulkActions([
+            ->toolbarActions([
             ])
             ->modifyQueryUsing(fn (Builder $query) => $query->where('user_id','=', Auth::id()));
     }
 
-    #[\Override]
+    #[Override]
     public static function getRelations(): array
     {
         return [
@@ -82,19 +93,19 @@ class SegnalazioneResource extends Resource
         ];
     }
 
-    #[\Override]
+    #[Override]
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListSegnalazioni::route('/'),
-            'create' => Pages\CreateSegnalazione::route('/create'),
-            'edit' => Pages\EditSegnalazione::route('/{record}/edit'),
-            'view'  => Pages\ViewSegnalazione::route('/{record}/view'),
+            'index' => ListSegnalazioni::route('/'),
+            'create' => CreateSegnalazione::route('/create'),
+            'edit' => EditSegnalazione::route('/{record}/edit'),
+            'view'  => ViewSegnalazione::route('/{record}/view'),
         ];
     }
 
     /** @param  Segnalazione  $record */
-    #[\Override]
+    #[Override]
     public static function canDelete(Model $record): bool
     {
         // posso cancellarla solo se non è già evasa
@@ -102,7 +113,7 @@ class SegnalazioneResource extends Resource
     }
 
     /** @param  Segnalazione  $record */
-    #[\Override]
+    #[Override]
     public static function canEdit(Model $record): bool
     {
         // posso modificarla solo se non è già evasa

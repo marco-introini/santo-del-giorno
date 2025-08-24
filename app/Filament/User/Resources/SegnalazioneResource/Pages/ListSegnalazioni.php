@@ -2,6 +2,7 @@
 
 namespace App\Filament\User\Resources\SegnalazioneResource\Pages;
 
+use Filament\Actions\CreateAction;
 use App\Filament\User\Resources\SegnalazioneResource;
 use Filament\Actions;
 use Filament\Resources\Pages\ListRecords;
@@ -13,7 +14,7 @@ class ListSegnalazioni extends ListRecords
     protected function getHeaderActions(): array
     {
         return [
-            Actions\CreateAction::make(),
+            CreateAction::make(),
         ];
     }
 }

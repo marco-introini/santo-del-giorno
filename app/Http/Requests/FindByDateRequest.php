@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use Override;
 use Illuminate\Foundation\Http\FormRequest;
 
 class FindByDateRequest extends FormRequest
@@ -20,7 +21,7 @@ class FindByDateRequest extends FormRequest
         ];
     }
 
-    #[\Override]
+    #[Override]
     public function messages(): array
     {
         return [
@@ -33,7 +34,7 @@ class FindByDateRequest extends FormRequest
         ];
     }
 
-    #[\Override]
+    #[Override]
     public function validationData(): ?array
     {
         return array_merge($this->request->all(), $this->route()->parameters());

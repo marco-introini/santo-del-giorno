@@ -2,9 +2,21 @@
 
 namespace App\Filament\Admin\Resources\SantoResource\RelationManagers;
 
+use Override;
+use Filament\Schemas\Schema;
+use Filament\Forms\Components\Textarea;
+use Filament\Forms\Components\DatePicker;
+use Filament\Schemas\Components\Section;
+use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\Toggle;
+use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Columns\IconColumn;
+use Filament\Actions\EditAction;
+use Filament\Actions\DeleteAction;
+use Filament\Actions\BulkActionGroup;
+use Filament\Actions\DeleteBulkAction;
 use App\Models\Segnalazione;
 use Filament\Forms;
-use Filament\Forms\Form;
 use Filament\Resources\RelationManagers\RelationManager;
 use Filament\Tables;
 use Filament\Tables\Table;
@@ -14,35 +26,35 @@ class SegnalazioniRelationManager extends RelationManager
     protected static string $relationship = 'segnalazioni';
     protected static ?string $title = 'Vedi segnalazione';
 
-    #[\Override]
-    public function form(Form $form): Form
+    #[Override]
+    public function form(Schema $schema): Schema
     {
-        return $form
-            ->schema([
-                Forms\Components\Textarea::make('testo_segnalazione')
+        return $schema
+            ->components([
+                Textarea::make('testo_segnalazione')
                     ->required()
                     ->rows(10)
                     ->columnSpanFull(),
-                Forms\Components\DatePicker::make('created_at')
+                DatePicker::make('created_at')
                     ->disabled()
                     ->label('Data di creazione'),
-                Forms\Components\DatePicker::make('updated_at')
+                DatePicker::make('updated_at')
                     ->disabled()
                     ->label('Data ultima modifica'),
-                Forms\Components\Section::make('Segnalante')
+                Section::make('Segnalante')
                     ->schema([
-                        Forms\Components\TextInput::make('user.name')
+                        TextInput::make('user.name')
                             ->formatStateUsing(fn (Segnalazione $segnalazione) => $segnalazione->user->name )
                             ->disabled()
                             ->label('Nome'),
-                        Forms\Components\TextInput::make('user.email')
+                        TextInput::make('user.email')
                             ->formatStateUsing(fn (Segnalazione $segnalazione) => $segnalazione->user->email )
                             ->disabled()
                             ->label('Nome'),
                     ])->columns(2),
 
 
-                Forms\Components\Toggle::make('evasa')
+                Toggle::make('evasa')
             ]);
     }
 
@@ -51,12 +63,12 @@ class SegnalazioniRelationManager extends RelationManager
         return $table
             ->recordTitleAttribute('created_at')
             ->columns([
-                Tables\Columns\TextColumn::make('created_at')
+                TextColumn::make('created_at')
                     ->label('Data')
                     ->date('d/m/Y H:i'),
-                Tables\Columns\IconColumn::make('evasa')
+                IconColumn::make('evasa')
                     ->boolean(),
-                Tables\Columns\TextColumn::make('testo_segnalazione')
+                TextColumn::make('testo_segnalazione')
                     ->limit(60),
             ])
             ->filters([
@@ -64,13 +76,13 @@ class SegnalazioniRelationManager extends RelationManager
             ])
             ->headerActions([
             ])
-            ->actions([
-                Tables\Actions\EditAction::make(),
-                Tables\Actions\DeleteAction::make(),
+            ->recordActions([
+                EditAction::make(),
+                DeleteAction::make(),
             ])
-            ->bulkActions([
-                Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
+            ->toolbarActions([
+                BulkActionGroup::make([
+                    DeleteBulkAction::make(),
                 ]),
             ]);
     }

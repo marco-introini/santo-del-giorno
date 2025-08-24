@@ -19,7 +19,7 @@ class Segnalazione extends Model
     protected $guarded = [];
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo<\App\Models\User, $this>
+     * @return BelongsTo<User, $this>
      */
     public function user(): BelongsTo
     {
@@ -27,7 +27,7 @@ class Segnalazione extends Model
     }
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo<\App\Models\Santo, $this>
+     * @return BelongsTo<Santo, $this>
      */
     public function santo(): BelongsTo
     {

@@ -2,11 +2,25 @@
 
 namespace App\Filament\Admin\Resources;
 
+use Override;
+use Filament\Schemas\Schema;
+use Filament\Forms\Components\Select;
+use Filament\Schemas\Components\Section;
+use Filament\Forms\Components\Toggle;
+use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Columns\IconColumn;
+use Filament\Actions\EditAction;
+use Filament\Actions\DeleteAction;
+use Filament\Actions\BulkActionGroup;
+use Filament\Actions\DeleteBulkAction;
+use App\Filament\Admin\Resources\SantoResource\Pages\ListSanti;
+use App\Filament\Admin\Resources\SantoResource\Pages\CreateSanto;
+use App\Filament\Admin\Resources\SantoResource\Pages\EditSanto;
+use App\Filament\Admin\Resources\SantoResource\RelationManagers\SegnalazioniRelationManager;
 use App\Models\Santo;
 use Filament\Forms;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
-use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
@@ -20,17 +34,17 @@ class SantoResource extends Resource
     protected static ?string $pluralLabel = 'Santi';
     protected static ?string $label = 'Santo';
 
-    protected static ?string $navigationIcon = 'heroicon-o-face-smile';
+    protected static string | \BackedEnum | null $navigationIcon = 'heroicon-o-face-smile';
 
-    #[\Override]
-    public static function form(Form $form): Form
+    #[Override]
+    public static function form(Schema $schema): Schema
     {
-        return $form
-            ->schema([
-                Forms\Components\TextInput::make('nome')
+        return $schema
+            ->components([
+                TextInput::make('nome')
                     ->required()
                     ->maxLength(255),
-                Forms\Components\Select::make('fonte_id')
+                Select::make('fonte_id')
                     ->relationship('fonte', 'nome'),
                 TextInput::make('mese')
                     ->required()
@@ -44,36 +58,36 @@ class SantoResource extends Resource
                     ->maxValue(31),
                 Textarea::make('note')
                     ->columnSpanFull(),
-                Forms\Components\Section::make('Onomastico')
+                Section::make('Onomastico')
                     ->schema([
-                        Forms\Components\Toggle::make('onomastico')
+                        Toggle::make('onomastico')
                             ->label('Onomastico Primario')
                             ->default(false),
-                        Forms\Components\Toggle::make('onomastico_secondario')
+                        Toggle::make('onomastico_secondario')
                             ->default(false),
                     ])
                     ->columns(2)
             ]);
     }
 
-    #[\Override]
+    #[Override]
     public static function table(Table $table): Table
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('nome')
+                TextColumn::make('nome')
                     ->sortable()
                     ->searchable(),
-                Tables\Columns\TextColumn::make('mese')
+                TextColumn::make('mese')
                     ->sortable()
                     ->searchable(),
-                Tables\Columns\TextColumn::make('giorno')
+                TextColumn::make('giorno')
                     ->sortable()
                     ->searchable(),
-                Tables\Columns\IconColumn::make('onomastico')
+                IconColumn::make('onomastico')
                     ->boolean()
                     ->sortable(),
-                Tables\Columns\TextColumn::make('segnalazioni_count')
+                TextColumn::make('segnalazioni_count')
                     ->label('N. Segnalazioni')
                     ->counts('segnalazioni')
                     ->sortable(),
@@ -81,32 +95,32 @@ class SantoResource extends Resource
             ->filters([
                 //
             ])
-            ->actions([
-                Tables\Actions\EditAction::make(),
-                Tables\Actions\DeleteAction::make(),
+            ->recordActions([
+                EditAction::make(),
+                DeleteAction::make(),
             ])
-            ->bulkActions([
-                Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
+            ->toolbarActions([
+                BulkActionGroup::make([
+                    DeleteBulkAction::make(),
                 ]),
             ]);
     }
 
-    #[\Override]
+    #[Override]
     public static function getPages(): array
     {
         return [
-            'index' => \App\Filament\Admin\Resources\SantoResource\Pages\ListSanti::route('/'),
-            'create' => \App\Filament\Admin\Resources\SantoResource\Pages\CreateSanto::route('/create'),
-            'edit' => \App\Filament\Admin\Resources\SantoResource\Pages\EditSanto::route('/{record}/edit'),
+            'index' => ListSanti::route('/'),
+            'create' => CreateSanto::route('/create'),
+            'edit' => EditSanto::route('/{record}/edit'),
         ];
     }
 
-    #[\Override]
+    #[Override]
     public static function getRelations(): array
     {
         return [
-            \App\Filament\Admin\Resources\SantoResource\RelationManagers\SegnalazioniRelationManager::class,
+            SegnalazioniRelationManager::class,
         ];
     }
 }
