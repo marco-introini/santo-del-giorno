@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Fonte;
 use App\Filament\Admin\Resources\Fonti\Pages\ManageFonti;
 use App\Models\User;
 use Filament\Facades\Filament;
@@ -20,5 +21,5 @@ it('renders the manage fonti page and can create a fonte', function (): void {
         ])
         ->assertHasNoErrors();
 
-    expect(\App\Models\Fonte::query()->where('nome', 'Enciclopedia Test')->exists())->toBeTrue();
+    expect(Fonte::query()->where('nome', 'Enciclopedia Test')->exists())->toBeTrue();
 });

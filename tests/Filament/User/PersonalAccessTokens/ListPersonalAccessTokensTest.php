@@ -15,14 +15,10 @@ it('shows only the authenticated user tokens in the table', function (): void {
 
     // Create tokens for both users
     $this->actingAs($userA);
-    $tokensA = collect(range(1, 2))->map(function () use ($userA) {
-        return $userA->createToken('Token A '.Str::random(4))->accessToken;
-    })->map(fn ($token) => PersonalAccessToken::find($token->id));
+    $tokensA = collect(range(1, 2))->map(fn() => $userA->createToken('Token A '.Str::random(4))->accessToken)->map(fn ($token) => PersonalAccessToken::find($token->id));
 
     $this->actingAs($userB);
-    $tokensB = collect(range(1, 2))->map(function () use ($userB) {
-        return $userB->createToken('Token B '.Str::random(4))->accessToken;
-    })->map(fn ($token) => PersonalAccessToken::find($token->id));
+    $tokensB = collect(range(1, 2))->map(fn() => $userB->createToken('Token B '.Str::random(4))->accessToken)->map(fn ($token) => PersonalAccessToken::find($token->id));
 
     // Act as user A and ensure only their tokens are visible
     $this->actingAs($userA);

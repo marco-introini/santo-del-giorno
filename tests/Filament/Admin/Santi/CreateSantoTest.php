@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Santo;
 use App\Filament\Admin\Resources\Santi\Pages\CreateSanto;
 use App\Models\Fonte;
 use App\Models\User;
@@ -29,5 +30,5 @@ it('renders the create santo page and can create a record', function (): void {
         ->assertHasNoFormErrors()
         ->assertRedirect();
 
-    expect(\App\Models\Santo::query()->where('nome', 'San Test')->exists())->toBeTrue();
+    expect(Santo::query()->where('nome', 'San Test')->exists())->toBeTrue();
 });
