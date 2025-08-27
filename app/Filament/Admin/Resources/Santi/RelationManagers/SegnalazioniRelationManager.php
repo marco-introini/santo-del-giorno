@@ -16,9 +16,7 @@ use Filament\Actions\DeleteAction;
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteBulkAction;
 use App\Models\Segnalazione;
-use Filament\Forms;
 use Filament\Resources\RelationManagers\RelationManager;
-use Filament\Tables;
 use Filament\Tables\Table;
 
 class SegnalazioniRelationManager extends RelationManager

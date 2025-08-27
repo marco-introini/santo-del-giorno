@@ -2,6 +2,8 @@
 
 namespace App\Filament\User\Resources\PersonalAccessTokens;
 
+use BackedEnum;
+use App\Models\User;
 use Filament\Schemas\Schema;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\DateTimePicker;
@@ -15,10 +17,7 @@ use Override;
 use App\Filament\User\Resources\PersonalAccessTokens\Pages\ListPersonalAccessTokens;
 use App\Filament\User\Resources\PersonalAccessTokens\Pages\CreatePersonalAccessToken;
 use App\Filament\User\Resources\PersonalAccessTokens\Pages\ViewPersonalAccessToken;
-use App\Filament\User\Resources\PersonalAccessTokenResource\Pages;
-use Filament\Forms;
 use Filament\Resources\Resource;
-use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Laravel\Sanctum\PersonalAccessToken;
@@ -27,7 +26,7 @@ class PersonalAccessTokenResource extends Resource
 {
     protected static ?string $model = PersonalAccessToken::class;
 
-    protected static string | \BackedEnum | null $navigationIcon = 'heroicon-o-key';
+    protected static string | BackedEnum | null $navigationIcon = 'heroicon-o-key';
 
     protected static ?string $navigationLabel = 'API Tokens';
 
@@ -35,13 +34,15 @@ class PersonalAccessTokenResource extends Resource
 
     protected static ?string $pluralModelLabel = 'API Tokens';
 
+    #[Override]
     public static function getEloquentQuery(): Builder
     {
         return parent::getEloquentQuery()
             ->where('tokenable_id', auth()->id())
-            ->where('tokenable_type', 'App\\Models\\User');
+            ->where('tokenable_type', User::class);
     }
 
+    #[Override]
     public static function form(Schema $schema): Schema
     {
         return $schema
@@ -68,6 +69,7 @@ class PersonalAccessTokenResource extends Resource
             ]);
     }
 
+    #[Override]
     public static function table(Table $table): Table
     {
         return $table
@@ -115,6 +117,7 @@ class PersonalAccessTokenResource extends Resource
             ]);
     }
 
+    #[Override]
     public static function getRelations(): array
     {
         return [

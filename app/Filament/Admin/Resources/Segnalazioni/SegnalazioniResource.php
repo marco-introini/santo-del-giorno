@@ -2,6 +2,7 @@
 
 namespace App\Filament\Admin\Resources\Segnalazioni;
 
+use BackedEnum;
 use Override;
 use Filament\Schemas\Schema;
 use Filament\Forms\Components\Select;
@@ -17,9 +18,7 @@ use App\Filament\Admin\Resources\Segnalazioni\Pages\CreateSegnalazione;
 use App\Filament\Admin\Resources\Segnalazioni\Pages\EditSegnalazione;
 use App\Enums\TipoSegnalazione;
 use App\Models\Segnalazione;
-use Filament\Forms;
 use Filament\Resources\Resource;
-use Filament\Tables;
 use Filament\Tables\Table;
 
 class SegnalazioniResource extends Resource
@@ -29,7 +28,7 @@ class SegnalazioniResource extends Resource
     protected static ?string $pluralLabel = "Segnalazioni";
     protected static ?string $label = "Segnalazione";
 
-    protected static string | \BackedEnum | null $navigationIcon = 'heroicon-o-bell-alert';
+    protected static string | BackedEnum | null $navigationIcon = 'heroicon-o-bell-alert';
 
     #[Override]
     public static function form(Schema $schema): Schema

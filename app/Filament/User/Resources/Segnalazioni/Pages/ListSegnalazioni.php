@@ -4,7 +4,6 @@ namespace App\Filament\User\Resources\Segnalazioni\Pages;
 
 use Filament\Actions\CreateAction;
 use App\Filament\User\Resources\Segnalazioni\SegnalazioneResource;
-use Filament\Actions;
 use Filament\Resources\Pages\ListRecords;
 
 class ListSegnalazioni extends ListRecords

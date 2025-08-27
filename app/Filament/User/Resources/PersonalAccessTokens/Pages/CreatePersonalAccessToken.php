@@ -2,9 +2,9 @@
 
 namespace App\Filament\User\Resources\PersonalAccessTokens\Pages;
 
+use Override;
 use App\Filament\User\Resources\PersonalAccessTokens\PersonalAccessTokenResource;
 use Carbon\Carbon;
-use Filament\Notifications\Actions\Action;
 use Filament\Notifications\Notification;
 use Filament\Resources\Pages\CreateRecord;
 use Illuminate\Database\Eloquent\Model;
@@ -14,11 +14,13 @@ class CreatePersonalAccessToken extends CreateRecord
 {
     protected static string $resource = PersonalAccessTokenResource::class;
 
+    #[Override]
     protected function getRedirectUrl(): string
     {
         return $this->getResource()::getUrl('index');
     }
 
+    #[Override]
     protected function handleRecordCreation(array $data): Model
     {
         $expiresAt = isset($data['expires_at']) ? Carbon::parse($data['expires_at']) : null;

@@ -3,6 +3,7 @@
 namespace App\Filament\Admin\Resources\Users;
 
 
+use BackedEnum;
 use Override;
 use Filament\Schemas\Schema;
 use Filament\Schemas\Components\Section;
@@ -13,11 +14,9 @@ use App\Filament\Admin\Resources\Users\Pages\ListUsers;
 use App\Filament\Admin\Resources\Users\Pages\CreateUser;
 use App\Filament\Admin\Resources\Users\Pages\EditUser;
 use App\Models\User;
-use Faker\Provider\Text;
 use Filament\Forms\Components\Placeholder;
 use Filament\Forms\Components\TextInput;
 use Filament\Resources\Resource;
-use Filament\Tables;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 
@@ -25,7 +24,7 @@ class UserResource extends Resource
 {
     protected static ?string $model = User::class;
 
-    protected static string | \BackedEnum | null $navigationIcon = 'heroicon-o-users';
+    protected static string | BackedEnum | null $navigationIcon = 'heroicon-o-users';
 
     protected static ?string $pluralLabel = "Utenti";
     protected static ?string $label = "Utente";

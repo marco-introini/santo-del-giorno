@@ -2,6 +2,7 @@
 
 namespace App\Filament\Admin\Resources\Santi;
 
+use BackedEnum;
 use Override;
 use Filament\Schemas\Schema;
 use Filament\Forms\Components\Select;
@@ -18,11 +19,9 @@ use App\Filament\Admin\Resources\Santi\Pages\CreateSanto;
 use App\Filament\Admin\Resources\Santi\Pages\EditSanto;
 use App\Filament\Admin\Resources\Santi\RelationManagers\SegnalazioniRelationManager;
 use App\Models\Santo;
-use Filament\Forms;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Resources\Resource;
-use Filament\Tables;
 use Filament\Tables\Table;
 
 class SantoResource extends Resource
@@ -34,7 +33,7 @@ class SantoResource extends Resource
     protected static ?string $pluralLabel = 'Santi';
     protected static ?string $label = 'Santo';
 
-    protected static string | \BackedEnum | null $navigationIcon = 'heroicon-o-face-smile';
+    protected static string | BackedEnum | null $navigationIcon = 'heroicon-o-face-smile';
 
     #[Override]
     public static function form(Schema $schema): Schema

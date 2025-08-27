@@ -4,7 +4,6 @@ namespace App\Filament\User\Resources\Segnalazioni\Pages;
 
 use Filament\Actions\DeleteAction;
 use App\Filament\User\Resources\Segnalazioni\SegnalazioneResource;
-use Filament\Actions;
 use Filament\Resources\Pages\EditRecord;
 
 class EditSegnalazione extends EditRecord

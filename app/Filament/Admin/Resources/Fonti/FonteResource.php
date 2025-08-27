@@ -2,6 +2,7 @@
 
 namespace App\Filament\Admin\Resources\Fonti;
 
+use BackedEnum;
 use Override;
 use Filament\Schemas\Schema;
 use Filament\Actions\EditAction;
@@ -13,7 +14,6 @@ use App\Models\Fonte;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Resources\Resource;
-use Filament\Tables;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 
@@ -26,7 +26,7 @@ class FonteResource extends Resource
     protected static ?string $pluralLabel = 'Fonti';
     protected static ?string $label = 'Fonte';
 
-    protected static string | \BackedEnum | null $navigationIcon = 'heroicon-o-globe-alt';
+    protected static string | BackedEnum | null $navigationIcon = 'heroicon-o-globe-alt';
 
     #[Override]
     public static function form(Schema $schema): Schema
