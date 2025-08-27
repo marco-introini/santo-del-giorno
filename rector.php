@@ -20,6 +20,7 @@ return RectorConfig::configure()
     ])
     // uncomment to reach your current PHP version
     ->withPhpSets()
+    ->withImportNames(removeUnusedImports: true)
     ->withTypeCoverageLevel(4)
     ->withRules([
         AnonymousMigrationsRector::class,

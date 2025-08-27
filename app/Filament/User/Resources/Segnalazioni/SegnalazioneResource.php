@@ -16,7 +16,6 @@ use App\Filament\User\Resources\Segnalazioni\Pages\CreateSegnalazione;
 use App\Filament\User\Resources\Segnalazioni\Pages\EditSegnalazione;
 use App\Filament\User\Resources\Segnalazioni\Pages\ViewSegnalazione;
 use App\Enums\TipoSegnalazione;
-use App\Filament\User\Resources\SegnalazioneResource\Pages;
 use App\Models\Segnalazione;
 use Filament\Forms;
 use Filament\Resources\Resource;
