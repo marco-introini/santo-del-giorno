@@ -7,7 +7,7 @@
     "require": {
         "php": "^8.4",
         "ext-zip": "*",
-        "dutchcodingcompany/filament-developer-logins": "dev-support-filament-4",
+        "dutchcodingcompany/filament-developer-logins": "^2.0",
         "filament/filament": "^4.0",
         "inspector-apm/inspector-laravel": "^4.11",
         "jeffgreco13/filament-breezy": "^3.0",
@@ -84,7 +84,7 @@
             "php-http/discovery": true
         }
     },
-    "minimum-stability": "beta",
+    "minimum-stability": "stable",
     "prefer-stable": true,
     "repositories": {
         "flux-pro": {
