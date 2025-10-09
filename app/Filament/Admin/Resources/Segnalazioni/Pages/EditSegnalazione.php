@@ -23,7 +23,7 @@ class EditSegnalazione extends EditRecord
                         ->required()
                         ->columnSpanFull()
                 ])
-                ->action(function (array $data, Segnalazione $record) {
+                ->action(function (array $data, Segnalazione $record): void {
                     $record->evasa = true;
                     $record->note_chiusura = $data['note_chiusura'];
                 })
