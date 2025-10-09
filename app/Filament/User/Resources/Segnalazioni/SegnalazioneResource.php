@@ -52,6 +52,10 @@ class SegnalazioneResource extends Resource
                     ->columnSpanFull()
                     ->rows(10)
                     ->required(),
+                Textarea::make('note_chiusura')
+                    ->columnSpanFull()
+                    ->rows(10)
+                    ->visibleOn('view'),
             ]);
     }
 

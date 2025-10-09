@@ -8,7 +8,6 @@ use Filament\Schemas\Schema;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Textarea;
 use Filament\Tables\Columns\IconColumn;
-use Filament\Tables\Columns\ToggleColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Filters\TernaryFilter;
 use Filament\Tables\Filters\SelectFilter;
@@ -45,6 +44,10 @@ class SegnalazioniResource extends Resource
                     ->disabled(),
                 Textarea::make('testo_segnalazione')
                     ->columnSpanFull()
+                    ->rows(10),
+                Textarea::make('note_chiusura')
+                    ->columnSpanFull()
+                    ->visible(fn (Segnalazione $record) => $record->evasa)
                     ->rows(10)
             ]);
     }
@@ -56,8 +59,8 @@ class SegnalazioniResource extends Resource
             ->columns([
                 IconColumn::make('tipo_segnalazione')
                     ->label('Tipo'),
-                ToggleColumn::make('evasa')
-                    ->sortable(),
+                IconColumn::make('evasa')
+                    ->boolean(),
                 TextColumn::make('user.name')
                     ->label('Segnalatore')
                     ->searchable()
