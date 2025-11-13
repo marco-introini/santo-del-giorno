@@ -26,3 +26,4 @@ yarn-error.log
 /public/sitemap.xml
 /public/fonts/filament/
 /.junie
+/boost.json
