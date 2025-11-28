@@ -2,8 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', fn() => view('home'))
-->name('home');
+Route::view('/', 'home')
+    ->name('home');
 
 Route::view('cerca-per-data', 'cerca-per-data')
     ->name('cerca-per-data');

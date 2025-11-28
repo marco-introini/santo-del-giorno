@@ -24,6 +24,7 @@
     "require-dev": {
         "driftingly/rector-laravel": "^2",
         "fakerphp/faker": "^1.23",
+        "laradumps/laradumps": "^4.0",
         "larastan/larastan": "^3.0",
         "laravel/boost": "^1.0",
         "laravel/pint": "^1.13",
