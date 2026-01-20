@@ -1,0 +1,20 @@
+{
+  "mcpServers": {
+    "laravel-boost": {
+      "command": "/Users/marco/Library/Application Support/Herd/bin/php84",
+      "args": [
+        "/Users/marco/DATI/Sviluppo/Laravel/santo-del-giorno/artisan",
+        "boost:mcp"
+      ]
+    },
+    "herd": {
+      "command": "/Users/marco/Library/Application Support/Herd/bin/php84",
+      "args": [
+        "/Applications/Herd.app/Contents/Resources/herd-mcp.phar"
+      ],
+      "env": {
+        "SITE_PATH": "/Users/marco/DATI/Sviluppo/Laravel/santo-del-giorno"
+      }
+    }
+  }
+}
