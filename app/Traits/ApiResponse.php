@@ -6,7 +6,6 @@ use Illuminate\Http\JsonResponse;
 
 trait ApiResponse
 {
-
     public function baseResponse(string $message, $data, int $code = 200): JsonResponse
     {
         return response()->json([
@@ -31,5 +30,4 @@ trait ApiResponse
                 'treblle-user-id' => auth()->user()->email ?? 'guest',
             ]);
     }
-
 }

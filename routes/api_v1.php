@@ -30,7 +30,6 @@ Route::middleware([
         ->name('santo.findByDate');
 });
 
-
 // FONTE
 Route::get('/fonte/{fonte}', [FonteController::class, 'show'])
     ->middleware([
@@ -41,4 +40,3 @@ Route::get('/fonte/{fonte}', [FonteController::class, 'show'])
         'throttle:chiamate_api',
     ])
     ->name('fonte.show');
-

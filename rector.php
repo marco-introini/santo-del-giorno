@@ -3,12 +3,7 @@
 declare(strict_types=1);
 
 use Rector\Config\RectorConfig;
-use RectorLaravel\Rector\Class_\AddExtendsAnnotationToModelFactoriesRector;
 use RectorLaravel\Rector\Class_\AnonymousMigrationsRector;
-use RectorLaravel\Rector\Class_\ModelCastsPropertyToCastsMethodRector;
-use RectorLaravel\Rector\ClassMethod\AddGenericReturnTypeToRelationsRector;
-use RectorLaravel\Rector\ClassMethod\MigrateToSimplifiedAttributeRector;
-use RectorLaravel\Rector\PropertyFetch\ReplaceFakerInstanceWithHelperRector;
 use RectorLaravel\Set\LaravelLevelSetList;
 
 return RectorConfig::configure()
@@ -19,7 +14,7 @@ return RectorConfig::configure()
         __DIR__.'/tests',
     ])
     // uncomment to reach your current PHP version
-    ->withPhpSets(php85:true)
+    ->withPhpSets(php85: true)
     ->withImportNames(removeUnusedImports: true)
     ->withTypeCoverageLevel(4)
     ->withRules([
@@ -28,4 +23,3 @@ return RectorConfig::configure()
     ->withSets([
         LaravelLevelSetList::UP_TO_LARAVEL_120,
     ]);
-

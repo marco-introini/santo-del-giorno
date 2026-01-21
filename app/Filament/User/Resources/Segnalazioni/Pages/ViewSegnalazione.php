@@ -8,5 +8,4 @@ use Filament\Resources\Pages\ViewRecord;
 class ViewSegnalazione extends ViewRecord
 {
     protected static string $resource = SegnalazioneResource::class;
-
 }

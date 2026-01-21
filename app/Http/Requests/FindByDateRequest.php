@@ -2,12 +2,11 @@
 
 namespace App\Http\Requests;
 
-use Override;
 use Illuminate\Foundation\Http\FormRequest;
+use Override;
 
 class FindByDateRequest extends FormRequest
 {
-
     public function authorize(): bool
     {
         return true;

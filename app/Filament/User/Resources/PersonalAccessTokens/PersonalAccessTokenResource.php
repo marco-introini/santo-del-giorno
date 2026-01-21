@@ -2,31 +2,31 @@
 
 namespace App\Filament\User\Resources\PersonalAccessTokens;
 
-use BackedEnum;
-use App\Models\User;
-use Filament\Schemas\Schema;
-use Filament\Forms\Components\TextInput;
-use Filament\Forms\Components\DateTimePicker;
-use Filament\Forms\Components\CheckboxList;
-use Filament\Tables\Columns\TextColumn;
-use Filament\Actions\ViewAction;
-use Filament\Actions\DeleteAction;
-use Filament\Actions\BulkActionGroup;
-use Filament\Actions\DeleteBulkAction;
-use Override;
-use App\Filament\User\Resources\PersonalAccessTokens\Pages\ListPersonalAccessTokens;
 use App\Filament\User\Resources\PersonalAccessTokens\Pages\CreatePersonalAccessToken;
+use App\Filament\User\Resources\PersonalAccessTokens\Pages\ListPersonalAccessTokens;
 use App\Filament\User\Resources\PersonalAccessTokens\Pages\ViewPersonalAccessToken;
+use App\Models\User;
+use BackedEnum;
+use Filament\Actions\BulkActionGroup;
+use Filament\Actions\DeleteAction;
+use Filament\Actions\DeleteBulkAction;
+use Filament\Actions\ViewAction;
+use Filament\Forms\Components\CheckboxList;
+use Filament\Forms\Components\DateTimePicker;
+use Filament\Forms\Components\TextInput;
 use Filament\Resources\Resource;
+use Filament\Schemas\Schema;
+use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Laravel\Sanctum\PersonalAccessToken;
+use Override;
 
 class PersonalAccessTokenResource extends Resource
 {
     protected static ?string $model = PersonalAccessToken::class;
 
-    protected static string | BackedEnum | null $navigationIcon = 'heroicon-o-key';
+    protected static string|BackedEnum|null $navigationIcon = 'heroicon-o-key';
 
     protected static ?string $navigationLabel = 'API Tokens';
 

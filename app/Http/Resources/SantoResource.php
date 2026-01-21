@@ -2,11 +2,11 @@
 
 namespace App\Http\Resources;
 
-use Override;
 use App\Models\Santo;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
+use Override;
 
 /** @mixin Santo */
 class SantoResource extends JsonResource
@@ -32,7 +32,7 @@ class SantoResource extends JsonResource
                 'note' => $this->when(
                     $request->routeIs('santo.show'),
                     $this->note,
-                )
+                ),
             ],
             'relationships' => [
                 'fonte' => [
@@ -42,13 +42,13 @@ class SantoResource extends JsonResource
                     ],
                     'links' => [
                         'self' => route('fonte.show', $this->fonte_id),
-                    ]
-                ]
+                    ],
+                ],
             ],
             'includes' => new FonteResource($this->whenLoaded('fonte')),
             'links' => [
                 'self' => route('santo.show', $this),
-            ]
+            ],
         ];
     }
 }

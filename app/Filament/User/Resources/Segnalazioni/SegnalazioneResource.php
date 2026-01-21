@@ -2,38 +2,39 @@
 
 namespace App\Filament\User\Resources\Segnalazioni;
 
+use App\Enums\TipoSegnalazione;
+use App\Filament\User\Resources\Segnalazioni\Pages\CreateSegnalazione;
+use App\Filament\User\Resources\Segnalazioni\Pages\EditSegnalazione;
+use App\Filament\User\Resources\Segnalazioni\Pages\ListSegnalazioni;
+use App\Filament\User\Resources\Segnalazioni\Pages\ViewSegnalazione;
+use App\Models\Segnalazione;
 use BackedEnum;
+use Filament\Actions\EditAction;
 use Filament\Actions\ViewAction;
-use Override;
-use Filament\Schemas\Schema;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Textarea;
+use Filament\Resources\Resource;
+use Filament\Schemas\Schema;
 use Filament\Tables\Columns\IconColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Filters\TernaryFilter;
-use Filament\Actions\EditAction;
-use App\Filament\User\Resources\Segnalazioni\Pages\ListSegnalazioni;
-use App\Filament\User\Resources\Segnalazioni\Pages\CreateSegnalazione;
-use App\Filament\User\Resources\Segnalazioni\Pages\EditSegnalazione;
-use App\Filament\User\Resources\Segnalazioni\Pages\ViewSegnalazione;
-use App\Enums\TipoSegnalazione;
-use App\Models\Segnalazione;
-use Filament\Resources\Resource;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
+use Override;
 
 class SegnalazioneResource extends Resource
 {
     protected static ?string $model = Segnalazione::class;
-    protected static ?string $label = "Segnalazione";
-    protected static ?string $pluralLabel = "Segnalazioni";
 
-    protected static ?string $slug = "segnalazioni";
+    protected static ?string $label = 'Segnalazione';
 
+    protected static ?string $pluralLabel = 'Segnalazioni';
 
-    protected static string | BackedEnum | null $navigationIcon = 'heroicon-o-bell-alert';
+    protected static ?string $slug = 'segnalazioni';
+
+    protected static string|BackedEnum|null $navigationIcon = 'heroicon-o-bell-alert';
 
     #[Override]
     public static function form(Schema $schema): Schema
@@ -76,17 +77,17 @@ class SegnalazioneResource extends Resource
                     ->limit(50)
                     ->searchable(),
             ])
-            ->defaultSort('created_at','DESC')
+            ->defaultSort('created_at', 'DESC')
             ->filters([
                 TernaryFilter::make('evasa'),
             ])
             ->recordActions([
-                EditAction::make()->visible(fn (Segnalazione $record) => !$record->evasa),
+                EditAction::make()->visible(fn (Segnalazione $record) => ! $record->evasa),
                 ViewAction::make()->visible(fn (Segnalazione $record) => $record->evasa),
             ])
             ->toolbarActions([
             ])
-            ->modifyQueryUsing(fn (Builder $query) => $query->where('user_id','=', Auth::id()));
+            ->modifyQueryUsing(fn (Builder $query) => $query->where('user_id', '=', Auth::id()));
     }
 
     #[Override]
@@ -104,7 +105,7 @@ class SegnalazioneResource extends Resource
             'index' => ListSegnalazioni::route('/'),
             'create' => CreateSegnalazione::route('/create'),
             'edit' => EditSegnalazione::route('/{record}/edit'),
-            'view'  => ViewSegnalazione::route('/{record}/view'),
+            'view' => ViewSegnalazione::route('/{record}/view'),
         ];
     }
 
@@ -113,7 +114,7 @@ class SegnalazioneResource extends Resource
     public static function canDelete(Model $record): bool
     {
         // posso cancellarla solo se non è già evasa
-        return !$record->evasa;
+        return ! $record->evasa;
     }
 
     /** @param  Segnalazione  $record */
@@ -121,6 +122,6 @@ class SegnalazioneResource extends Resource
     public static function canEdit(Model $record): bool
     {
         // posso modificarla solo se non è già evasa
-        return !$record->evasa;
+        return ! $record->evasa;
     }
 }

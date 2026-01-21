@@ -18,7 +18,7 @@ test('la ricerca torna il santo', function (): void {
     $santo = Santo::factory()->create();
 
     Livewire::test(CercaSantoPerNome::class)
-        ->set('nome',$santo->nome)
+        ->set('nome', $santo->nome)
         ->assertStatus(200)
         ->assertSee($santo->nome)
         ->assertSee($santo->giorno)
@@ -41,7 +41,7 @@ test('la ricerca torna il santo con onomastico primario', function (): void {
     ]);
 
     Livewire::test(CercaSantoPerNome::class)
-        ->set('onomastico',true)
+        ->set('onomastico', true)
         ->assertStatus(200)
         ->assertSee($santo->nome)
         ->assertSee($santo->giorno)
@@ -55,7 +55,7 @@ test('la ricerca torna il santo con onomastico secondario', function (): void {
     ]);
 
     Livewire::test(CercaSantoPerNome::class)
-        ->set('onomastico',true)
+        ->set('onomastico', true)
         ->assertStatus(200)
         ->assertSee($santo->nome)
         ->assertSee($santo->giorno)
@@ -69,7 +69,7 @@ test('la ricerca non torna il santo senza onomastico se imposto solo onomastico'
     ]);
 
     Livewire::test(CercaSantoPerNome::class)
-        ->set('onomastico',true)
+        ->set('onomastico', true)
         ->assertStatus(200)
         ->assertDontSee($santo->nome);
 });

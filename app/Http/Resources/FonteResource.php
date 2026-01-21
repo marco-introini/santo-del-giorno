@@ -2,11 +2,11 @@
 
 namespace App\Http\Resources;
 
-use Override;
 use App\Models\Fonte;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
+use Override;
 
 /** @mixin Fonte */
 class FonteResource extends JsonResource

@@ -15,20 +15,20 @@ class LoginController extends Controller
 
     public function login(LoginRequest $request)
     {
-        if (!Auth::attempt([
+        if (! Auth::attempt([
             'email' => $request->email,
-            'password' => $request->password
+            'password' => $request->password,
         ])) {
-            return $this->error("Credenziali errate", 401);
+            return $this->error('Credenziali errate', 401);
         }
 
         $user = User::firstWhere('email', $request->email);
 
-        return $this->ok("Login OK", [
+        return $this->ok('Login OK', [
             'token' => $user->createToken(
                 'API token for '.$user->email,
                 ['*'],
-                now()->addMonth())->plainTextToken
+                now()->addMonth())->plainTextToken,
         ]);
     }
 
@@ -36,7 +36,6 @@ class LoginController extends Controller
     {
         $request->user()->tokens()->delete();
 
-        return $this->ok("Logout OK");
+        return $this->ok('Logout OK');
     }
-
 }

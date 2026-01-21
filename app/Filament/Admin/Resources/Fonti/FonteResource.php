@@ -2,20 +2,20 @@
 
 namespace App\Filament\Admin\Resources\Fonti;
 
-use BackedEnum;
-use Override;
-use Filament\Schemas\Schema;
-use Filament\Actions\EditAction;
-use Filament\Actions\DeleteAction;
-use Filament\Actions\BulkActionGroup;
-use Filament\Actions\DeleteBulkAction;
 use App\Filament\Admin\Resources\Fonti\Pages\ManageFonti;
 use App\Models\Fonte;
+use BackedEnum;
+use Filament\Actions\BulkActionGroup;
+use Filament\Actions\DeleteAction;
+use Filament\Actions\DeleteBulkAction;
+use Filament\Actions\EditAction;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Resources\Resource;
+use Filament\Schemas\Schema;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
+use Override;
 
 class FonteResource extends Resource
 {
@@ -24,9 +24,10 @@ class FonteResource extends Resource
     protected static ?string $slug = 'fonti';
 
     protected static ?string $pluralLabel = 'Fonti';
+
     protected static ?string $label = 'Fonte';
 
-    protected static string | BackedEnum | null $navigationIcon = 'heroicon-o-globe-alt';
+    protected static string|BackedEnum|null $navigationIcon = 'heroicon-o-globe-alt';
 
     #[Override]
     public static function form(Schema $schema): Schema

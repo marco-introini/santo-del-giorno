@@ -2,26 +2,27 @@
 
 namespace App\Filament\Admin\Resources\Santi\RelationManagers;
 
-use Override;
-use Filament\Schemas\Schema;
-use Filament\Forms\Components\Textarea;
+use App\Models\Segnalazione;
+use Filament\Actions\BulkActionGroup;
+use Filament\Actions\DeleteAction;
+use Filament\Actions\DeleteBulkAction;
+use Filament\Actions\EditAction;
 use Filament\Forms\Components\DatePicker;
-use Filament\Schemas\Components\Section;
+use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
-use Filament\Tables\Columns\TextColumn;
-use Filament\Tables\Columns\IconColumn;
-use Filament\Actions\EditAction;
-use Filament\Actions\DeleteAction;
-use Filament\Actions\BulkActionGroup;
-use Filament\Actions\DeleteBulkAction;
-use App\Models\Segnalazione;
 use Filament\Resources\RelationManagers\RelationManager;
+use Filament\Schemas\Components\Section;
+use Filament\Schemas\Schema;
+use Filament\Tables\Columns\IconColumn;
+use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
+use Override;
 
 class SegnalazioniRelationManager extends RelationManager
 {
     protected static string $relationship = 'segnalazioni';
+
     protected static ?string $title = 'Vedi segnalazione';
 
     #[Override]
@@ -42,17 +43,16 @@ class SegnalazioniRelationManager extends RelationManager
                 Section::make('Segnalante')
                     ->schema([
                         TextInput::make('user.name')
-                            ->formatStateUsing(fn (Segnalazione $segnalazione) => $segnalazione->user->name )
+                            ->formatStateUsing(fn (Segnalazione $segnalazione) => $segnalazione->user->name)
                             ->disabled()
                             ->label('Nome'),
                         TextInput::make('user.email')
-                            ->formatStateUsing(fn (Segnalazione $segnalazione) => $segnalazione->user->email )
+                            ->formatStateUsing(fn (Segnalazione $segnalazione) => $segnalazione->user->email)
                             ->disabled()
                             ->label('Nome'),
                     ])->columns(2),
 
-
-                Toggle::make('evasa')
+                Toggle::make('evasa'),
             ]);
     }
 

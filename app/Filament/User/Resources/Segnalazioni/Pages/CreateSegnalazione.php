@@ -8,5 +8,4 @@ use Filament\Resources\Pages\CreateRecord;
 class CreateSegnalazione extends CreateRecord
 {
     protected static string $resource = SegnalazioneResource::class;
-
 }

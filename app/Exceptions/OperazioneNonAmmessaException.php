@@ -4,6 +4,4 @@ namespace App\Exceptions;
 
 use Exception;
 
-class OperazioneNonAmmessaException extends Exception
-{
-}
+class OperazioneNonAmmessaException extends Exception {}

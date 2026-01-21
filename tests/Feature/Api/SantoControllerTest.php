@@ -3,6 +3,7 @@
 use App\Models\Fonte;
 use App\Models\Santo;
 use App\Models\User;
+
 use function Pest\Laravel\actingAs;
 use function Pest\Laravel\get;
 
@@ -11,7 +12,6 @@ beforeEach(function (): void {
     $user = User::factory()->create();
     actingAs($user);
 });
-
 
 test('un santo viene tornato correttamente', function (): void {
     $santo = Santo::factory()->create();

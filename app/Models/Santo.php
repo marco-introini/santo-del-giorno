@@ -41,5 +41,4 @@ class Santo extends Model
     {
         return $this->hasMany(Segnalazione::class);
     }
-
 }

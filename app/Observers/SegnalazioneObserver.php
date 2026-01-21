@@ -16,18 +16,16 @@ class SegnalazioneObserver
      */
     public function creating(Segnalazione $segnalazione): void
     {
-        if (!Auth::check()) {
-            throw new OperazioneNonAmmessaException();
+        if (! Auth::check()) {
+            throw new OperazioneNonAmmessaException;
         }
 
-        if (!Auth::user()->isAdmin()) {
+        if (! Auth::user()->isAdmin()) {
             $segnalazione->user_id = Auth::id();
         }
     }
 
-    public function updating(Segnalazione $segnalazione): void
-    {
-    }
+    public function updating(Segnalazione $segnalazione): void {}
 
     public function created(Segnalazione $segnalazione): void
     {

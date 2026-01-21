@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Treblle\Laravel\Middlewares\TreblleMiddleware;
 
-Route::get('/user', fn(Request $request) => $request->user())->middleware('auth:sanctum');
+Route::get('/user', fn (Request $request) => $request->user())->middleware('auth:sanctum');
 
 Route::post('/login', [LoginController::class, 'login'])
     ->middleware([
@@ -19,6 +19,6 @@ Route::post('/logout', [LoginController::class, 'logout'])
     ->middleware([
         AlwaysAcceptJsonMiddleware::class,
         TreblleMiddleware::class,
-        'auth:sanctum'
+        'auth:sanctum',
     ])
     ->name('logout');

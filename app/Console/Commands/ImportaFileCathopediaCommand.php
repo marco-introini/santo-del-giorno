@@ -8,7 +8,6 @@ use Carbon\Carbon;
 use Exception;
 use Illuminate\Console\Command;
 
-
 class ImportaFileCathopediaCommand extends Command
 {
     protected $signature = 'importa:file-cathopedia {file}';
@@ -24,11 +23,11 @@ class ImportaFileCathopediaCommand extends Command
         $fonte = Fonte::firstOrCreate([
             'nome' => 'Cathopedia',
             'url' => 'https://it.cathopedia.org/wiki/Cathopedia:Pagina_principale',
-            'note' => 'Wikipedia Cattolica'
+            'note' => 'Wikipedia Cattolica',
         ]);
 
         try {
-            $file = fopen($file, "r");
+            $file = fopen($file, 'r');
 
             $giornoAttuale = 0;
             $meseAttuale = 0;
@@ -40,7 +39,7 @@ class ImportaFileCathopediaCommand extends Command
                         $giornoAttuale = $dataTime->day;
                         $meseAttuale = $dataTime->month;
                     } else {
-                        $this->error("Non è possibile trasformare la data ".$line);
+                        $this->error('Non è possibile trasformare la data '.$line);
                     }
                 } else {
 
@@ -48,7 +47,7 @@ class ImportaFileCathopediaCommand extends Command
                         ->remove(';')
                         ->explode(',');
                     $nome = $parti[0];
-                    $descrizione = $parti->slice(1)->join(", ");
+                    $descrizione = $parti->slice(1)->join(', ');
                     Santo::create([
                         'nome' => $nome,
                         'note' => $descrizione,
@@ -69,18 +68,18 @@ class ImportaFileCathopediaCommand extends Command
     public static function convertiDataItalianoInDateTime($dataItaliano): ?Carbon
     {
         $mesiItalianoInglese = [
-            "gennaio" => "January",
-            "febbraio" => "February",
-            "marzo" => "March",
-            "aprile" => "April",
-            "maggio" => "May",
-            "giugno" => "June",
-            "luglio" => "July",
-            "agosto" => "August",
-            "settembre" => "September",
-            "ottobre" => "October",
-            "novembre" => "November",
-            "dicembre" => "December",
+            'gennaio' => 'January',
+            'febbraio' => 'February',
+            'marzo' => 'March',
+            'aprile' => 'April',
+            'maggio' => 'May',
+            'giugno' => 'June',
+            'luglio' => 'July',
+            'agosto' => 'August',
+            'settembre' => 'September',
+            'ottobre' => 'October',
+            'novembre' => 'November',
+            'dicembre' => 'December',
         ];
 
         $partiData = explode(' ', (string) $dataItaliano);
@@ -89,11 +88,11 @@ class ImportaFileCathopediaCommand extends Command
             if (array_key_exists($partiData[1], $mesiItalianoInglese)) {
                 $partiData[1] = $mesiItalianoInglese[$partiData[1]];
                 $dataInglese = implode(' ', $partiData);
+
                 return Carbon::createFromFormat('j F', $dataInglese);
             }
         }
 
         return null;
     }
-
 }

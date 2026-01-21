@@ -14,16 +14,16 @@ use Illuminate\Support\Facades\Storage;
 use Jeffgreco13\FilamentBreezy\Traits\TwoFactorAuthenticatable;
 use Laravel\Sanctum\HasApiTokens;
 
-class User extends Authenticatable implements MustVerifyEmail, FilamentUser, HasAvatar
+class User extends Authenticatable implements FilamentUser, HasAvatar, MustVerifyEmail
 {
-    use HasFactory, Notifiable, HasApiTokens, TwoFactorAuthenticatable;
+    use HasApiTokens, HasFactory, Notifiable, TwoFactorAuthenticatable;
 
     protected $guarded = [];
 
     protected $hidden = [
         'password',
         'remember_token',
-        'is_admin'
+        'is_admin',
     ];
 
     /**
@@ -59,7 +59,7 @@ class User extends Authenticatable implements MustVerifyEmail, FilamentUser, Has
             return $this->isAdmin();
         }
         if ($panel->getId() === 'user') {
-            return !$this->isAdmin();
+            return ! $this->isAdmin();
         }
 
         return false;
@@ -67,7 +67,7 @@ class User extends Authenticatable implements MustVerifyEmail, FilamentUser, Has
 
     public function getFilamentAvatarUrl(): ?string
     {
-        return $this->avatar ? Storage::disk('avatars')->url($this->avatar) : null ;
+        return $this->avatar ? Storage::disk('avatars')->url($this->avatar) : null;
     }
 
     /**

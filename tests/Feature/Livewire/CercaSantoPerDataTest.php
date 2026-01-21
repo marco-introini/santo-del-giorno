@@ -29,12 +29,12 @@ test('la ricerca torna il santo di un giorno scelto', function (): void {
     ]);
 
     Livewire::test(CercaSantoPerData::class)
-        ->set('giorno',$santo->giorno)
-        ->set('mese',$santo->mese)
+        ->set('giorno', $santo->giorno)
+        ->set('mese', $santo->mese)
         ->assertStatus(200)
         ->assertSee($santo->nome)
-        ->assertSet('giorno',$santo->giorno)
-        ->assertSet('mese',$santo->mese);
+        ->assertSet('giorno', $santo->giorno)
+        ->assertSet('mese', $santo->mese);
 });
 
 test('la ricerca torna NON il santo di un altro giorno', function (): void {
@@ -44,10 +44,10 @@ test('la ricerca torna NON il santo di un altro giorno', function (): void {
     ]);
 
     Livewire::test(CercaSantoPerData::class)
-        ->set('giorno',21)
-        ->set('mese',11)
+        ->set('giorno', 21)
+        ->set('mese', 11)
         ->assertStatus(200)
         ->assertDontSee($santo->nome)
-        ->assertSet('giorno',21)
-        ->assertSet('mese',11);
+        ->assertSet('giorno', 21)
+        ->assertSet('mese', 11);
 });

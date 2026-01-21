@@ -26,13 +26,13 @@ class ImportaOnomasticiCommand extends Command
         ]);
 
         try {
-            $file = fopen($file, "r");
+            $file = fopen($file, 'r');
 
             while (($line = fgets($file)) !== false) {
                 $line = rtrim($line, "\r\n");
-                $tokens = explode(";", $line);
+                $tokens = explode(';', $line);
                 $nome = $tokens[0];
-                $data = explode(' ',$tokens[1]);
+                $data = explode(' ', $tokens[1]);
                 $giorno = $data[0];
                 $mese = self::ottieniNumeroMese($data[1]);
 
@@ -43,7 +43,7 @@ class ImportaOnomasticiCommand extends Command
                     'mese' => $mese,
                     'onomastico' => true,
                     'onomastico_secondario' => false,
-                    ]);
+                ]);
             }
             fclose($file);
         } catch (Exception $e) {

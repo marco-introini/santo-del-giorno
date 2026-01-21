@@ -24,13 +24,13 @@ class SantoDelGiornoController extends ApiController
     {
         $santo = Santo::without('fonte')->find($uuid);
         if (is_null($santo)) {
-            return $this->error("Santo non trovato");
+            return $this->error('Santo non trovato');
         }
         if ($this->include('fonte')) {
-            return $this->ok("Santo Trovato (richiesta Fonte)", new SantoResource($santo->load('fonte')));
+            return $this->ok('Santo Trovato (richiesta Fonte)', new SantoResource($santo->load('fonte')));
         }
 
-        return $this->ok("Santo Trovato", new SantoResource($santo));
+        return $this->ok('Santo Trovato', new SantoResource($santo));
     }
 
     public function findByDate(FindByDateRequest $request)
@@ -39,12 +39,14 @@ class SantoDelGiornoController extends ApiController
         $giorno = $request->route('giorno'); // Recupera il parametro dalla rotta
 
         $santi = Santo::query()->where('mese', $mese)->where('giorno', $giorno)->get();
+
         return $this->ok("Santi del $giorno/$mese", SantoResource::collection($santi));
     }
 
     public function findByName(string $nome)
     {
         $santi = Santo::where('nome', 'LIKE', '%'.$nome.'%')->get();
+
         return $this->ok("Santi contenente '$nome'", SantoResource::collection($santi));
 
     }
@@ -52,10 +54,10 @@ class SantoDelGiornoController extends ApiController
     public function findOnomastico(string $nome)
     {
         $santi = Santo::where('nome', 'LIKE', '%'.$nome.'%')
-            ->where(function (Builder $builder): void{
-                $builder->where('onomastico',true)->orWhere('onomastico_secondario', true);
+            ->where(function (Builder $builder): void {
+                $builder->where('onomastico', true)->orWhere('onomastico_secondario', true);
             })->get();
+
         return $this->ok("Onomastico di '$nome'", SantoResource::collection($santi));
     }
-
 }

@@ -33,11 +33,11 @@ class Segnalazione extends Model
     {
         return $this->belongsTo(Santo::class);
     }
+
     protected function casts(): array
     {
         return [
             'tipo_segnalazione' => TipoSegnalazione::class,
         ];
     }
-
 }

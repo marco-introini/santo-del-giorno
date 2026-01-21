@@ -4,12 +4,11 @@ namespace App\Enums;
 
 use Filament\Support\Contracts\HasIcon;
 
-enum TipoSegnalazione: string implements  HasIcon
+enum TipoSegnalazione: string implements HasIcon
 {
     case DATA_ERRATA = 'DATA_ERRATA';
     case NOME_ERRATO = 'NOME_ERRATO';
     case ONOMASTICO_ERRATO = 'ONOMASTICO_ERRATO';
-
 
     public function getIcon(): string
     {

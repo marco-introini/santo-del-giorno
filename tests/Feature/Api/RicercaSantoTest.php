@@ -3,6 +3,7 @@
 use App\Models\Fonte;
 use App\Models\Santo;
 use App\Models\User;
+
 use function Pest\Laravel\actingAs;
 use function Pest\Laravel\get;
 
@@ -27,7 +28,7 @@ test('un santo viene ricercato correttamente per data', function (): void {
     $response = get(route('santo.findByDate', [
         'mese' => $santo->mese,
         'giorno' => $santo->giorno,
-        ]), ['accept' => 'application/vnd.api+json']);
+    ]), ['accept' => 'application/vnd.api+json']);
 
     $response->assertStatus(200);
     $response->assertJsonFragment(['nome' => $santo->nome]);

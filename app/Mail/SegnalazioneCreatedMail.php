@@ -14,9 +14,7 @@ class SegnalazioneCreatedMail extends Mailable implements ShouldQueue
 {
     use Queueable, SerializesModels;
 
-    public function __construct(public readonly Segnalazione $segnalazione)
-    {
-    }
+    public function __construct(public readonly Segnalazione $segnalazione) {}
 
     public function envelope(): Envelope
     {

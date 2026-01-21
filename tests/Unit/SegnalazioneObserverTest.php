@@ -5,6 +5,7 @@ use App\Exceptions\OperazioneNonAmmessaException;
 use App\Models\Santo;
 use App\Models\Segnalazione;
 use App\Models\User;
+
 use function Pest\Laravel\actingAs;
 
 test('una segnalazione viene associata correttamente a utente loggato', function (): void {

@@ -2,10 +2,10 @@
 
 namespace App\Filament\Admin\Resources\Segnalazioni\Pages;
 
+use App\Filament\Admin\Resources\Segnalazioni\SegnalazioniResource;
 use App\Models\Segnalazione;
 use Filament\Actions\Action;
 use Filament\Actions\DeleteAction;
-use App\Filament\Admin\Resources\Segnalazioni\SegnalazioniResource;
 use Filament\Forms\Components\Textarea;
 use Filament\Resources\Pages\EditRecord;
 
@@ -21,12 +21,12 @@ class EditSegnalazione extends EditRecord
                 ->schema([
                     Textarea::make('note_chiusura')
                         ->required()
-                        ->columnSpanFull()
+                        ->columnSpanFull(),
                 ])
                 ->action(function (array $data, Segnalazione $record): void {
                     $record->evasa = true;
                     $record->note_chiusura = $data['note_chiusura'];
-                })
+                }),
         ];
     }
 }

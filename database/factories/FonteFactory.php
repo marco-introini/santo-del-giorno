@@ -13,7 +13,7 @@ class FonteFactory extends Factory
     public function definition(): array
     {
         return [
-            'nome' => fake()->words(3,true),
+            'nome' => fake()->words(3, true),
             'url' => fake()->url(),
             'note' => fake()->paragraph(),
             'created_at' => Carbon::now(),

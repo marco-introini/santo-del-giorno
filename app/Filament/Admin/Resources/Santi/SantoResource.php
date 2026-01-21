@@ -2,27 +2,27 @@
 
 namespace App\Filament\Admin\Resources\Santi;
 
-use BackedEnum;
-use Override;
-use Filament\Schemas\Schema;
-use Filament\Forms\Components\Select;
-use Filament\Schemas\Components\Section;
-use Filament\Forms\Components\Toggle;
-use Filament\Tables\Columns\TextColumn;
-use Filament\Tables\Columns\IconColumn;
-use Filament\Actions\EditAction;
-use Filament\Actions\DeleteAction;
-use Filament\Actions\BulkActionGroup;
-use Filament\Actions\DeleteBulkAction;
-use App\Filament\Admin\Resources\Santi\Pages\ListSanti;
 use App\Filament\Admin\Resources\Santi\Pages\CreateSanto;
 use App\Filament\Admin\Resources\Santi\Pages\EditSanto;
+use App\Filament\Admin\Resources\Santi\Pages\ListSanti;
 use App\Filament\Admin\Resources\Santi\RelationManagers\SegnalazioniRelationManager;
 use App\Models\Santo;
+use BackedEnum;
+use Filament\Actions\BulkActionGroup;
+use Filament\Actions\DeleteAction;
+use Filament\Actions\DeleteBulkAction;
+use Filament\Actions\EditAction;
+use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\Toggle;
 use Filament\Resources\Resource;
+use Filament\Schemas\Components\Section;
+use Filament\Schemas\Schema;
+use Filament\Tables\Columns\IconColumn;
+use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
+use Override;
 
 class SantoResource extends Resource
 {
@@ -31,9 +31,10 @@ class SantoResource extends Resource
     protected static ?string $slug = 'santi';
 
     protected static ?string $pluralLabel = 'Santi';
+
     protected static ?string $label = 'Santo';
 
-    protected static string | BackedEnum | null $navigationIcon = 'heroicon-o-face-smile';
+    protected static string|BackedEnum|null $navigationIcon = 'heroicon-o-face-smile';
 
     #[Override]
     public static function form(Schema $schema): Schema
@@ -65,7 +66,7 @@ class SantoResource extends Resource
                         Toggle::make('onomastico_secondario')
                             ->default(false),
                     ])
-                    ->columns(2)
+                    ->columns(2),
             ]);
     }
 

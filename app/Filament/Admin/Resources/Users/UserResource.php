@@ -2,32 +2,32 @@
 
 namespace App\Filament\Admin\Resources\Users;
 
-
-use BackedEnum;
-use Override;
-use Filament\Schemas\Schema;
-use Filament\Schemas\Components\Section;
-use Filament\Actions\DeleteAction;
-use Filament\Actions\BulkActionGroup;
-use Filament\Actions\DeleteBulkAction;
-use App\Filament\Admin\Resources\Users\Pages\ListUsers;
 use App\Filament\Admin\Resources\Users\Pages\CreateUser;
 use App\Filament\Admin\Resources\Users\Pages\EditUser;
+use App\Filament\Admin\Resources\Users\Pages\ListUsers;
 use App\Models\User;
+use BackedEnum;
+use Filament\Actions\BulkActionGroup;
+use Filament\Actions\DeleteAction;
+use Filament\Actions\DeleteBulkAction;
 use Filament\Forms\Components\Placeholder;
 use Filament\Forms\Components\TextInput;
 use Filament\Resources\Resource;
+use Filament\Schemas\Components\Section;
+use Filament\Schemas\Schema;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
+use Override;
 
 class UserResource extends Resource
 {
     protected static ?string $model = User::class;
 
-    protected static string | BackedEnum | null $navigationIcon = 'heroicon-o-users';
+    protected static string|BackedEnum|null $navigationIcon = 'heroicon-o-users';
 
-    protected static ?string $pluralLabel = "Utenti";
-    protected static ?string $label = "Utente";
+    protected static ?string $pluralLabel = 'Utenti';
+
+    protected static ?string $label = 'Utente';
 
     #[Override]
     public static function form(Schema $schema): Schema
@@ -44,20 +44,20 @@ class UserResource extends Resource
                     ->disabled(),
                 TextInput::make('last_api_call')
                     ->label('Ultima chiamata API')
-                    ->formatStateUsing(fn(User $user
+                    ->formatStateUsing(fn (User $user
                     ) => $user->last_api_call ? $user->last_api_call->format('d/m/Y H:i') : null)
                     ->disabled(),
 
                 Section::make('Informazioni di Sicurezza')
                     ->schema([
                         Placeholder::make('created_at')
-                            ->content(fn(User $record): string => $record->created_at->format('d/m/Y H:i'))
+                            ->content(fn (User $record): string => $record->created_at->format('d/m/Y H:i'))
                             ->label('Data Iscrizione'),
                         Placeholder::make('email_verified_at')
-                            ->content(fn(User $record): string => $record->email_verified_at->format('d/m/Y H:i'))
+                            ->content(fn (User $record): string => $record->email_verified_at->format('d/m/Y H:i'))
                             ->label('Data Verifica Email'),
                         Placeholder::make('updated_at')
-                            ->content(fn(User $record): string => $record->updated_at->format('d/m/Y H:i'))
+                            ->content(fn (User $record): string => $record->updated_at->format('d/m/Y H:i'))
                             ->label('Data Ultima Modifica'),
                     ])->columns(),
             ]);
@@ -101,7 +101,6 @@ class UserResource extends Resource
             ]);
     }
 
-
     #[Override]
     public static function getPages(): array
     {
@@ -117,5 +116,4 @@ class UserResource extends Resource
     {
         return false;
     }
-
 }

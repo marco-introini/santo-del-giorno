@@ -2,16 +2,16 @@
 
 use App\Models\Fonte;
 use App\Models\User;
+
 use function Pest\Laravel\actingAs;
 use function Pest\Laravel\get;
 
 beforeEach(function (): void {
-   $user = User::factory()->create();
-   actingAs($user);
+    $user = User::factory()->create();
+    actingAs($user);
 });
 
-
-test('vengono tornate le fonti', function (): void{
+test('vengono tornate le fonti', function (): void {
     $fonte = Fonte::factory()->create();
 
     $response = get(route('fonte.show', $fonte), ['Accept' => 'application/vnd.api+json']);
@@ -22,7 +22,7 @@ test('vengono tornate le fonti', function (): void{
         ->and($response->json('data.attributes.url'))->toBe($fonte->url);
 });
 
-test('vengono tornate le fonti anche senza header json', function (): void{
+test('vengono tornate le fonti anche senza header json', function (): void {
     $fonte = Fonte::factory()->create();
 
     $response = get(route('fonte.show', $fonte));
@@ -33,7 +33,7 @@ test('vengono tornate le fonti anche senza header json', function (): void{
         ->and($response->json('data.attributes.url'))->toBe($fonte->url);
 });
 
-test('la chiamata a fonti incrementa il contatore delle chiamate', function (): void{
+test('la chiamata a fonti incrementa il contatore delle chiamate', function (): void {
     $fonte = Fonte::factory()->create();
 
     get(route('fonte.show', $fonte));
@@ -41,7 +41,7 @@ test('la chiamata a fonti incrementa il contatore delle chiamate', function (): 
     expect(User::first()->api_calls)->toBe(1);
 });
 
-test('la chiamata a fonti imposta correttamente il valore last_api_call', function (): void{
+test('la chiamata a fonti imposta correttamente il valore last_api_call', function (): void {
     $fonte = Fonte::factory()->create();
 
     get(route('fonte.show', $fonte));

@@ -2,8 +2,8 @@
 
 namespace App\Filament\Admin\Resources\Santi\Pages;
 
-use Filament\Actions\CreateAction;
 use App\Filament\Admin\Resources\Santi\SantoResource;
+use Filament\Actions\CreateAction;
 use Filament\Resources\Pages\ListRecords;
 
 class ListSanti extends ListRecords

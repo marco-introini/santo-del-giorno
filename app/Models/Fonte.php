@@ -21,5 +21,4 @@ class Fonte extends Model
     {
         return $this->hasMany(Santo::class);
     }
-
 }

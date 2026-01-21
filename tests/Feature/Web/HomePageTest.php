@@ -3,10 +3,9 @@
 use function Pest\Laravel\get;
 use function Pest\Laravel\withoutVite;
 
-beforeEach(function (): void{
-   withoutVite();
+beforeEach(function (): void {
+    withoutVite();
 });
-
 
 it('returns a successful response', function (): void {
     $response = get('/');

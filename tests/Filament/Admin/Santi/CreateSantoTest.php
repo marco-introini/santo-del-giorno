@@ -1,8 +1,8 @@
 <?php
 
-use App\Models\Santo;
 use App\Filament\Admin\Resources\Santi\Pages\CreateSanto;
 use App\Models\Fonte;
+use App\Models\Santo;
 use App\Models\User;
 use Filament\Facades\Filament;
 use Livewire\Livewire;

@@ -12,6 +12,7 @@ class CercaSantoPerNome extends Component
     use WithPagination;
 
     public string $nome = '';
+
     public bool $onomastico = false;
 
     public function render()
@@ -25,9 +26,9 @@ class CercaSantoPerNome extends Component
             });
         }
 
-        return view('livewire.cerca-santo-per-nome',[
-            'santi' => $query->paginate(20)
-            ]);
+        return view('livewire.cerca-santo-per-nome', [
+            'santi' => $query->paginate(20),
+        ]);
     }
 
     public function cercaPerNome(): void
@@ -35,5 +36,4 @@ class CercaSantoPerNome extends Component
         $this->resetPage();
         $this->render();
     }
-
 }

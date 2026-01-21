@@ -17,7 +17,7 @@ class SantoFactory extends Factory
             'nome' => fake()->name(),
             'giorno' => fake()->numberBetween(1, 31),
             'mese' => fake()->numberBetween(1, 12),
-            'note' => fake()->sentences(2,true),
+            'note' => fake()->sentences(2, true),
             'onomastico' => fake()->boolean(10),
             'onomastico_secondario' => fake()->boolean(30),
             'fonte_id' => Fonte::factory(),
@@ -30,7 +30,7 @@ class SantoFactory extends Factory
     {
         return $this->state(fn (array $attributes) => [
             'onomastico' => $primario,
-            'onomastico_secondario' => !$primario,
+            'onomastico_secondario' => ! $primario,
         ]);
     }
 }

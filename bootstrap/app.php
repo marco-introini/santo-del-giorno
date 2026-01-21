@@ -23,5 +23,4 @@ return Application::configure(basePath: dirname(__DIR__))
         $middleware->appendToGroup('web', WebRequestMonitoring::class)
             ->appendToGroup('api', WebRequestMonitoring::class);
     })
-    ->withExceptions(function (Exceptions $exceptions) {
-    })->create();
+    ->withExceptions(function (Exceptions $exceptions) {})->create();

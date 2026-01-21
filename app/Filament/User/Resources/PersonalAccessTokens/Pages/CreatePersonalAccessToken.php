@@ -2,13 +2,13 @@
 
 namespace App\Filament\User\Resources\PersonalAccessTokens\Pages;
 
-use Override;
 use App\Filament\User\Resources\PersonalAccessTokens\PersonalAccessTokenResource;
 use Carbon\Carbon;
 use Filament\Notifications\Notification;
 use Filament\Resources\Pages\CreateRecord;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\HtmlString;
+use Override;
 
 class CreatePersonalAccessToken extends CreateRecord
 {
@@ -48,8 +48,8 @@ class CreatePersonalAccessToken extends CreateRecord
             Notification::make()
                 ->title('Creazione API Token riuscita')
                 ->body(new HtmlString(
-                    'Token creato. Copialo immediatamente in quanto non sarà possibile vederlo nuovamente:<br><br>' .
-                    '<div class="p-4 bg-gray-100 rounded font-mono text-sm break-all">' . $plainTextToken . '</div>'
+                    'Token creato. Copialo immediatamente in quanto non sarà possibile vederlo nuovamente:<br><br>'.
+                    '<div class="p-4 bg-gray-100 rounded font-mono text-sm break-all">'.$plainTextToken.'</div>'
                 ))
                 ->success()
                 ->persistent()

@@ -2,32 +2,33 @@
 
 namespace App\Filament\Admin\Resources\Segnalazioni;
 
-use BackedEnum;
-use Override;
-use Filament\Schemas\Schema;
-use Filament\Forms\Components\Select;
-use Filament\Forms\Components\Textarea;
-use Filament\Tables\Columns\IconColumn;
-use Filament\Tables\Columns\TextColumn;
-use Filament\Tables\Filters\TernaryFilter;
-use Filament\Tables\Filters\SelectFilter;
-use Filament\Actions\EditAction;
-use App\Filament\Admin\Resources\Segnalazioni\Pages\ListSegnalazioni;
+use App\Enums\TipoSegnalazione;
 use App\Filament\Admin\Resources\Segnalazioni\Pages\CreateSegnalazione;
 use App\Filament\Admin\Resources\Segnalazioni\Pages\EditSegnalazione;
-use App\Enums\TipoSegnalazione;
+use App\Filament\Admin\Resources\Segnalazioni\Pages\ListSegnalazioni;
 use App\Models\Segnalazione;
+use BackedEnum;
+use Filament\Actions\EditAction;
+use Filament\Forms\Components\Select;
+use Filament\Forms\Components\Textarea;
 use Filament\Resources\Resource;
+use Filament\Schemas\Schema;
+use Filament\Tables\Columns\IconColumn;
+use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Filters\SelectFilter;
+use Filament\Tables\Filters\TernaryFilter;
 use Filament\Tables\Table;
+use Override;
 
 class SegnalazioniResource extends Resource
 {
     protected static ?string $model = Segnalazione::class;
 
-    protected static ?string $pluralLabel = "Segnalazioni";
-    protected static ?string $label = "Segnalazione";
+    protected static ?string $pluralLabel = 'Segnalazioni';
 
-    protected static string | BackedEnum | null $navigationIcon = 'heroicon-o-bell-alert';
+    protected static ?string $label = 'Segnalazione';
+
+    protected static string|BackedEnum|null $navigationIcon = 'heroicon-o-bell-alert';
 
     #[Override]
     public static function form(Schema $schema): Schema
@@ -48,7 +49,7 @@ class SegnalazioniResource extends Resource
                 Textarea::make('note_chiusura')
                     ->columnSpanFull()
                     ->visible(fn (Segnalazione $record) => $record->evasa)
-                    ->rows(10)
+                    ->rows(10),
             ]);
     }
 
@@ -79,7 +80,7 @@ class SegnalazioniResource extends Resource
                 TernaryFilter::make('evasa')
                     ->default(false),
                 SelectFilter::make('user')
-                    ->relationship('user', 'name')
+                    ->relationship('user', 'name'),
             ])
             ->recordActions([
                 EditAction::make(),
@@ -105,5 +106,4 @@ class SegnalazioniResource extends Resource
             'edit' => EditSegnalazione::route('/{record}/edit'),
         ];
     }
-
 }
