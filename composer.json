@@ -8,7 +8,7 @@
         "php": "^8.5",
         "ext-zip": "*",
         "dutchcodingcompany/filament-developer-logins": "^2.0",
-        "filament/filament": "^4.0",
+        "filament/filament": "^5.0",
         "inspector-apm/inspector-laravel": "^4.11",
         "jeffgreco13/filament-breezy": "^3.0",
         "laravel/framework": "^12.0",
