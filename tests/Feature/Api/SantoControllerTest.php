@@ -51,3 +51,37 @@ test('un onomastico viene tornato correttamente', function (bool $primario): voi
     'primario' => true,
     'secondario' => false,
 ]);
+
+test('santi per data vengono tornati correttamente', function (): void {
+    $santo = Santo::factory()->create(['mese' => 1, 'giorno' => 1]);
+
+    $response = get(route('santo.findByDate', ['mese' => 1, 'giorno' => 1]));
+
+    $response->assertStatus(200)
+        ->assertJsonFragment(['nome' => $santo->nome]);
+});
+
+test('santi per nome vengono tornati correttamente', function (): void {
+    $santo = Santo::factory()->create(['nome' => 'San Francesco']);
+
+    $response = get(route('santo.findByName', ['nome' => 'Francesco']));
+
+    $response->assertStatus(200)
+        ->assertJsonFragment(['nome' => 'San Francesco']);
+});
+
+test('torna un errore se il santo non viene trovato', function (): void {
+    $response = get(route('santo.show', 'non-existent-uuid'));
+
+    $response->assertStatus(500)
+        ->assertJsonFragment(['message' => 'Santo non trovato']);
+});
+
+test('può includere la fonte nella risposta del santo', function (): void {
+    $santo = Santo::factory()->create();
+
+    $response = get(route('santo.show', $santo->id).'?include=fonte');
+
+    $response->assertStatus(200);
+    expect($response->json('data.relationships.fonte'))->not->toBeNull();
+});

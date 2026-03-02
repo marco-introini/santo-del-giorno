@@ -2,6 +2,7 @@
 
 namespace App\Providers\Filament;
 
+use App\Filament\User\Pages\EditProfile;
 use DutchCodingCompany\FilamentDeveloperLogins\FilamentDeveloperLoginsPlugin;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\DisableBladeIconComponents;
@@ -31,7 +32,7 @@ class UserPanelProvider extends PanelProvider
             ->login()
             ->registration()
             ->emailVerification()
-            ->profile()
+            ->profile(EditProfile::class, isSimple: false)
             ->passwordReset()
             ->colors([
                 'primary' => Color::Violet,
@@ -46,6 +47,7 @@ class UserPanelProvider extends PanelProvider
                 AccountWidget::class,
                 FilamentInfoWidget::class,
             ])
+            ->unsavedChangesAlerts(fn() => app()->isProduction())
             ->middleware([
                 EncryptCookies::class,
                 AddQueuedCookiesToResponse::class,
