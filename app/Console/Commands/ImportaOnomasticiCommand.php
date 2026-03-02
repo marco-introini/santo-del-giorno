@@ -2,6 +2,7 @@
 
 namespace App\Console\Commands;
 
+use Override;
 use App\Models\Fonte;
 use App\Models\Santo;
 use Exception;
@@ -9,8 +10,10 @@ use Illuminate\Console\Command;
 
 class ImportaOnomasticiCommand extends Command
 {
+    #[Override]
     protected $signature = 'importa:onomastici {file}';
 
+    #[Override]
     protected $description = 'Importa onomastici da file preso da https://luirig.altervista.org/calendario/onomast.htm';
 
     public function handle(): void

@@ -19,14 +19,19 @@ use Override;
 
 class FonteResource extends Resource
 {
+    #[Override]
     protected static ?string $model = Fonte::class;
 
+    #[Override]
     protected static ?string $slug = 'fonti';
 
+    #[Override]
     protected static ?string $pluralLabel = 'Fonti';
 
+    #[Override]
     protected static ?string $label = 'Fonte';
 
+    #[Override]
     protected static string|BackedEnum|null $navigationIcon = 'heroicon-o-globe-alt';
 
     #[Override]

@@ -26,14 +26,19 @@ use Override;
 
 class SegnalazioneResource extends Resource
 {
+    #[Override]
     protected static ?string $model = Segnalazione::class;
 
+    #[Override]
     protected static ?string $label = 'Segnalazione';
 
+    #[Override]
     protected static ?string $pluralLabel = 'Segnalazioni';
 
+    #[Override]
     protected static ?string $slug = 'segnalazioni';
 
+    #[Override]
     protected static string|BackedEnum|null $navigationIcon = 'heroicon-o-bell-alert';
 
     #[Override]

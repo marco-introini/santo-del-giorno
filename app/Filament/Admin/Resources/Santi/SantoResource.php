@@ -26,14 +26,19 @@ use Override;
 
 class SantoResource extends Resource
 {
+    #[Override]
     protected static ?string $model = Santo::class;
 
+    #[Override]
     protected static ?string $slug = 'santi';
 
+    #[Override]
     protected static ?string $pluralLabel = 'Santi';
 
+    #[Override]
     protected static ?string $label = 'Santo';
 
+    #[Override]
     protected static string|BackedEnum|null $navigationIcon = 'heroicon-o-face-smile';
 
     #[Override]

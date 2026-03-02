@@ -2,6 +2,7 @@
 
 namespace App\Filament\Admin\Resources\Segnalazioni\Pages;
 
+use Override;
 use App\Filament\Admin\Resources\Segnalazioni\SegnalazioniResource;
 use App\Models\Segnalazione;
 use Filament\Actions\Action;
@@ -11,8 +12,10 @@ use Filament\Resources\Pages\EditRecord;
 
 class EditSegnalazione extends EditRecord
 {
+    #[Override]
     protected static string $resource = SegnalazioniResource::class;
 
+    #[Override]
     protected function getHeaderActions(): array
     {
         return [

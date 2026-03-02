@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Override;
 use Filament\Models\Contracts\FilamentUser;
 use Filament\Models\Contracts\HasAvatar;
 use Filament\Panel;
@@ -18,8 +19,10 @@ class User extends Authenticatable implements FilamentUser, HasAvatar, MustVerif
 {
     use HasApiTokens, HasFactory, Notifiable, TwoFactorAuthenticatable;
 
+    #[Override]
     protected $guarded = [];
 
+    #[Override]
     protected $hidden = [
         'password',
         'remember_token',
@@ -36,6 +39,7 @@ class User extends Authenticatable implements FilamentUser, HasAvatar, MustVerif
      *     last_api_call: 'datetime'
      * }
      */
+    #[Override]
     protected function casts(): array
     {
         return [

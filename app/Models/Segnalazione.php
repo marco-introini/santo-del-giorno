@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Override;
 use App\Enums\TipoSegnalazione;
 use App\Observers\SegnalazioneObserver;
 use Illuminate\Database\Eloquent\Attributes\ObservedBy;
@@ -14,8 +15,10 @@ class Segnalazione extends Model
 {
     use HasFactory;
 
+    #[Override]
     protected $table = 'segnalazioni';
 
+    #[Override]
     protected $guarded = [];
 
     /**
@@ -34,6 +37,7 @@ class Segnalazione extends Model
         return $this->belongsTo(Santo::class);
     }
 
+    #[Override]
     protected function casts(): array
     {
         return [

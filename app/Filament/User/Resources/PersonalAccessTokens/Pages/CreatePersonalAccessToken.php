@@ -12,6 +12,7 @@ use Override;
 
 class CreatePersonalAccessToken extends CreateRecord
 {
+    #[Override]
     protected static string $resource = PersonalAccessTokenResource::class;
 
     #[Override]

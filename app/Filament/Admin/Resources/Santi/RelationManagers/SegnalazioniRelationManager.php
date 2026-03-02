@@ -21,8 +21,10 @@ use Override;
 
 class SegnalazioniRelationManager extends RelationManager
 {
+    #[Override]
     protected static string $relationship = 'segnalazioni';
 
+    #[Override]
     protected static ?string $title = 'Vedi segnalazione';
 
     #[Override]

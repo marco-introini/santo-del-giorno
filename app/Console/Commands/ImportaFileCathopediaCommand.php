@@ -2,6 +2,7 @@
 
 namespace App\Console\Commands;
 
+use Override;
 use App\Models\Fonte;
 use App\Models\Santo;
 use Carbon\Carbon;
@@ -10,8 +11,10 @@ use Illuminate\Console\Command;
 
 class ImportaFileCathopediaCommand extends Command
 {
+    #[Override]
     protected $signature = 'importa:file-cathopedia {file}';
 
+    #[Override]
     protected $description = 'Carica i dati da un file del formato DATA\nNome,Descrizione';
 
     public function handle(): void

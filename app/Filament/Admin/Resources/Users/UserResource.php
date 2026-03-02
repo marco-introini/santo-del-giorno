@@ -21,12 +21,16 @@ use Override;
 
 class UserResource extends Resource
 {
+    #[Override]
     protected static ?string $model = User::class;
 
+    #[Override]
     protected static string|BackedEnum|null $navigationIcon = 'heroicon-o-users';
 
+    #[Override]
     protected static ?string $pluralLabel = 'Utenti';
 
+    #[Override]
     protected static ?string $label = 'Utente';
 
     #[Override]

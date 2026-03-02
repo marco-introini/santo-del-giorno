@@ -24,14 +24,19 @@ use Override;
 
 class PersonalAccessTokenResource extends Resource
 {
+    #[Override]
     protected static ?string $model = PersonalAccessToken::class;
 
+    #[Override]
     protected static string|BackedEnum|null $navigationIcon = 'heroicon-o-key';
 
+    #[Override]
     protected static ?string $navigationLabel = 'API Tokens';
 
+    #[Override]
     protected static ?string $modelLabel = 'API Token';
 
+    #[Override]
     protected static ?string $pluralModelLabel = 'API Tokens';
 
     #[Override]
