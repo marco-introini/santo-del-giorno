@@ -2,8 +2,7 @@
 
 return [
     App\Providers\AppServiceProvider::class,
-
-    // Filament
+    App\Providers\FilamentUIServiceProvider::class,
     App\Providers\Filament\AdminPanelProvider::class,
     App\Providers\Filament\UserPanelProvider::class,
 ];
