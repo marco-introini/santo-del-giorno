@@ -17,15 +17,15 @@
         "league/flysystem-aws-s3-v3": "^3.0",
         "livewire/flux": "^2.0",
         "livewire/flux-pro": "^2.0",
-        "spatie/laravel-backup": "^9.3",
-        "spatie/laravel-sitemap": "^7.3",
-        "treblle/treblle-laravel": "^5.0"
+        "spatie/laravel-backup": "^10",
+        "spatie/laravel-sitemap": "^8",
+        "treblle/treblle-laravel": "^6.0"
     },
     "require-dev": {
         "driftingly/rector-laravel": "^2",
         "fakerphp/faker": "^1.23",
         "larastan/larastan": "^3.0",
-        "laravel/boost": "^1.0",
+        "laravel/boost": "^2.0",
         "laravel/pint": "^1.13",
         "laravel/sail": "^1.26",
         "mockery/mockery": "^1.6",
