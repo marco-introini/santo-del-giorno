@@ -62,7 +62,8 @@ class PersonalAccessTokenResource extends Resource
                 DateTimePicker::make('expires_at')
                     ->label('Fine validità')
                     ->nullable()
-                    ->helperText('Lascia vuoto il campo per impostare un token senza scadenza (non consigliato)'),
+                    ->rule('before_or_equal:2038-01-19 03:00:00')
+                    ->helperText('Lascia vuoto il campo per impostare un token senza scadenza (non consigliato). Data massima: 19/01/2038 ore 03:00'),
 
                 CheckboxList::make('abilities')
                     ->options([
