@@ -1,10 +1,11 @@
 <?php
 
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use App\Models\User;
 use Filament\Panel;
 use Illuminate\Support\Facades\Storage;
 
-it('determines if a user is an admin', function () {
+it('determines if a user is an admin', function (): void {
     $admin = new User(['is_admin' => true]);
     $user = new User(['is_admin' => false]);
 
@@ -12,7 +13,7 @@ it('determines if a user is an admin', function () {
         ->and($user->isAdmin())->toBeFalse();
 });
 
-it('determines panel access correctly', function () {
+it('determines panel access correctly', function (): void {
     $admin = new User(['is_admin' => true]);
     $user = new User(['is_admin' => false]);
 
@@ -32,7 +33,7 @@ it('determines panel access correctly', function () {
         ->and($user->canAccessPanel($otherPanel))->toBeFalse();
 });
 
-it('returns the filament avatar url', function () {
+it('returns the filament avatar url', function (): void {
     Storage::fake('avatars');
 
     $userWithAvatar = new User(['avatar' => 'path/to/avatar.jpg']);
@@ -42,8 +43,8 @@ it('returns the filament avatar url', function () {
         ->and($userWithoutAvatar->getFilamentAvatarUrl())->toBeNull();
 });
 
-it('has a segnalazioni relationship', function () {
+it('has a segnalazioni relationship', function (): void {
     $user = new User;
 
-    expect($user->segnalazioni())->toBeInstanceOf(\Illuminate\Database\Eloquent\Relations\HasMany::class);
+    expect($user->segnalazioni())->toBeInstanceOf(HasMany::class);
 });

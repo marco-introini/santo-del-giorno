@@ -2,6 +2,7 @@
 
 namespace App\Console\Commands;
 
+use Illuminate\Support\Facades\Date;
 use Override;
 use App\Models\Fonte;
 use App\Models\Santo;
@@ -51,7 +52,7 @@ class ImportaFileCathopediaCommand extends Command
                         ->explode(',');
                     $nome = $parti[0];
                     $descrizione = $parti->slice(1)->join(', ');
-                    Santo::create([
+                    Santo::query()->create([
                         'nome' => $nome,
                         'note' => $descrizione,
                         'fonte_id' => $fonte->id,
@@ -92,7 +93,7 @@ class ImportaFileCathopediaCommand extends Command
                 $partiData[1] = $mesiItalianoInglese[$partiData[1]];
                 $dataInglese = implode(' ', $partiData);
 
-                return Carbon::createFromFormat('j F', $dataInglese);
+                return Date::createFromFormat('j F', $dataInglese);
             }
         }
 

@@ -1,8 +1,8 @@
 <?php
 
+use Illuminate\Support\Facades\Date;
 use App\Filament\User\Resources\PersonalAccessTokens\Pages\CreatePersonalAccessToken;
 use App\Models\User;
-use Carbon\Carbon;
 use Filament\Facades\Filament;
 use Laravel\Sanctum\PersonalAccessToken;
 use Livewire\Livewire;
@@ -32,7 +32,7 @@ it('can create a token with expires_at just before the MySQL TIMESTAMP limit', f
     $user = User::factory()->create();
     $this->actingAs($user);
 
-    $expiresAt = Carbon::create(2038, 1, 19, 2, 59, 59);
+    $expiresAt = Date::create(2038, 1, 19, 2, 59, 59);
 
     Livewire::test(CreatePersonalAccessToken::class)
         ->assertOk()
@@ -59,7 +59,7 @@ it('cannot set expires_at beyond the MySQL TIMESTAMP limit', function (): void {
     $user = User::factory()->create();
     $this->actingAs($user);
 
-    $expiresAt = Carbon::create(2038, 1, 19, 3, 0, 1);
+    $expiresAt = Date::create(2038, 1, 19, 3, 0, 1);
 
     Livewire::test(CreatePersonalAccessToken::class)
         ->assertOk()

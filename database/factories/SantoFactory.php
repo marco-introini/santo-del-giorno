@@ -2,13 +2,18 @@
 
 namespace Database\Factories;
 
+use Override;
+use Illuminate\Support\Facades\Date;
 use App\Models\Fonte;
 use App\Models\Santo;
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Illuminate\Support\Carbon;
 
+/**
+ * @extends Factory<Santo>
+ */
 class SantoFactory extends Factory
 {
+    #[Override]
     protected $model = Santo::class;
 
     public function definition(): array
@@ -21,8 +26,8 @@ class SantoFactory extends Factory
             'onomastico' => fake()->boolean(10),
             'onomastico_secondario' => fake()->boolean(30),
             'fonte_id' => Fonte::factory(),
-            'created_at' => Carbon::now(),
-            'updated_at' => Carbon::now(),
+            'created_at' => Date::now(),
+            'updated_at' => Date::now(),
         ];
     }
 

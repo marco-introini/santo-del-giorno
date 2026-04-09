@@ -8,7 +8,7 @@ return new class extends Migration
 {
     public function up(): void
     {
-        Schema::table('santi', function (Blueprint $table) {
+        Schema::table('santi', function (Blueprint $table): void {
             $table->boolean('onomastico')
                 ->default(false)
                 ->after('mese');
@@ -20,7 +20,7 @@ return new class extends Migration
 
     public function down(): void
     {
-        Schema::table('santi', function (Blueprint $table) {
+        Schema::table('santi', function (Blueprint $table): void {
             $table->dropColumn('onomastico');
             $table->dropColumn('onomastico_secondario');
         });

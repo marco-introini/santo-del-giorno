@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Hash;
 use function Pest\Laravel\actingAs;
 use function Pest\Laravel\postJson;
 
-it('allows a user to login with valid credentials', function () {
+it('allows a user to login with valid credentials', function (): void {
     $user = User::factory()->create([
         'email' => 'test@example.com',
         'password' => Hash::make('password'),
@@ -25,7 +25,7 @@ it('allows a user to login with valid credentials', function () {
         ]);
 });
 
-it('does not allow login with invalid credentials', function () {
+it('does not allow login with invalid credentials', function (): void {
     $user = User::factory()->create([
         'email' => 'test@example.com',
         'password' => Hash::make('password'),
@@ -40,7 +40,7 @@ it('does not allow login with invalid credentials', function () {
         ->assertJsonFragment(['message' => 'Credenziali errate']);
 });
 
-it('allows a user to logout', function () {
+it('allows a user to logout', function (): void {
     $user = User::factory()->create();
     actingAs($user, 'sanctum');
 

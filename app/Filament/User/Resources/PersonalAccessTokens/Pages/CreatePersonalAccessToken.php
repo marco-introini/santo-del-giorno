@@ -2,8 +2,8 @@
 
 namespace App\Filament\User\Resources\PersonalAccessTokens\Pages;
 
+use Illuminate\Support\Facades\Date;
 use App\Filament\User\Resources\PersonalAccessTokens\PersonalAccessTokenResource;
-use Carbon\Carbon;
 use Filament\Notifications\Notification;
 use Filament\Resources\Pages\CreateRecord;
 use Illuminate\Database\Eloquent\Model;
@@ -24,7 +24,7 @@ class CreatePersonalAccessToken extends CreateRecord
     #[Override]
     protected function handleRecordCreation(array $data): Model
     {
-        $expiresAt = isset($data['expires_at']) ? Carbon::parse($data['expires_at']) : null;
+        $expiresAt = isset($data['expires_at']) ? Date::parse($data['expires_at']) : null;
 
         $plainTextToken = auth()->user()->createToken(
             $data['name'],

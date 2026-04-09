@@ -15,8 +15,8 @@ class FindByDateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'mese' => 'required|integer|between:1,12',
-            'giorno' => 'required|integer|between:1,31',
+            'mese' => ['required', 'integer', 'between:1,12'],
+            'giorno' => ['required', 'integer', 'between:1,31'],
         ];
     }
 

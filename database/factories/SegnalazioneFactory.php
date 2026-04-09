@@ -2,15 +2,20 @@
 
 namespace Database\Factories;
 
+use Override;
+use Illuminate\Support\Facades\Date;
 use App\Enums\TipoSegnalazione;
 use App\Models\Santo;
 use App\Models\Segnalazione;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Illuminate\Support\Carbon;
 
+/**
+ * @extends Factory<Segnalazione>
+ */
 class SegnalazioneFactory extends Factory
 {
+    #[Override]
     protected $model = Segnalazione::class;
 
     public function definition(): array
@@ -21,8 +26,8 @@ class SegnalazioneFactory extends Factory
             'tipo_segnalazione' => fake()->randomElement(TipoSegnalazione::cases()),
             'testo_segnalazione' => $this->faker->realText(),
             'evasa' => fake()->boolean(20),
-            'updated_at' => Carbon::now(),
-            'created_at' => Carbon::now(),
+            'updated_at' => Date::now(),
+            'created_at' => Date::now(),
         ];
     }
 }

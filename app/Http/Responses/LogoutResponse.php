@@ -9,6 +9,6 @@ class LogoutResponse implements \Filament\Auth\Http\Responses\Contracts\LogoutRe
     public function toResponse($request): RedirectResponse
     {
         // change this to your desired route
-        return redirect()->route('home');
+        return to_route('home');
     }
 }

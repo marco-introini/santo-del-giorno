@@ -8,7 +8,7 @@ return new class extends Migration
 {
     public function up(): void
     {
-        Schema::create('fonti', function (Blueprint $table) {
+        Schema::create('fonti', function (Blueprint $table): void {
             $table->id();
             $table->string('nome');
             $table->string('url');

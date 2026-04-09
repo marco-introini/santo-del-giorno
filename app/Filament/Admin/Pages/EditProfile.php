@@ -2,12 +2,13 @@
 
 namespace App\Filament\Admin\Pages;
 
-use Filament\Pages\Page;
+use Override;
 use Filament\Schemas\Components\Section;
 use Filament\Schemas\Schema;
 
 class EditProfile extends \Filament\Auth\Pages\EditProfile
 {
+    #[Override]
     public function form(Schema $schema): Schema
     {
         return $schema

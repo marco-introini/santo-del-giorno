@@ -8,7 +8,7 @@ return new class extends Migration
 {
     public function up(): void
     {
-        Schema::table('segnalazioni', function (Blueprint $table) {
+        Schema::table('segnalazioni', function (Blueprint $table): void {
             $table->text('note_chiusura')
                 ->nullable()
                 ->after('evasa');
@@ -17,7 +17,7 @@ return new class extends Migration
 
     public function down(): void
     {
-        Schema::table('segnalazioni', function (Blueprint $table) {
+        Schema::table('segnalazioni', function (Blueprint $table): void {
             $table->dropColumn('note_chiusura');
         });
     }
