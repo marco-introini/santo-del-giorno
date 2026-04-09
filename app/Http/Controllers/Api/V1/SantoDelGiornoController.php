@@ -15,14 +15,14 @@ class SantoDelGiornoController extends ApiController
 
     public function index()
     {
-        return SantoResource::collection(Santo::paginate(10))
+        return SantoResource::collection(Santo::query()->paginate(10))
             ->response()
             ->header('treblle-user-id', auth()->user()->email ?? 'guest');
     }
 
     public function show(string $uuid)
     {
-        $santo = Santo::without('fonte')->find($uuid);
+        $santo = Santo::query()->without('fonte')->find($uuid);
         if (is_null($santo)) {
             return $this->error('Santo non trovato');
         }
@@ -45,7 +45,7 @@ class SantoDelGiornoController extends ApiController
 
     public function findByName(string $nome)
     {
-        $santi = Santo::where('nome', 'LIKE', '%'.$nome.'%')->get();
+        $santi = Santo::query()->where('nome', 'LIKE', '%'.$nome.'%')->get();
 
         return $this->ok("Santi contenente '$nome'", SantoResource::collection($santi));
 
@@ -53,7 +53,7 @@ class SantoDelGiornoController extends ApiController
 
     public function findOnomastico(string $nome)
     {
-        $santi = Santo::where('nome', 'LIKE', '%'.$nome.'%')
+        $santi = Santo::query()->where('nome', 'LIKE', '%'.$nome.'%')
             ->where(function (Builder $builder): void {
                 $builder->where('onomastico', true)->orWhere('onomastico_secondario', true);
             })->get();

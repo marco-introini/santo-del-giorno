@@ -29,7 +29,7 @@ class SegnalazioneObserver
 
     public function created(Segnalazione $segnalazione): void
     {
-        $adminUsers = User::where('is_admin', true)->get();
+        $adminUsers = User::query()->where('is_admin', true)->get();
         foreach ($adminUsers as $user) {
             Mail::to($user->email)->send(new SegnalazioneCreatedMail($segnalazione));
         }

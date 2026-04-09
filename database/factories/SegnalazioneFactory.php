@@ -21,8 +21,8 @@ class SegnalazioneFactory extends Factory
     public function definition(): array
     {
         return [
-            'user_id' => User::inRandomOrder()->first(),
-            'santo_id' => Santo::inRandomOrder()->first(),
+            'user_id' => User::query()->inRandomOrder()->first(),
+            'santo_id' => Santo::query()->inRandomOrder()->first(),
             'tipo_segnalazione' => fake()->randomElement(TipoSegnalazione::cases()),
             'testo_segnalazione' => $this->faker->realText(),
             'evasa' => fake()->boolean(20),

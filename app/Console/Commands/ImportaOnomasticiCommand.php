@@ -22,7 +22,7 @@ class ImportaOnomasticiCommand extends Command
 
         $this->info('Caricamento da '.$file);
 
-        $fonte = Fonte::firstOrCreate([
+        $fonte = Fonte::query()->firstOrCreate([
             'nome' => 'Luigi Rignanese',
             'url' => 'https://luirig.altervista.org/calendario/onomast.htm',
             'note' => 'Sito web Luigì Rignanese',
@@ -39,7 +39,7 @@ class ImportaOnomasticiCommand extends Command
                 $giorno = $data[0];
                 $mese = self::ottieniNumeroMese($data[1]);
 
-                $santo = Santo::firstOrCreate([
+                $santo = Santo::query()->firstOrCreate([
                     'fonte_id' => $fonte->id,
                     'nome' => $nome,
                     'giorno' => $giorno,

@@ -22,7 +22,7 @@ class LoginController extends Controller
             return $this->error('Credenziali errate', 401);
         }
 
-        $user = User::firstWhere('email', $request->email);
+        $user = User::query()->firstWhere('email', $request->email);
 
         return $this->ok('Login OK', [
             'token' => $user->createToken(

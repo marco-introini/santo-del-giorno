@@ -17,7 +17,7 @@ class CercaSantoPerNome extends Component
 
     public function render()
     {
-        $query = Santo::where('nome', 'like', '%'.$this->nome.'%');
+        $query = Santo::query()->where('nome', 'like', '%'.$this->nome.'%');
 
         if ($this->onomastico) {
             $query->where(function (Builder $builder): void {

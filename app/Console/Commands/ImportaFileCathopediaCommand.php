@@ -24,7 +24,7 @@ class ImportaFileCathopediaCommand extends Command
 
         $this->info('Caricamento da '.$file);
 
-        $fonte = Fonte::firstOrCreate([
+        $fonte = Fonte::query()->firstOrCreate([
             'nome' => 'Cathopedia',
             'url' => 'https://it.cathopedia.org/wiki/Cathopedia:Pagina_principale',
             'note' => 'Wikipedia Cattolica',

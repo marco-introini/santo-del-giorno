@@ -38,7 +38,7 @@ test('la chiamata a fonti incrementa il contatore delle chiamate', function (): 
 
     get(route('fonte.show', $fonte));
 
-    expect(User::first()->api_calls)->toBe(1);
+    expect(User::query()->first()->api_calls)->toBe(1);
 });
 
 test('la chiamata a fonti imposta correttamente il valore last_api_call', function (): void {
@@ -46,5 +46,5 @@ test('la chiamata a fonti imposta correttamente il valore last_api_call', functi
 
     get(route('fonte.show', $fonte));
 
-    expect(User::first()->last_api_call)->not->toBeNull();
+    expect(User::query()->first()->last_api_call)->not->toBeNull();
 });

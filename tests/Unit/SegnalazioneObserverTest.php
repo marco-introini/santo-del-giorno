@@ -14,7 +14,7 @@ test('una segnalazione viene associata correttamente a utente loggato', function
     $otherUser = User::factory()->create();
 
     actingAs($user);
-    $segnalazione = Segnalazione::create([
+    $segnalazione = Segnalazione::query()->create([
         'user_id' => $otherUser->id,
         'santo_id' => $santo->id,
         'tipo_segnalazione' => fake()->randomElement(TipoSegnalazione::cases()),
@@ -28,7 +28,7 @@ test('una segnalazione non può essere inserita senza essere loggati', function 
     $santo = Santo::factory()->create();
     $user = User::factory()->create();
 
-    $segnalazione = Segnalazione::create([
+    $segnalazione = Segnalazione::query()->create([
         'santo_id' => $santo->id,
         'tipo_segnalazione' => fake()->randomElement(TipoSegnalazione::cases()),
         'testo_segnalazione' => fake()->realText(),
@@ -41,7 +41,7 @@ test('una segnalazione viene associata correttamente ad altro utente se fatta da
     $user = User::factory()->admin()->create();
 
     actingAs($user);
-    $segnalazione = Segnalazione::create([
+    $segnalazione = Segnalazione::query()->create([
         'user_id' => $normalUser->id,
         'santo_id' => $santo->id,
         'tipo_segnalazione' => fake()->randomElement(TipoSegnalazione::cases()),
