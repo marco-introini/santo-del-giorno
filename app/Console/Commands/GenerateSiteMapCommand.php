@@ -16,7 +16,7 @@ class GenerateSiteMapCommand extends Command
 
     public function handle(): void
     {
-        SitemapGenerator::create('https://santodelgiorno.mintdev.me')
+        SitemapGenerator::create('https://santodelgiorno.marcointroini.it')
             ->getSitemap()
             ->writeToFile(public_path('sitemap.xml'));
     }

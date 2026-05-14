@@ -226,10 +226,10 @@ return [
         'notifiable' => Notifiable::class,
 
         'mail' => [
-            'to' => 'mint@mintdev.me',
+            'to' => 'marco@marcointroini.it',
 
             'from' => [
-                'address' => env('MAIL_FROM_ADDRESS', 'backup@mintdev.me'),
+                'address' => env('MAIL_FROM_ADDRESS', 'backup@marcointroini.it'),
                 'name' => 'Santo Del Giorno Backup',
             ],
         ],

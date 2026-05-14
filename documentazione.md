@@ -16,7 +16,7 @@ Tutte le chiamate alle API devono essere autenticate usando un Bearer token otte
 voce **Profilo**, oppure chiamando l'API login
 
 ```bash
-curl --location 'https://santodelgiorno.mintdev.me/api/login' \
+curl --location 'https://santodelgiorno.marcointroini.it/api/login' \
 --form 'email="user@example.com"' \
 --form 'password="password"'
 ```
@@ -26,7 +26,7 @@ curl --location 'https://santodelgiorno.mintdev.me/api/login' \
 Elenco paginato tutti i santi inseriti
 
 ```
-GET https://santodelgiorno.mintdev.me/api/v1/santo
+GET https://santodelgiorno.marcointroini.it/api/v1/santo
 Accept: application/json
 Authorization: Bearer <token>
 ```
@@ -34,14 +34,14 @@ Authorization: Bearer <token>
 ### Informazione su singolo santo
 
 ```
-GET https://santodelgiorno.mintdev.me/api/v1/santo/<uuid>
+GET https://santodelgiorno.marcointroini.it/api/v1/santo/<uuid>
 Accept: application/json
 Authorization: Bearer <token>
 ```
 Per avere anche il dettaglio della fonte:
 
 ```
-GET https://santodelgiorno.mintdev.me/api/v1/santo/<uuid>?include=fonte
+GET https://santodelgiorno.marcointroini.it/api/v1/santo/<uuid>?include=fonte
 Accept: application/json
 Authorization: Bearer <token>
 ```
@@ -51,7 +51,7 @@ Authorization: Bearer <token>
 #### Ricerca per data
 
 ```
-GET https://santodelgiorno.mintdev.me/api/v1/santo/data/{mese}/{giorno}
+GET https://santodelgiorno.marcointroini.it/api/v1/santo/data/{mese}/{giorno}
 Accept: application/json
 Authorization: Bearer <token>
 ```
@@ -62,7 +62,7 @@ Authorization: Bearer <token>
 #### Ricerca per nome
 
 ```
-GET https://santodelgiorno.mintdev.me/api/v1/santo/nome/{nome}
+GET https://santodelgiorno.marcointroini.it/api/v1/santo/nome/{nome}
 Accept: application/json
 Authorization: Bearer <token>
 ```
@@ -71,7 +71,7 @@ La ricerca avviene in modo case-insensitive e in LIKE
 #### Ricerca onomastico
 
 ```
-GET https://santodelgiorno.mintdev.me/api/v1/santo/onomastico/{nome}
+GET https://santodelgiorno.marcointroini.it/api/v1/santo/onomastico/{nome}
 Accept: application/json
 Authorization: Bearer <token>
 ```
