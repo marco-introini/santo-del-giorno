@@ -66,7 +66,6 @@ class ImportaFileCathopediaCommand extends Command
         } catch (Exception $e) {
             $this->error('Impossibile aprire il file. Errore: '.$e->getMessage());
         }
-
     }
 
     public static function convertiDataItalianoInDateTime($dataItaliano): ?Carbon
