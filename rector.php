@@ -12,14 +12,14 @@ use RectorLaravel\Set\LaravelSetProvider;
 
 return RectorConfig::configure()
     ->withPaths([
-        __DIR__.'/app',
-        __DIR__.'/database',
-        __DIR__.'/tests',
+        __DIR__ . '/app',
+        __DIR__ . '/database',
+        __DIR__ . '/tests',
     ])
     ->withPhpSets()
     ->withTypeCoverageLevel(4)
     ->withSetProviders(LaravelSetProvider::class)
-	->withComposerBased(laravel: true)
+    ->withComposerBased(laravel: true)
     ->withImportNames(removeUnusedImports: true)
     ->withRules([
         AddGenericReturnTypeToRelationsRector::class,
@@ -28,6 +28,6 @@ return RectorConfig::configure()
         EloquentMagicMethodToQueryBuilderRector::class,
     ])
     ->withSets([
-	    LaravelSetList::LARAVEL_CODE_QUALITY,
-	    LaravelSetList::LARAVEL_COLLECTION,
-	]);
+        LaravelSetList::LARAVEL_CODE_QUALITY,
+        LaravelSetList::LARAVEL_COLLECTION,
+    ]);
