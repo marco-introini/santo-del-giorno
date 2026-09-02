@@ -22,7 +22,7 @@ class ImportaFileCathopediaCommand extends Command
     {
         $file = $this->argument('file');
 
-        $this->info('Caricamento da '.$file);
+        $this->info('Caricamento da ' . $file);
 
         $fonte = Fonte::query()->firstOrCreate([
             'nome' => 'Cathopedia',
@@ -43,10 +43,9 @@ class ImportaFileCathopediaCommand extends Command
                         $giornoAttuale = $dataTime->day;
                         $meseAttuale = $dataTime->month;
                     } else {
-                        $this->error('Non è possibile trasformare la data '.$line);
+                        $this->error('Non è possibile trasformare la data ' . $line);
                     }
                 } else {
-
                     $parti = str($line)
                         ->remove(';')
                         ->explode(',');
@@ -59,12 +58,11 @@ class ImportaFileCathopediaCommand extends Command
                         'giorno' => $giornoAttuale,
                         'mese' => $meseAttuale,
                     ]);
-
                 }
             }
             fclose($file);
         } catch (Exception $e) {
-            $this->error('Impossibile aprire il file. Errore: '.$e->getMessage());
+            $this->error('Impossibile aprire il file. Errore: ' . $e->getMessage());
         }
     }
 
